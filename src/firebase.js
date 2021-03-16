@@ -1,3 +1,7 @@
+import firebase from 'firebase/app';
+import 'firebase/firestore'
+import 'firebase/auth'
+
 const firebaseConfig = {
     apiKey: "AIzaSyBtij6YdHCUNu-KtkJZR0RMBzFUBjMfEXo",
     authDomain: "growgreen-db239.firebaseapp.com",
@@ -8,6 +12,10 @@ const firebaseConfig = {
     measurementId: "G-C6QFLSBFHW"
 };
 
-firebaseConfig.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 var database = firebase.firestore();
-export default database;
+var auth = firebase.auth();
+export {
+    database,
+    auth
+};

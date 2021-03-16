@@ -5,7 +5,8 @@
         <p>Welcome!</p>
         <textarea v-model="email" placeholder="email"></textarea> <br>
         <textarea v-model="password" placeholder="password"></textarea> <br>
-        <button v-on:click="login"> Login </button>
+        <button v-on:click="login"> Login </button> <br>
+        <button v-on:click="register"> Register </button>
       </div>
     </div>
   </div>
@@ -24,6 +25,9 @@ export default {
   methods: {
     login() {
       this.$router.push('home')
+    },
+    register() {
+      this.$router.push('register')
     }
   }
 };
