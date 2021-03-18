@@ -1,27 +1,29 @@
 <template>
   <div class="app">
-    <div class="bg" :style="{ backgroundImage: 'url(' + image + ')' }">
+    <div class="bg">
       <form class="welcomebox" @submit.prevent="pressed">
-        Register
+        <img id="logo" src="../assets/logo.png">
+        <p id='WelcomeTitle'>Welcome to GrowGreen!</p>
+        <p id="registertext">Create your account here</p>
         <div class="email">
-          <input type="email" v-model="email" placeholder="email" />
+          <input class="textinput" type="email" v-model="email" placeholder="Email" />
         </div>
         <div class="password">
-          <input type="password" v-model="password" placeholder="password" />
+          <input class="textinput" type="password" v-model="password" placeholder="Password" />
         </div>
-        <button type="submit">Register</button>
+        <button id="signupbutton" type="submit">Sign Up</button><br>
+        <span class="registertext">Have an account? Login</span>
+        <button class="registerbutton" v-on:click="gotoLogin">here</button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import background from "../assets/background.png";
 import { auth } from "../firebase.js";
 export default {
   data() {
     return {
-      image: background,
       email: "",
       password: "",
     };
@@ -36,27 +38,76 @@ export default {
         })
         .catch((error) => (alert(error)));
     },
+    gotoLogin() {
+      this.$router.push('/')
+    },
   },
 };
 </script>
 
 <style>
 .app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Futura, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .bg {
   height: 100vh;
   background-size: cover;
   overflow: hidden;
+  background-color:antiquewhite;
 }
-
+#logo{
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 .welcomebox {
-  margin: 20%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: azure;
+  margin: 10%;
+  color: black;
   text-align: center;
+}
+#WelcomeTitle {
+  color:black;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+#registertext {
+  font-size: 20px;
+}
+.textinput{
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  text-align: center;
+  font-family: unset;
+  padding: 15px 50px;
+  margin-bottom: 10px;
+  outline: none;
+}
+#signupbutton{
+  background-color: black;
+  border: none;
+  color: white;
+  font-family:unset;
+  font-size: 15px;
+  padding: 10px 32px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 30px;
+}
+.registertext{
+  color:black;
+  font-size:14px;
+}
+.registerbutton {
+  color:black;
+  border: none;
+  background-color: antiquewhite;
+  font-family: unset;
+  font-size:14px;
+  text-decoration: underline;
 }
 </style>

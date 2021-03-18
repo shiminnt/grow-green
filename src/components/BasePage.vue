@@ -1,7 +1,5 @@
-
-
 <template>
-  <div class="bg" :style="{ backgroundImage: 'url(' + image + ')' }">
+  <div class="bg">
     <div class="navbar">
       <nav>
         <button id="btn"><router-link to="/home"><img src="../assets/homelogo.png"></router-link></button>
@@ -14,13 +12,11 @@
 </template>
 
 <script>
-import background from "../assets/background.png"
 
 export default {
   name: "App",
   data: function () {
     return {
-      image: background
     };
   },
 };
@@ -31,6 +27,7 @@ export default {
   height:100vh;
   background-size: cover;
   overflow: hidden;
+  background-color: antiquewhite;
 }
 .navbar {
   background-color: black;
