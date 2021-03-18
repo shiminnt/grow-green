@@ -64,7 +64,7 @@ export default {
 p {
   font-family: Playfair;
   font-weight: bold;
-  font-size: 20px;;
+  font-size: 20px;
 }
 .textinput{
   background: transparent;
