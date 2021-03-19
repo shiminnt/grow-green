@@ -41,6 +41,8 @@ export default {
   background-color: ivory;
   background-size: over;
   background-repeat: no-repeat;
+  height: 100px;
+
 }
 #ggName {
   position: fixed;

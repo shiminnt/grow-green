@@ -2,11 +2,12 @@
 <template>
   <div>
     <base-page></base-page>
+    hi
   </div>
 </template>
 
 <script>
-import BasePage from './BasePage.vue';
+import BasePage from './Header.vue';
 
 export default {
   components: { BasePage },

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BasePage from './BasePage.vue';
+import BasePage from './Header.vue';
 
 export default {
   components: { BasePage },

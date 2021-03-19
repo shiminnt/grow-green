@@ -3,7 +3,7 @@
   <div>
     <div class="bg">
       <span>
-        <img id="logoIcon" src="../assets/logo.png">
+        <img id="logoIcon" src="../assets/logo.png" />
         <a id="ggName">GrowGreen</a>
       </span>
       <ul class="navbar">
@@ -11,8 +11,13 @@
         <li><router-link to="/map">MAP</router-link></li>
         <li><router-link to="/news">NEWS</router-link></li>
         <li><router-link to="/quiz">QUIZ</router-link></li>
-        <img id="profileIcon" src="../assets/profileIcon.png">
+        <img id="profileIcon" src="../assets/profileIcon.png" />
       </ul>
+      <div>
+        <div class="overviewBoxes" id="treesPlanted">x trees planted</div>
+        <div class="overviewBoxes" id="articlesRead">y articles read</div>
+        <div class="overviewBoxes" id="questionsDone">z questions done</div>
+      </div>
       <div>
         <p id="overviewButton" v-on:click="overview">Overview</p>
       </div>
@@ -21,24 +26,22 @@
 </template>
 
 <script>
-
 export default {
   name: "Home",
   data: function () {
-    return {
-    };
+    return {};
   },
   methods: {
     overview() {
-      this.$router.push('dashboard');
-    }
-  }
+      this.$router.push("dashboard");
+    },
+  },
 };
 </script>
 
 <style scoped>
 .bg {
-  background-image: url('../assets/homebg.png');
+  background-image: url("../assets/homebg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -47,7 +50,7 @@ export default {
 #ggName {
   position: fixed;
   top: 45px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 30px;
   font-weight: 600;
   color: #873600;
@@ -60,7 +63,7 @@ export default {
 .navbar {
   display: flex;
   float: right;
-  padding-right: 35px;;
+  padding-right: 35px;
   flex-wrap: wrap;
   list-style-type: none;
 }
@@ -92,5 +95,10 @@ export default {
   text-align: center;
   width: 110px;
   position: fixed;
+}
+
+#overviewBoxes {
+  background-color: blueviolet;
+  opacity: 82%;
 }
 </style>

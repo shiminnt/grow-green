@@ -1,12 +1,12 @@
 
 <template>
-  <div>
+  <div class = "main">
     <base-page></base-page>
   </div>
 </template>
 
 <script>
-import BasePage from './BasePage.vue';
+import BasePage from './Header.vue';
 
 export default {
   components: { BasePage },
@@ -20,5 +20,7 @@ export default {
 </script>
 
 <style scoped>
-
+.main {
+  background-color: ivory;
+}
 </style>
