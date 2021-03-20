@@ -2,18 +2,13 @@
 <template>
   <div class="bg">
     <base-page></base-page>
-    <ul>
-      <li v-for="article in info" :key="article.title">
-        <div class="newsBox">
-          <img class="image" v-bind:src="article.urlToImage" />
-          <div class="words">
-            <h4 class="title">{{ article.title }}</h4>
-            <p class="text">{{ article.description }}</p>
-          </div>
-          <a class="readMoreLink" v-bind:id="article.title" v-on:click="readArticle($event)">Read More...</a>
-        </div>
-      </li>
-    </ul>
+    <div class="newsBox">
+      <img class="image" src="https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/x5bvo1diqdwou9nqetka.png">
+      <div class="words">
+        <h3 class="title">Title</h3>
+        <p class="text">Text</p>
+      </div>
+    </div>
     <Footer />
   </div>
 </template>
@@ -21,10 +16,10 @@
 <script>
 import BasePage from "./Header.vue";
 import axios from "axios";
-import Footer from "./Footer.vue";
+import Footer from './Footer.vue';
 
 export default {
-  name: "NewsMenu",
+  name: "News",
   data: function () {
     return {
       info: null,
@@ -42,15 +37,12 @@ export default {
         )
         .then((response) => {
           this.info = response.data.articles;
-        })
-    },
-    readArticle(event) {
-      this.$router.push({name: "article", params: {id: event.target.getAttribute("id")}});
+        }).bind(this)
     },
   },
   created() {
-    this.mounted();
-  },
+    this.mounted()
+  }
 };
 </script>
 
@@ -61,8 +53,9 @@ export default {
 }
 
 .newsBox {
-  height: 100px;
-  background: rgba(245, 222, 179, 0.8);
+  height:100px;
+  text-align: center;
+  background: rgba(245, 222, 179,0.8);
   display: flex;
   overflow: visible;
   border-color: black;
@@ -75,22 +68,11 @@ export default {
   height: 75px;
   width: 75px;
   margin-left: 2%;
-  margin-top: 1%;
+  margin-top:1%;
   border-radius: 100%;
 }
 
 .words {
   margin-left: 2%;
-}
-
-.text {
-  font-size: 15px;
-}
-
-.readMoreLink {
-  text-decoration: underline;
-  font-size: 10px;
-  bottom: 10px;
-  right: 10px;
 }
 </style>
