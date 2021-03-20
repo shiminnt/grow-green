@@ -6,7 +6,7 @@
       <ul class="navbar">
         <li><router-link to="/home">HOME</router-link></li>
         <li><router-link to="/map">MAP</router-link></li>
-        <li><router-link to="/newsmenu">NEWS</router-link></li>
+        <li><router-link to="/news">NEWS</router-link></li>
         <li><router-link to="/quiz">QUIZ</router-link></li>
         <li><router-link to="/dashboard">OVERVIEW</router-link></li>
         <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
