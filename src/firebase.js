@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/auth'
+import store from './store.js'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBtij6YdHCUNu-KtkJZR0RMBzFUBjMfEXo",
@@ -15,6 +16,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.firestore();
 var auth = firebase.auth();
+
+auth.onAuthStateChanged(user => {
+    store.dispatch("fetchUser", user);
+})
+
 export {
     database,
     auth
