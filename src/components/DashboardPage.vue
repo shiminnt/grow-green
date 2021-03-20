@@ -1,15 +1,17 @@
 
 <template>
-  <div>
+  <div class="bg">
     <base-page></base-page>
+    <Footer />
   </div>
 </template>
 
 <script>
 import BasePage from './Header.vue';
+import Footer from './Footer.vue'
 
 export default {
-  components: { BasePage },
+  components: { BasePage, Footer },
   name: "Dashboard",
   data: function () {
     return {
@@ -20,5 +22,7 @@ export default {
 </script>
 
 <style scoped>
-
+.bg {
+  background-color: ivory;
+}
 </style>

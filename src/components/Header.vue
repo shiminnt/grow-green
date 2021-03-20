@@ -1,10 +1,8 @@
 <template>
   <div>
     <div class="bg">
-      <span>
-        <img id="logoIcon" src="../assets/logo.png">
-        <a id="ggName">GrowGreen</a>
-      </span>
+      <img id="logoIcon" src="../assets/logo.png" />
+      <a id="ggName">GrowGreen</a>
       <ul class="navbar">
         <li><router-link to="/home">HOME</router-link></li>
         <li><router-link to="/map">MAP</router-link></li>
@@ -12,27 +10,33 @@
         <li><router-link to="/quiz">QUIZ</router-link></li>
         <li><router-link to="/dashboard">OVERVIEW</router-link></li>
         <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
-        <img id="profileIcon" src="../assets/profileIcon.png" @mouseover="mouseOver">
-        <div v-show="hover">Profile<br> Log Out</div>
+        <img
+          id="profileIcon"
+          src="../assets/profileIcon.png"
+          @mouseover="mouseOver"
+        />
+        <div v-show="hover">
+          Profile<br />
+          Log Out
+        </div>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: "App",
+  name: "Header",
   data: function () {
     return {
-      hover: false
+      hover: false,
     };
   },
   methods: {
     mouseOver() {
       this.hover = !this.hover;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -42,12 +46,11 @@ export default {
   background-size: over;
   background-repeat: no-repeat;
   height: 100px;
-
 }
 #ggName {
-  position: fixed;
-  top: 45px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: sticky;
+  top: 35px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 30px;
   font-weight: 600;
   color: #873600;
@@ -60,7 +63,7 @@ export default {
 .navbar {
   display: flex;
   float: right;
-  padding-right: 35px;;
+  padding-right: 35px;
   flex-wrap: wrap;
   list-style-type: none;
 }

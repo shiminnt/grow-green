@@ -2,32 +2,49 @@
 <template>
   <div>
     <div class="bg">
-      <span>
-        <img id="logoIcon" src="../assets/logo.png" />
-        <a id="ggName">GrowGreen</a>
-      </span>
-      <ul class="navbar">
-        <li><router-link to="/home">HOME</router-link></li>
-        <li><router-link to="/map">MAP</router-link></li>
-        <li><router-link to="/news">NEWS</router-link></li>
-        <li><router-link to="/quiz">QUIZ</router-link></li>
-        <img id="profileIcon" src="../assets/profileIcon.png" />
-      </ul>
-      <div>
-        <div class="overviewBoxes" id="treesPlanted">x trees planted</div>
-        <div class="overviewBoxes" id="articlesRead">y articles read</div>
-        <div class="overviewBoxes" id="questionsDone">z questions done</div>
+      <div class="header">
+        <span>
+          <img id="logoIcon" src="../assets/logo.png" />
+          <a id="ggName">GrowGreen</a>
+        </span>
+        <ul class="navbar">
+          <li><router-link to="/home">HOME</router-link></li>
+          <li><router-link to="/map">MAP</router-link></li>
+          <li><router-link to="/news">NEWS</router-link></li>
+          <li><router-link to="/quiz">QUIZ</router-link></li>
+          <img id="profileIcon" src="../assets/profileIcon.png" />
+        </ul>
+        <div>
+          <p id="overviewButton" v-on:click="overview">Overview</p>
+        </div>
       </div>
-      <div>
-        <p id="overviewButton" v-on:click="overview">Overview</p>
+      <div id="overview">
+        <div class="overviewBoxes" id="treesPlanted">
+          <p class="number">X</p>
+          <p class="text">trees<br>planted</p>
+        </div>
+        <div class="overviewBoxes" id="articlesRead">
+          <p class="number">Y</p>
+          <p class="text">articles<br>read</p>
+        </div>
+        <div class="overviewBoxes" id="questionsDone">
+          <p class="number">Z</p>
+          <p class="text">questions<br>done</p>
+        </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from './Footer.vue'
+
 export default {
   name: "Home",
+  components: {
+    Footer
+  },
   data: function () {
     return {};
   },
@@ -85,8 +102,8 @@ export default {
   padding-top: 10px;
 }
 #overviewButton {
-  margin-top: 40vw;
-  margin-left: 65vw;
+  margin-top: 30vw;
+  margin-left: 56vw;
   font-family: Futura;
   background-color: black;
   color: whitesmoke;
@@ -97,8 +114,33 @@ export default {
   position: fixed;
 }
 
-#overviewBoxes {
-  background-color: blueviolet;
+.header {
+  height: 100px;
+}
+
+#overview {
+  display: flex;
+  margin-left: 15%;
+}
+
+.overviewBoxes {
+  display: flex;
+  text-align: center;
   opacity: 82%;
+  margin-top: 20%;
+  margin-left: 25%;
+  padding-right: 5%;
+  background: rgba(157, 90, 45, 0.82);
+  border-radius: 12%;
+  
+}
+
+.number {
+  margin:10%;
+  font-size: 80px;
+}
+
+.text {
+  font-size: 30px;
 }
 </style>

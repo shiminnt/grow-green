@@ -1,26 +1,27 @@
 
 <template>
-  <div class = "main">
+  <div class="bg">
     <base-page></base-page>
+    <Footer />
   </div>
 </template>
 
 <script>
 import BasePage from './Header.vue';
+import Footer from './Footer.vue';
 
 export default {
-  components: { BasePage },
+  components: {BasePage, Footer},
   name: "Quiz",
   data: function () {
     return {
-        BasePage
     };
   },
 };
 </script>
 
 <style scoped>
-.main {
+.bg {
   background-color: ivory;
 }
 </style>
