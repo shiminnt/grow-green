@@ -5,12 +5,20 @@
         <img id="logo" src="../assets/logo.png">
         <p id='WelcomeTitle'>Welcome to GrowGreen!</p>
         <p id="registertext">Create your account here</p>
+        <div v-if="error" class="alert">{{error}}</div>
+        <div class="name">
+          <input class="textinput" type="name" v-model="name" placeholder="Name" />
+        </div>
         <div class="email">
           <input class="textinput" type="email" v-model="email" placeholder="Email" />
         </div>
         <div class="password">
           <input class="textinput" type="password" v-model="password" placeholder="Password" />
         </div>
+        <div class="password">
+          <input class="textinput" type="password" v-model="confirmPassword" placeholder="Confirm Password" />
+        </div>
+        <div v-if="passwordMatch" class="alert">{{passwordMatchAlert}}</div>
         <button id="signupbutton" type="submit">Sign Up</button><br>
         <span class="registertext">Have an account? Login</span>
         <button class="registerbutton" v-on:click="gotoLogin">here</button>
@@ -24,24 +32,41 @@ import { auth } from "../firebase.js";
 export default {
   data() {
     return {
+      name:"",
       email: "",
       password: "",
+      confirmPassword:"",
+      passwordMatchAlert:"Passwords do not match",
+      passwordMatch: false,
+      error: null,
     };
   },
   methods: {
     pressed() {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          console.log("here");
+        .then(data => {
+          data.user
+          .updateProfile({
+            displayName: this.name,
+            numArticles: 0,
+            numQuiz: 0,
+            numTrees:0
+          })
+          .then(() => {});
           this.$router.replace({ name: "home" });
         })
-        .catch((error) => (alert(error)));
+        .catch((err) => (this.error = err.message));
     },
     gotoLogin() {
       this.$router.push('/')
     },
   },
+  watch: {
+    confirmPassword:function() {
+      this.passwordMatch = this.password != this.confirmPassword;
+    }
+  }
 };
 </script>
 
@@ -100,6 +125,10 @@ export default {
 }
 .registertext{
   color:black;
+  font-size:14px;
+}
+.alert{
+  color:red;
   font-size:14px;
 }
 .registerbutton {

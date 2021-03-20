@@ -12,25 +12,35 @@
         <li><router-link to="/quiz">QUIZ</router-link></li>
         <li><router-link to="/dashboard">OVERVIEW</router-link></li>
         <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
-        <img id="profileIcon" src="../assets/profileIcon.png" @mouseover="mouseOver">
-        <div v-show="hover">Profile<br> Log Out</div>
+        <div class="dropdown">
+          <img id="profileIcon" src="../assets/profileIcon.png">
+          <div class="dropdown-content">
+            <p>PROFILE</p> 
+            <p @click="signOut">LOGOUT</p> 
+          </div>
+        </div>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-
+import { auth } from "../firebase.js";
 export default {
   name: "App",
   data: function () {
     return {
-      hover: false
     };
   },
   methods: {
-    mouseOver() {
-      this.hover = !this.hover;
+    signOut() {
+      auth
+        .signOut()
+        .then(() => {
+          this.$router.replace({
+            name: "login"
+          });
+        });
     }
   }
 };
@@ -73,6 +83,31 @@ export default {
 }
 .navbar > li > a:hover {
   color: grey;
+}
+.dropdown-content p:hover {
+  color:grey;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content > p {
+  float: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 #profileIcon {
   height: 60px;
