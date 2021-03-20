@@ -24,6 +24,7 @@
 
 <script>
 import { auth } from "../firebase.js";
+
 export default {
   name: "Header",
   data: function () {
@@ -46,6 +47,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style scoped>
