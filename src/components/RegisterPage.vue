@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <div class="bg">
-      <form class="welcomebox" @submit.prevent="pressed">
+      <form class="welcomebox" @submit.prevent="submit">
         <img id="logo" src="../assets/logo.png">
         <p id='WelcomeTitle'>Welcome to GrowGreen!</p>
         <p id="registertext">Create your account here</p>
@@ -42,7 +42,7 @@ export default {
     };
   },
   methods: {
-    pressed() {
+    submit() {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(data => {
