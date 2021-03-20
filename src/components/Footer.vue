@@ -17,10 +17,10 @@ export default {
 
 <style scope>
 #footer {
-    background-color: rgb(245, 222, 179);
+    background-color: rgba(245, 222, 179, 0.2);
     text-align: center;
-    position:fixed;
-    bottom: 0pt;
+    position: absolute;
+    bottom: 0;
     width: 100%;
 }
 </style>
