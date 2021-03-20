@@ -10,7 +10,7 @@
         <ul class="navbar">
           <li><router-link to="/home">HOME</router-link></li>
           <li><router-link to="/map">MAP</router-link></li>
-          <li><router-link to="/news">NEWS</router-link></li>
+          <li><router-link to="/newsmenu">NEWS</router-link></li>
           <li><router-link to="/quiz">QUIZ</router-link></li>
           <img id="profileIcon" src="../assets/profileIcon.png" />
         </ul>
@@ -66,7 +66,7 @@ export default {
 }
 #ggName {
   position: fixed;
-  top: 45px;
+  top: 35px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 30px;
   font-weight: 600;
