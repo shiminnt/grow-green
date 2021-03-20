@@ -1,31 +1,41 @@
 <template>
   <div class="app">
     <div class="bg">
-      <div class="welcomebox">
+      <form class="welcomebox" @submit.prevent="submit">
         <img id="logo" src="../assets/logo.png">
         <h1 id="WelcomeTitle">Grow Green</h1>
         <p>Welcome back</p>
-        <input class="textinput" v-model="email" placeholder="Email"> <br>
-        <input class="textinput" v-model="password" placeholder="Password"> <br>
-        <button id="loginbutton" v-on:click="login"> Login </button> <br>
+        <div v-if="error" class="alert">{{error}}</div>
+        <input class="textinput" type="email" v-model="email" placeholder="Email"> <br>
+        <input class="textinput" type="password" v-model="password" placeholder="Password"> <br>
+        <button id="loginbutton" type="submit"> Login </button> <br>
         <span class="registertext">No account? Register</span>
         <button class="registerbutton" v-on:click="register">here</button>
-      </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-
+import { auth } from "../firebase.js";
 export default {
   name: "App",
   data: function () {
     return {
+      email:"",
+      password:"",
+      error:null
     };
   },
   methods: {
-    login() {
-      this.$router.push('home')
+      submit() {
+        auth.signInWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.replace({ name: "home" });
+        })
+        .catch(err => {
+          this.error = err.message;
+        });
     },
     register() {
       this.$router.push('register')
@@ -89,6 +99,10 @@ p {
 }
 .registertext{
   color:black;
+  font-size:14px;
+}
+.alert{
+  color:red;
   font-size:14px;
 }
 .registerbutton {
