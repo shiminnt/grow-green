@@ -53,8 +53,9 @@ export default {
             numQuiz: 0,
             numTrees:0
           })
-          .then(() => {});
-          this.$router.replace({ name: "home" });
+          .then(() => {
+            this.$router.replace({ name: "home" });
+          });
         })
         .catch((err) => (this.error = err.message));
     },

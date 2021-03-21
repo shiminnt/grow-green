@@ -12,7 +12,7 @@ const myRouter = new VueRouter({
 })
 
 new Vue({
-  render: h => h(App),
+  store,
   router:myRouter,
-  store
+  render: h => h(App),
 }).$mount('#app')

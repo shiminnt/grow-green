@@ -20,15 +20,15 @@
       </div>
       <div id="overview">
         <div class="overviewBoxes" id="treesPlanted">
-          <p class="number">X</p>
+          <p class="number">{{user.data.numTrees}}</p>
           <p class="text">trees<br>planted</p>
         </div>
         <div class="overviewBoxes" id="articlesRead">
-          <p class="number">Y</p>
+          <p class="number">{{user.data.numArticles}}</p>
           <p class="text">articles<br>read</p>
         </div>
         <div class="overviewBoxes" id="questionsDone">
-          <p class="number">Z</p>
+          <p class="number">{{user.data.numQuiz}}</p>
           <p class="text">questions<br>done</p>
         </div>
       </div>
@@ -39,6 +39,7 @@
 
 <script>
 import Footer from './Footer.vue'
+import { mapGetters } from "vuex";
 
 export default {
   name: "Home",
@@ -53,6 +54,11 @@ export default {
       this.$router.push("dashboard");
     },
   },
+  computed: {
+    ...mapGetters({
+      user: "user"
+    })
+  }
 };
 </script>
 

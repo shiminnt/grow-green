@@ -31,7 +31,7 @@ export default new Vuex.Store({
             displayName: user.displayName,
             numArticles: user.numArticles,
             numQuiz: user.numQuiz,
-            numTrees:user.numTrees
+            numTrees: user.numTrees
           });
         } else {
           commit("SET_USER", null);
