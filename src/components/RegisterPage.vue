@@ -62,7 +62,7 @@ export default {
     };
   },
   methods: {
-    pressed() {
+    submit() {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
