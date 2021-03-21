@@ -11,24 +11,26 @@
         <li><router-link to="/dashboard">OVERVIEW</router-link></li>
         <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
         <div class="dropdown">
-          <img id="profileIcon" src="../assets/profileIcon.png">
+          <img id="profileIcon" src="../assets/profileIcon.png" />
           <div class="dropdown-content">
-            <p>PROFILE</p> 
-            <p @click="signOut">LOGOUT</p> 
+            <p>PROFILE</p>
+            <p @click="signOut">LOGOUT</p>
           </div>
         </div>
+        <li>{{ displayName }}</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import { auth } from "../firebase.js";
+import { database, auth } from "../firebase.js";
 
 export default {
   name: "Header",
   data: function () {
     return {
+      displayName: "",
       hover: false,
     };
   },
@@ -37,17 +39,30 @@ export default {
       this.hover = !this.hover;
     },
     signOut() {
-      auth
-        .signOut()
-        .then(() => {
-          this.$router.replace({
-            name: "login"
-          });
+      auth.signOut().then(() => {
+        this.$router.replace({
+          name: "login",
         });
-    }
-  }
+      });
+    },
+    loadUserData: function () {
+      const user = auth.currentUser;
+      if (user) {
+        const uid = user.uid;
+        database
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then(
+            (doc) => (this.displayName = doc.data().displayName.toUpperCase())
+          );
+      }
+    },
+  },
+  created() {
+    this.loadUserData();
+  },
 };
-
 </script>
 
 <style scoped>
@@ -90,7 +105,7 @@ export default {
   color: grey;
 }
 .dropdown-content p:hover {
-  color:grey;
+  color: grey;
 }
 .dropdown {
   float: left;
@@ -101,7 +116,7 @@ export default {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 .dropdown-content > p {
