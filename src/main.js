@@ -11,6 +11,17 @@ const myRouter = new VueRouter({
   mode: 'history'
 })
 
+myRouter.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const isAuthenticated = auth.currentUser;
+  console.log("isauthenticated", isAuthenticated);
+  if (requiresAuth && !isAuthenticated) {
+    next("/");
+  } else {
+    next();
+  }
+});
+
 let app;
 
 auth.onAuthStateChanged(() => {
