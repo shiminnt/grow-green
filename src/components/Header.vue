@@ -13,13 +13,9 @@
         <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
           <div class="dropdown-content">
-<<<<<<< HEAD
-            <p>profile</p> 
-            <p @click="signOut">log out</p> 
-=======
+
             <p>PROFILE</p>
             <p @click="signOut">LOGOUT</p>
->>>>>>> 937e27b92ed301d382cae69625ca7d69d27bea41
           </div>
         </div>
         <li>{{ displayName }}</li>

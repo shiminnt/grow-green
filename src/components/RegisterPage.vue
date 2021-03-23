@@ -111,7 +111,7 @@ export default {
   display: block;
 }
 .welcomebox {
-  margin: 10%;
+  margin: 5%;
   color: black;
   text-align: center;
 }
