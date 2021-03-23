@@ -13,8 +13,8 @@
         <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png">
           <div class="dropdown-content">
-            <p>PROFILE</p> 
-            <p @click="signOut">LOGOUT</p> 
+            <p>profile</p> 
+            <p @click="signOut">log out</p> 
           </div>
         </div>
       </ul>
