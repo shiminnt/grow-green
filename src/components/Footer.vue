@@ -22,5 +22,9 @@ export default {
     position:fixed;
     bottom: 0pt;
     width: 100%;
+    height: 10%;
+}
+h6 {
+  margin: -15px;
 }
 </style>

@@ -12,7 +12,13 @@
           <li><router-link to="/map">MAP</router-link></li>
           <li><router-link to="/newsmenu">NEWS</router-link></li>
           <li><router-link to="/quiz">QUIZ</router-link></li>
+          <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
+          <div class="dropdown-content">
+            <p>profile</p>
+            <p @click="signOut">log out</p>
+          </div>
+        </div>
         </ul>
         <div>
           <p id="overviewButton" v-on:click="overview">Overview</p>
@@ -49,6 +55,8 @@ export default {
   data: function () {
     return {
       userData: {},
+      displayName: "",
+      hover: false,
     };
   },
   methods: {
@@ -62,6 +70,13 @@ export default {
           .get()
           .then((doc) => (this.userData = doc.data()));
       }
+    },
+    signOut() {
+      auth.signOut().then(() => {
+        this.$router.replace({
+          name: "login",
+        });
+      });
     },
     overview() {
       this.$router.push("dashboard");
@@ -113,13 +128,38 @@ export default {
 .navbar > li > a:hover {
   color: grey;
 }
+.dropdown-content p:hover {
+  color: grey;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #F2EDDC;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content > p {
+  float: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 #profileIcon {
   height: 60px;
   padding-left: 20px;
   padding-top: 10px;
 }
 #overviewButton {
-  margin-top: 30vw;
+  margin-top: 40vw;
   margin-left: 56vw;
   font-family: Futura;
   background-color: black;
@@ -130,7 +170,6 @@ export default {
   width: 110px;
   position: fixed;
 }
-
 .header {
   height: 100px;
 }
@@ -139,15 +178,15 @@ export default {
   display: flex;
   margin-left: 15%;
 }
-
 .overviewBoxes {
   display: flex;
   text-align: center;
   opacity: 82%;
   margin-top: 20%;
   margin-left: 25%;
-  padding-right: 5%;
-  background: rgba(157, 90, 45, 0.82);
+  padding-left: 10%;
+  padding-right: 10%;
+  background: #EADECE;
   border-radius: 12%;
 }
 

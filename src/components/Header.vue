@@ -13,9 +13,8 @@
         <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
           <div class="dropdown-content">
-
-            <p>PROFILE</p>
-            <p @click="signOut">LOGOUT</p>
+            <p>profile</p>
+            <p @click="signOut">log out</p>
           </div>
         </div>
         <li>{{ displayName }}</li>
@@ -115,7 +114,7 @@ export default {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #F2EDDC;
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
