@@ -46,7 +46,7 @@ export default {
 
 <style>
 .app {
-  font-family: unset;
+  font-family: Futura, Helvetica, Arial, sans-serif;;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -20,38 +20,55 @@
       </div>
       <div id="overview">
         <div class="overviewBoxes" id="treesPlanted">
-          <p class="number">X</p>
-          <p class="text">trees<br>planted</p>
+          <p class="number">{{ userData.numTrees }}</p>
+          <p class="text">trees<br />planted</p>
         </div>
         <div class="overviewBoxes" id="articlesRead">
-          <p class="number">Y</p>
-          <p class="text">articles<br>read</p>
+          <p class="number">{{ userData.numArticles }}</p>
+          <p class="text">articles<br />read</p>
         </div>
         <div class="overviewBoxes" id="questionsDone">
-          <p class="number">Z</p>
-          <p class="text">questions<br>done</p>
+          <p class="number">{{ userData.numQuiz }}</p>
+          <p class="text">questions<br />done</p>
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Footer from './Footer.vue'
+import { database, auth } from "../firebase.js";
+import Footer from "./Footer.vue";
 
 export default {
   name: "Home",
   components: {
-    Footer
+    Footer,
   },
   data: function () {
-    return {};
+    return {
+      userData: {},
+    };
   },
   methods: {
+    loadUserData: function () {
+      const user = auth.currentUser;
+      if (user) {
+        const uid = user.uid;
+        database
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then((doc) => (this.userData = doc.data()));
+      }
+    },
     overview() {
       this.$router.push("dashboard");
     },
+  },
+  created() {
+    this.loadUserData();
   },
 };
 </script>
@@ -132,11 +149,10 @@ export default {
   padding-right: 5%;
   background: rgba(157, 90, 45, 0.82);
   border-radius: 12%;
-  
 }
 
 .number {
-  margin:10%;
+  margin: 10%;
   font-size: 80px;
 }
 
