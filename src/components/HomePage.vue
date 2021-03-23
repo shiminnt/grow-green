@@ -159,8 +159,8 @@ export default {
   padding-top: 10px;
 }
 #overviewButton {
-  margin-top: 40vw;
-  margin-left: 56vw;
+  margin-top: 34vw;
+  margin-left: 54vw;
   font-family: Futura;
   background-color: black;
   color: whitesmoke;
@@ -184,8 +184,7 @@ export default {
   opacity: 82%;
   margin-top: 20%;
   margin-left: 25%;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-right: 5%;
   background: #EADECE;
   border-radius: 12%;
 }
