@@ -68,7 +68,7 @@ export default {
   height: 100px;
   background: rgba(245, 222, 179, 0.8);
   display: flex;
-  overflow: scroll;
+  overflow: hidden;
   margin: 2%;
   border-radius: 20px;
 }
