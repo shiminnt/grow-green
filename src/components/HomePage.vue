@@ -68,7 +68,10 @@ export default {
           .collection("users")
           .doc(uid)
           .get()
-          .then((doc) => (this.userData = doc.data()));
+          .then((doc) => {
+            this.userData = doc.data()
+            this.$store.dispatch('updateUserData', this.userData)
+            });
       }
     },
     signOut() {
