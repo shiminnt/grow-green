@@ -8,6 +8,7 @@
 <script>
 import Footer from './Footer.vue';
 import BasePage from './Header.vue';
+import {mapGetters} from 'vuex'
 
 export default {
   components: { BasePage, Footer },
@@ -18,9 +19,9 @@ export default {
     };
   },
   computed: {
-    userData() {
-      return this.$store.state.userData
-    }
+    ...mapGetters([
+      'userData'
+    ])
   }
 };
 </script>

@@ -8,6 +8,11 @@ export const store = new Vuex.Store({
         userData: {
         }
     },
+    getters: {
+        userData: state => {
+            return state.userData
+        }
+    },
     mutations: {
         updateUserData: (state, userData) => {
             state.userData = userData

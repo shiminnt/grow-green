@@ -18,6 +18,7 @@
 import BasePage from "./Header.vue";
 import Footer from "./Footer.vue";
 import axios from "axios";
+import {mapGetters} from 'vuex'
 
 export default {
   name: "Article",
@@ -27,9 +28,9 @@ export default {
     };
   },
   computed: {
-    userData() {
-      return this.$store.state.userData
-    }
+    ...mapGetters([
+      'userData'
+    ])
   },
   components: {
     BasePage,
