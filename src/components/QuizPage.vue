@@ -17,6 +17,11 @@ export default {
     return {
     };
   },
+  computed: {
+    userData() {
+      return this.$store.state.userData
+    }
+  }
 };
 </script>
 

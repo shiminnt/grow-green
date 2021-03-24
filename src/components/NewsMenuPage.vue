@@ -36,6 +36,11 @@ export default {
     BasePage,
     Footer,
   },
+  computed: {
+    userData() {
+      return this.$store.state.userData
+    }
+  },
   methods: {
     mounted() {
       axios

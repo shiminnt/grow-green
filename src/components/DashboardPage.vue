@@ -18,6 +18,11 @@ export default {
         BasePage
     };
   },
+  computed: {
+    userData() {
+      return this.$store.state.userData
+    }
+  }
 };
 </script>
 

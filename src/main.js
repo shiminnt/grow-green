@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Routes from './routes.js'
 import { auth } from './firebase.js'
+import { store } from './store.js'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -27,6 +28,7 @@ let app;
 auth.onAuthStateChanged(() => {
   if (!app) {
     app = new Vue({
+      store: store,
       router: myRouter,
       render: h => h(App)
     }).$mount("#app");

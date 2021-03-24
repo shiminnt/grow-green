@@ -26,6 +26,11 @@ export default {
       articleSet: [],
     };
   },
+  computed: {
+    userData() {
+      return this.$store.state.userData
+    }
+  },
   components: {
     BasePage,
     Footer,

@@ -1,4 +1,3 @@
-
 <template>
   <div class="bg">
     <base-page></base-page>
@@ -18,6 +17,11 @@ export default {
         BasePage
     };
   },
+  computed: {
+    userData() {
+      return this.$store.state.userData
+    }
+  }
 };
 </script>
 
