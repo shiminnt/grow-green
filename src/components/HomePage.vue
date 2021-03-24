@@ -46,6 +46,7 @@
 <script>
 import { database, auth } from "../firebase.js";
 import Footer from "./Footer.vue";
+import {mapGetters} from 'vuex'
 
 export default {
   name: "Home",
@@ -54,10 +55,15 @@ export default {
   },
   data: function () {
     return {
-      userData: {},
+      initialData: {},
       displayName: "",
       hover: false,
     };
+  },
+  computed: {
+    ...mapGetters([
+      'userData'
+    ])
   },
   methods: {
     loadUserData: function () {
@@ -69,17 +75,26 @@ export default {
           .doc(uid)
           .get()
           .then((doc) => {
-            this.userData = doc.data()
+            this.initialData = doc.data()
             this.$store.dispatch('updateUserData', this.userData)
             });
       }
     },
     signOut() {
-      auth.signOut().then(() => {
-        this.$router.replace({
-          name: "login",
-        });
-      });
+      const user = auth.currentUser;
+      const uid = user.uid;
+      database
+          .collection("users")
+          .doc(uid)
+          .set(this.userData)
+          .then(() => {
+            console.log("Document successfully written!")
+            auth.signOut().then(() => {
+              this.$router.replace({
+                name: "login",
+              });
+            })
+          })
     },
     overview() {
       this.$router.push("dashboard");
