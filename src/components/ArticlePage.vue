@@ -52,6 +52,9 @@ export default {
         })
     },
     goToExternalArticle() {
+      var title = this.$route.params.id
+      if (!(this.$store.state.userData.articlesRead.includes(title)))
+        this.$store.dispatch('updateArticlesRead', title)
       window.open(this.articleSet[0].url, "_blank")
     }
   },

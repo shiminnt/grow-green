@@ -16,10 +16,18 @@ export const store = new Vuex.Store({
     mutations: {
         updateUserData: (state, userData) => {
             state.userData = userData
-    }},
+        },
+        updateArticlesRead: (state, title) => {
+            state.userData.articlesRead.push(title);
+            state.userData.numArticles += 1;
+        }
+    },
     actions: {
         updateUserData: (context, userData) => {
             context.commit('updateUserData', userData)
+        },
+        updateArticlesRead: (context, title) => {
+            context.commit('updateArticlesRead', title)
         }
     }
 })
