@@ -8,7 +8,10 @@
         <div v-if="error" class="alert">{{error}}</div>
         <input class="textinput" type="email" v-model="email" placeholder="Email"> <br>
         <input class="textinput" type="password" v-model="password" placeholder="Password"> <br>
-        <button id="loginbutton" type="submit"> Login </button> <br>
+        <button id="loginbutton" type="submit"> Login </button> 
+        <br>
+        <button class="resetpasswordbutton" v-on:click="forgotPassword">Forgot Password?</button>
+        <br>
         <span class="registertext">No account? Register</span>
         <button class="registerbutton" v-on:click="register">here</button>
       </form>
@@ -37,9 +40,12 @@ export default {
           this.error = err.message;
         });
     },
+    forgotPassword() {
+      this.$router.push('forgotpassword')
+    },
     register() {
       this.$router.push('register')
-    }
+    },
   }
 };
 </script>
@@ -67,6 +73,7 @@ export default {
   align-content: center;
 }
 #WelcomeTitle {
+  margin-top: 5vh;
   color:black;
   font-size: 40px;
   font-family: Futura;
@@ -106,6 +113,14 @@ p {
   font-size:14px;
 }
 .registerbutton {
+  color:black;
+  border: none;
+  background-color: antiquewhite;
+  font-family: unset;
+  font-size:14px;
+  text-decoration: underline;
+}
+.resetpasswordbutton {
   color:black;
   border: none;
   background-color: antiquewhite;
