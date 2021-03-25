@@ -18,6 +18,7 @@
 import BasePage from "./Header.vue";
 import Footer from "./Footer.vue";
 import axios from "axios";
+import {mapGetters} from 'vuex'
 
 export default {
   name: "Article",
@@ -25,6 +26,11 @@ export default {
     return {
       articleSet: [],
     };
+  },
+  computed: {
+    ...mapGetters([
+      'userData'
+    ])
   },
   components: {
     BasePage,
@@ -46,6 +52,9 @@ export default {
         })
     },
     goToExternalArticle() {
+      var title = this.$route.params.id
+      if (!(this.$store.state.userData.articlesRead.includes(title)))
+        this.$store.dispatch('updateArticlesRead', title)
       window.open(this.articleSet[0].url, "_blank")
     }
   },

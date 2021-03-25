@@ -24,6 +24,7 @@
 import BasePage from "./Header.vue";
 import axios from "axios";
 import Footer from "./Footer.vue";
+import {mapGetters} from 'vuex'
 
 export default {
   name: "NewsMenu",
@@ -35,6 +36,11 @@ export default {
   components: {
     BasePage,
     Footer,
+  },
+  computed: {
+    ...mapGetters([
+      'userData'
+    ])
   },
   methods: {
     mounted() {

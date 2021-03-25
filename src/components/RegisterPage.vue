@@ -74,6 +74,7 @@ export default {
               numArticles: 0,
               numQuiz: 0,
               numTrees: 0,
+              articlesRead: []
             })
             .then(() => {});
           this.$router.replace({ name: "home" });

@@ -1,4 +1,3 @@
-
 <template>
   <div class="bg">
     <base-page></base-page>
@@ -9,6 +8,7 @@
 <script>
 import Footer from './Footer.vue';
 import BasePage from './Header.vue';
+import {mapGetters} from 'vuex'
 
 export default {
   components: { BasePage, Footer },
@@ -18,6 +18,11 @@ export default {
         BasePage
     };
   },
+  computed: {
+    ...mapGetters([
+      'userData'
+    ])
+  }
 };
 </script>
 
