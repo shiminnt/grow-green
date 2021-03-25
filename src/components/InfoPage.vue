@@ -12,7 +12,7 @@ import {mapGetters} from 'vuex'
 
 export default {
   components: { BasePage, Footer },
-  name: "Map",
+  name: "Info",
   data: function () {
     return {
         BasePage
