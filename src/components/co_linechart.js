@@ -50,7 +50,7 @@ export default {
                 legend: {display: true },
                 title: {
                     display: true,
-                    text: 'CO Eight Hours Max Mean (Microgram per Cubic Metre'
+                    text: 'CO Eight Hours Max Mean (Microgram per Cubic Metre)'
                 },
                 responsive: true,
                 maintainAspectRatio: false
