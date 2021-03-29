@@ -45,7 +45,7 @@ export default {
         });
       });
     },
-    loadUserData: function () {
+    loadUserData: function() {
       const user = auth.currentUser;
       if (user) {
         const uid = user.uid;
