@@ -1,4 +1,3 @@
-
 <template>
   <div class="bg">
     <base-page></base-page>

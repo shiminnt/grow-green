@@ -23,9 +23,8 @@ export default {
 #footer {
     background-color: rgb(245, 222, 179);
     justify-content: space-between;
-    text-align: center;
+    text-align: right;
     position:absolute;
-    bottom: 0pt;
     width: 100%;
     height: 10%;
 }
@@ -33,7 +32,7 @@ export default {
   font-family:cormorantgaramond;
   font-style: normal;
   font-weight: normal;
-  font-size: 10px;
+  font-size: 15px;
 }
 ul {
   display: flex;
