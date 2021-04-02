@@ -13,8 +13,8 @@
         <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
           <div class="dropdown-content">
-            <p>profile</p>
-            <p @click="signOut">log out</p>
+            <p @click="goToAccount">ACCOUNT</p>
+            <p @click="signOut">LOGOUT</p>
           </div>
         </div>
         <li>{{ displayName }}</li>
@@ -44,6 +44,9 @@ export default {
           name: "login",
         });
       });
+    },
+    goToAccount() {
+      this.$router.push({name:"profile"})
     },
     loadUserData: function() {
       const user = auth.currentUser;
@@ -125,6 +128,8 @@ export default {
   text-decoration: none;
   display: block;
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 15px;
 }
 .dropdown:hover .dropdown-content {
   display: block;

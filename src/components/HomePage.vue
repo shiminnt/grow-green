@@ -15,13 +15,14 @@
           <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
           <div class="dropdown-content">
-            <p>profile</p>
-            <p @click="signOut">log out</p>
+            <p @click="goToAccount">ACCOUNT</p>
+            <p @click="signOut">LOGOUT</p>
           </div>
         </div>
         </ul>
         <div>
           <p id="overviewButton" v-on:click="overview">Overview</p>
+          <p id="knowledgeButton" v-on:click="plantTrees">Plant Trees</p>
         </div>
       </div>
       <div id="overview">
@@ -46,7 +47,7 @@
 <script>
 import { database, auth } from "../firebase.js";
 import Footer from "./Footer.vue";
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: "Home",
@@ -104,8 +105,14 @@ export default {
             })
           })
     },
+    goToAccount() {
+      this.$router.push({name:"profile"})
+    },
     overview() {
       this.$router.push("dashboard");
+    },
+    plantTrees() {
+      this.$router.push("planttrees");
     },
   },
   created() {
@@ -175,6 +182,8 @@ export default {
   text-decoration: none;
   display: block;
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 15px;
 }
 .dropdown:hover .dropdown-content {
   display: block;
@@ -186,7 +195,7 @@ export default {
 }
 #overviewButton {
   margin-top: 34vw;
-  margin-left: 54vw;
+  margin-left: 65vw;
   font-family: Futura;
   background-color: black;
   color: whitesmoke;
@@ -194,6 +203,18 @@ export default {
   padding: 15px;
   text-align: center;
   width: 110px;
+  position: fixed;
+}
+#knowledgeButton {
+  margin-top: 34vw;
+  margin-left: 42vw;
+  font-family: Futura;
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 40px;
+  padding: 15px;
+  text-align: center;
+  width: 130px;
   position: fixed;
 }
 .header {
