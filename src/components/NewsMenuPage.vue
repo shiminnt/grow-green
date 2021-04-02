@@ -1,6 +1,6 @@
 <template>
   <div class="bg">
-    <base-page></base-page>
+    <Header></Header>
     <ul id="newsList">
       <li v-for="article in info" :key="article.title">
         <div class="newsBox">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import BasePage from "./Header.vue";
+import Header from "./Header.vue";
 import axios from "axios";
 import Footer from "./Footer.vue";
 import {mapGetters} from 'vuex'
@@ -33,7 +33,7 @@ export default {
     };
   },
   components: {
-    BasePage,
+    Header,
     Footer,
   },
   computed: {

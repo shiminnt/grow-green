@@ -1,22 +1,22 @@
 
 <template>
   <div class="bg">
-    <base-page></base-page>
+    <Header></Header>
     <Footer />
   </div>
 </template>
 
 <script>
-import BasePage from './Header.vue';
+import Header from './Header.vue';
 import Footer from './Footer.vue'
 import {mapGetters} from 'vuex'
 
 export default {
-  components: { BasePage, Footer },
+  components: { Header, Footer },
   name: "Dashboard",
   data: function () {
     return {
-        BasePage
+        Header
     };
   },
   computed: {

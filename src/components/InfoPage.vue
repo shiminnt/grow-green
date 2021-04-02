@@ -1,6 +1,6 @@
 <template>
   <div class="bg">
-    <base-page></base-page>
+    <Header></Header>
     <co_linechart></co_linechart>
     <Footer />
   </div>
@@ -8,16 +8,16 @@
 
 <script>
 import Footer from './Footer.vue';
-import BasePage from './Header.vue';
+import Header from './Header.vue';
 import co_linechart from './co_linechart.js'
 import {mapGetters} from 'vuex'
 
 export default {
-  components: { BasePage, Footer, co_linechart },
+  components: { Header, Footer, co_linechart },
   name: "Info",
   data: function () {
     return {
-        BasePage
+        Header
     };
   },
   computed: {

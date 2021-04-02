@@ -25,6 +25,7 @@ export default {
     justify-content: space-between;
     text-align: right;
     position:absolute;
+    bottom: 0pt;
     width: 100%;
     height: 10%;
 }
