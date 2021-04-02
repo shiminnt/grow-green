@@ -80,6 +80,7 @@ export default {
                 numQuiz: 0,
                 numTrees: 0,
                 articlesRead: [],
+                questionsDone: [],
               })
               .then(() => {});
             this.$router.replace({ name: "home" });
