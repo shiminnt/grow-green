@@ -14,7 +14,7 @@ import {mapGetters} from 'vuex'
 
 export default {
   components: { Header, Footer, co_linechart },
-  name: "Info",
+  name: "Volunteer",
   data: function () {
     return {
         Header
