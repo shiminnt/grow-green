@@ -7,6 +7,7 @@ import RegisterPage from './components/RegisterPage.vue'
 import ForgotPassword from './components/ForgotPassword.vue'
 import DashboardPage from './components/DashboardPage.vue'
 import ArticlePage from './components/ArticlePage.vue'
+import QuizQuestionPage from './components/QuizQuestionPage.vue'
 
 export default [
     { path: '/', name: "login", component: LoginPage },
@@ -17,5 +18,6 @@ export default [
     { path: '/register', name: "register", component: RegisterPage },
     { path: '/forgotpassword', name: "forgotpassword", component: ForgotPassword },
     { path: '/dashboard', name: "dashboard", component: DashboardPage, meta: { requiresAuth: true } },
-    { path: '/article', name: "article", component: ArticlePage, meta: { requiresAuth: true } }
+    { path: '/article', name: "article", component: ArticlePage, meta: { requiresAuth: true } },
+    { path: '/quizquestion', name: "quizquestion", component: QuizQuestionPage, meta: { requiresAuth: true } }
 ]
