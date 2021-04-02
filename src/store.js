@@ -10,6 +10,7 @@ export const store = new Vuex.Store({
     },
     getters: {
         userData: state => {
+            console.log(state.userData)
             return state.userData
         }
     },

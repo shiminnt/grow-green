@@ -44,7 +44,7 @@ export default {
         )
         .then((response) => {
           response.data.articles.forEach(article => {
-            console.log(article)
+
             if(article.title == this.$route.params.id) {
               this.articleSet.push(article)
             }
@@ -53,9 +53,10 @@ export default {
     },
     goToExternalArticle() {
       var title = this.$route.params.id
-      if (!(this.$store.state.userData.articlesRead.includes(title)))
-        this.$store.dispatch('updateArticlesRead', title)
       window.open(this.articleSet[0].url, "_blank")
+      if (!(this.$store.state.userData.articlesRead.includes(title))) {
+        this.$store.dispatch('updateArticlesRead', title)
+      }
     }
   },
   created() {
