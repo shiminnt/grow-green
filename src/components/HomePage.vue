@@ -9,7 +9,7 @@
         </span>
         <ul class="navbar">
           <li><router-link to="/home">HOME</router-link></li>
-          <li><router-link to="/volunteer">VOLUNTEER</router-link></li>
+          <li><router-link to="/volunteermenu">VOLUNTEER</router-link></li>
           <li><router-link to="/newsmenu">NEWS</router-link></li>
           <li><router-link to="/quiz">QUIZ</router-link></li>
           <div class="dropdown">
