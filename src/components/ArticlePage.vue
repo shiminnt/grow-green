@@ -54,7 +54,10 @@ export default {
     goToExternalArticle() {
       var title = this.$route.params.id
       window.open(this.articleSet[0].url, "_blank")
-      if (!(this.$store.state.userData.articlesRead.includes(title))) {
+      console.log("Checking")
+      console.log(title)
+      if (!(this.userData.articlesRead.includes(title))) {
+        console.log("Not Included!")
         this.$store.dispatch('updateArticlesRead', title)
       }
     }

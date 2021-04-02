@@ -76,7 +76,15 @@ export default {
           .get()
           .then((doc) => {
             this.initialData = doc.data()
-            this.$store.dispatch('updateUserData', this.userData)
+            if (this.userData) {
+              if (this.initialData.displayName == this.userData.displayName) {
+                this.$store.dispatch('updateUserData', this.userData)
+              } else {
+                this.$store.dispatch('updateUserData', this.initialData)
+              }
+            } else {
+              this.$store.dispatch('updateUserData', this.initialData)
+            }
             });
       }
     },
