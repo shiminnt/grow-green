@@ -45,7 +45,7 @@ export default {
     },
     getDetails: function(event) {
       let doc_id = event.target.getAttribute("id");
-      this.$router.push({ name:'volunteer', params:{ doc_id:doc_id }});
+      this.$router.push({ name:'volunteer', params:{ doc_id: doc_id }});
     }
   },
   created() {
