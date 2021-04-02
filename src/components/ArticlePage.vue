@@ -1,7 +1,7 @@
 
 <template>
   <div class="bg">
-    <base-page></base-page>
+    <Header></Header>
     <div class="article">
       <h1>{{ articleSet[0].title }}</h1>
       <img class="photo" v-bind:src="articleSet[0].urlToImage" />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import BasePage from "./Header.vue";
+import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import axios from "axios";
 import {mapGetters} from 'vuex'
@@ -33,7 +33,7 @@ export default {
     ])
   },
   components: {
-    BasePage,
+    Header,
     Footer,
   },
   methods: {
