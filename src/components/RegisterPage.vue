@@ -56,30 +56,37 @@ export default {
       email: "",
       password: "",
       confirmPassword: "",
-      passwordMatchAlert: "Passwords do not match",
+      passwordMatchAlert: "Passwords do not match.",
       passwordMatch: false,
       error: null,
     };
   },
   methods: {
     submit() {
-      auth
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then((data) => {
-          database
-            .collection("users")
-            .doc(data.user.uid)
-            .set({
-              displayName: this.name,
-              numArticles: 0,
-              numQuiz: 0,
-              numTrees: 0,
-              articlesRead: []
-            })
-            .then(() => {});
-          this.$router.replace({ name: "home" });
-        })
-        .catch((err) => (this.error = err.message));
+      if (this.name == "") {
+        this.error = "Invalid name.";
+      } else if (this.passwordMatch) {
+        this.error = "Please check your passwords."
+      } else {
+        auth
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then((data) => {
+            database
+              .collection("users")
+              .doc(data.user.uid)
+              .set({
+                displayName: this.name,
+                numArticles: 0,
+                numQuiz: 0,
+                numTrees: 0,
+                articlesRead: [],
+                questionsDone: [],
+              })
+              .then(() => {});
+            this.$router.replace({ name: "home" });
+          })
+          .catch((err) => (this.error = err.message));
+      }
     },
     gotoLogin() {
       this.$router.push("/");
@@ -89,6 +96,11 @@ export default {
     confirmPassword: function () {
       this.passwordMatch = this.password != this.confirmPassword;
     },
+    password: function () {
+      if (this.confirmPassword) {
+        this.passwordMatch = this.password != this.confirmPassword;
+      }
+    }
   },
 };
 </script>

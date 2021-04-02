@@ -1,7 +1,7 @@
 
 <template>
   <div class="bg">
-    <base-page></base-page>
+    <Header></Header>
     <div class="article">
       <h1>{{ articleSet[0].title }}</h1>
       <img class="photo" v-bind:src="articleSet[0].urlToImage" />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import BasePage from "./Header.vue";
+import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import axios from "axios";
 import {mapGetters} from 'vuex'
@@ -33,7 +33,7 @@ export default {
     ])
   },
   components: {
-    BasePage,
+    Header,
     Footer,
   },
   methods: {
@@ -44,7 +44,7 @@ export default {
         )
         .then((response) => {
           response.data.articles.forEach(article => {
-            console.log(article)
+
             if(article.title == this.$route.params.id) {
               this.articleSet.push(article)
             }
@@ -53,9 +53,13 @@ export default {
     },
     goToExternalArticle() {
       var title = this.$route.params.id
-      if (!(this.$store.state.userData.articlesRead.includes(title)))
-        this.$store.dispatch('updateArticlesRead', title)
       window.open(this.articleSet[0].url, "_blank")
+      console.log("Checking")
+      console.log(title)
+      if (!(this.userData.articlesRead.includes(title))) {
+        console.log("Not Included!")
+        this.$store.dispatch('updateArticlesRead', title)
+      }
     }
   },
   created() {

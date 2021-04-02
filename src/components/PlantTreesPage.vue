@@ -12,7 +12,6 @@ import {mapGetters} from 'vuex'
 
 export default {
   components: {BasePage, Footer},
-  name: "Quiz",
   data: function () {
     return {
     };

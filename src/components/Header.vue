@@ -5,7 +5,7 @@
       <a id="ggName">GrowGreen</a>
       <ul class="navbar">
         <li><router-link to="/home">HOME</router-link></li>
-        <li><router-link to="/info">INFO</router-link></li>
+        <li><router-link to="/volunteermenu">VOLUNTEER</router-link></li>
         <li><router-link to="/newsmenu">NEWS</router-link></li>
         <li><router-link to="/quiz">QUIZ</router-link></li>
         <li><router-link to="/dashboard">OVERVIEW</router-link></li>
@@ -13,8 +13,8 @@
         <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
           <div class="dropdown-content">
-            <p>profile</p>
-            <p @click="signOut">log out</p>
+            <p @click="goToAccount">ACCOUNT</p>
+            <p @click="signOut">LOGOUT</p>
           </div>
         </div>
         <li>{{ displayName }}</li>
@@ -45,7 +45,10 @@ export default {
         });
       });
     },
-    loadUserData: function () {
+    goToAccount() {
+      this.$router.push({name:"profile"})
+    },
+    loadUserData: function() {
       const user = auth.currentUser;
       if (user) {
         const uid = user.uid;
@@ -125,6 +128,8 @@ export default {
   text-decoration: none;
   display: block;
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 15px;
 }
 .dropdown:hover .dropdown-content {
   display: block;

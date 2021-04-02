@@ -10,6 +10,7 @@ export const store = new Vuex.Store({
     },
     getters: {
         userData: state => {
+            console.log(state.userData)
             return state.userData
         }
     },
@@ -20,6 +21,10 @@ export const store = new Vuex.Store({
         updateArticlesRead: (state, title) => {
             state.userData.articlesRead.push(title);
             state.userData.numArticles += 1;
+        },
+        updateQuestionsDone: (state, qNumber) => {
+            state.userData.questionDone.push(qNumber);
+            state.userData.numQuiz += 1;
         }
     },
     actions: {
@@ -28,6 +33,9 @@ export const store = new Vuex.Store({
         },
         updateArticlesRead: (context, title) => {
             context.commit('updateArticlesRead', title)
-        }
+        },
+        updateQuestionsDone: (context, qNumber) => {
+            context.commit('updateQuestionsDone', qNumber)
+        },
     }
 })

@@ -1,7 +1,11 @@
 <template>
   <div id="footer">
-      <h5>Copyright &#169; AY2020/21 BT3103 G9 </h5>
-      <h6> Made with &#9829; by Tan Shi Min, Tang How Mun Tiffany, Teo Jun Wei and Tom Joju</h6>
+      <a id="copyright">&#169; 2021 BY GROWGREEN</a>
+      <ul>
+        <li>About Us</li>
+        <li>Contact</li>
+        <li>Follow Us</li>
+      </ul>
   </div>
 </template>
 
@@ -18,13 +22,34 @@ export default {
 <style scope>
 #footer {
     background-color: rgb(245, 222, 179);
-    text-align: center;
-    position:fixed;
+    justify-content: space-between;
+    text-align: right;
+    position:absolute;
     bottom: 0pt;
     width: 100%;
     height: 10%;
 }
-h6 {
-  margin: -15px;
+#copyright {
+  font-family:cormorantgaramond;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+}
+ul {
+  display: flex;
+    float:initial;
+    flex-wrap: wrap;
+    list-style-type: none;
+    overflow: hidden;
+}
+ul > li {
+  float: right;
+  display: block;
+  color: black;
+  text-align: right;
+  padding:1vh 15px;
+  text-decoration: none;
+  font-family: Optima;
+  letter-spacing: 0.03cm;
 }
 </style>

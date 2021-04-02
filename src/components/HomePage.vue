@@ -9,14 +9,14 @@
         </span>
         <ul class="navbar">
           <li><router-link to="/home">HOME</router-link></li>
-          <li><router-link to="/info">INFO</router-link></li>
+          <li><router-link to="/volunteermenu">VOLUNTEER</router-link></li>
           <li><router-link to="/newsmenu">NEWS</router-link></li>
           <li><router-link to="/quiz">QUIZ</router-link></li>
           <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
           <div class="dropdown-content">
-            <p>profile</p>
-            <p @click="signOut">log out</p>
+            <p @click="goToAccount">ACCOUNT</p>
+            <p @click="signOut">LOGOUT</p>
           </div>
         </div>
         </ul>
@@ -77,7 +77,15 @@ export default {
           .get()
           .then((doc) => {
             this.initialData = doc.data()
-            this.$store.dispatch('updateUserData', this.userData)
+            if (this.userData) {
+              if (this.initialData.displayName == this.userData.displayName) {
+                this.$store.dispatch('updateUserData', this.userData)
+              } else {
+                this.$store.dispatch('updateUserData', this.initialData)
+              }
+            } else {
+              this.$store.dispatch('updateUserData', this.initialData)
+            }
             });
       }
     },
@@ -96,6 +104,9 @@ export default {
               });
             })
           })
+    },
+    goToAccount() {
+      this.$router.push({name:"profile"})
     },
     overview() {
       this.$router.push("dashboard");
@@ -171,6 +182,8 @@ export default {
   text-decoration: none;
   display: block;
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 15px;
 }
 .dropdown:hover .dropdown-content {
   display: block;
