@@ -2,21 +2,23 @@
   <div class="bg">
     <Header></Header>
     <div class="detailsBG">
-      <div class="detailsTitle">
-        <h1>{{details.title}}</h1>
+        <h1 class="detailsTitle">{{details.title}}</h1>
+      <div class="eventdetails">
+        <img class="place" :src="details.imgURL">
+        <h3>About</h3>
+        <a>{{details.about}}</a>
+        <h3>Join as a Volunteer Now!</h3>
+        <img class="icons" src="https://static.thenounproject.com/png/404-200.png">
+        <a>&nbsp;{{details.date}}</a><br>
+        <img class="icons" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/10-512.png">
+        <a>&nbsp;{{details.time[0]}} - {{details.time[1]}}</a><br>
+        <img class="icons" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/94-512.png">
+        <a>&nbsp;{{details.location}}</a><br>
       </div>
-      <img class="place" :src="details.imgURL">
-      <p>{{details.about}}</p>
-      <h3>Join Now!</h3>
-      <p>{{details.date}}</p>
-      <p>{{details.time[0]}} - {{details.time[1]}}</p>
-      <p>{{details.location}}</p>
-      <p>{{details.organisation}}</p>
-      <!-- <GmapMap
-        :center= 'center'
-        :zoom='12'
-        style='width:100%;  height: 400px;'>
-      </GmapMap> -->
+      <h3>Organised by</h3>
+      <a>{{details.organisation}}</a><br>
+    </div>
+    <div class="map">
     </div>
     <Footer />
   </div>
@@ -44,25 +46,7 @@ export default {
               this.details = doc.data()
           })
       },
-      /* initMap: function() {
-          const loc = { lat: this.details.lat, lng: this.details.long };
-          const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
-            center: loc,
-          });
-          const marker = new google.Maps.Marker({
-            position: loc,
-            map: map,
-          });
-          return marker;
-      } */
   },
-  /* mounted() {
-    this.map = new window.google.maps.Map(this.$refs['map'], {
-      center: {lat: this.details.lat, lng: this.details.long},
-      zoom: 4
-    })
-  }, */
   created() {
       this.fetchItems();
   },
@@ -80,8 +64,8 @@ export default {
   overflow: scroll;
 }
 .detailsBG {
-  margin-bottom: 20px;
   overflow: scroll;
+  background-color: ivory;
 }
 .detailsTitle {
   text-align: center;
@@ -90,5 +74,14 @@ export default {
     width:500px;
     height:500px;
     float: left;
+    padding-left: 20px;
+    padding-right: 25px;
+}
+.icons{
+  width:20px;
+  height:20px;
+}
+.eventdetails{
+  display: block;
 }
 </style>
