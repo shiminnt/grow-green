@@ -19,6 +19,7 @@
       <a>{{details.organisation}}</a><br>
     </div>
     <div class="map">
+      <h3>Locate Event</h3>
     </div>
     <Footer />
   </div>
