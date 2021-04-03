@@ -7,7 +7,28 @@
       <router-link to="/account/changepassword">Change Password</router-link>
     </div>
     <div class="content">
-      <h1> Edit Profile</h1>
+      <h1>Edit Profile</h1>
+      <div class="profilepic">
+        <div class="profilepic-input">
+          <p>Change your profile picture</p>
+          <input type="file" @change="previewImage" accept="image/*" /><br />
+          <br />
+          <button @click="onUpload">Upload</button>
+          <p>
+            Progress:
+            <progress
+              id="progress"
+              v-bind:value="uploadValue"
+              max="100"
+            ></progress>
+            {{ uploadValue.toFixed() + "%" }}
+          </p>
+        </div>
+        <div v-if="imageData != null" class="image-cropper">
+          <img class="preview" v-bind:src="picture" alt="Avatar" />
+          <br />
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -17,14 +38,60 @@
 import BasePage from "./Header.vue";
 import Footer from "./Footer.vue";
 import { mapGetters } from "vuex";
+import { auth, storage } from "../firebase.js";
 
 export default {
   components: { BasePage, Footer },
   data: function () {
-    return {};
+    return {
+      imageData: null,
+      picture: null,
+      uploadValue: 0,
+    };
   },
   computed: {
     ...mapGetters(["userData"]),
+  },
+  methods: {
+    previewImage(event) {
+      this.uploadValue = 0;
+      this.picture = null;
+      this.imageData = event.target.files[0];
+    },
+
+    onUpload() {
+      this.picture = null;
+      var user = auth.currentUser;
+      const storageRef = storage
+        .ref(user + "/profilePicture/" + `${this.imageData.name}`)
+        .put(this.imageData);
+      storageRef.on(
+        `state_changed`,
+        (snapshot) => {
+          this.uploadValue =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        (error) => {
+          console.log(error.message);
+        },
+        () => {
+          this.uploadValue = 100;
+          storageRef.snapshot.ref.getDownloadURL().then((url) => {
+            this.picture = url;
+            user
+              .updateProfile({
+                photoURL: url,
+              })
+              .then(function () {
+                alert("Your profile picture has been updated!");
+              })
+              .catch(function (error) {
+                alert(error);
+              });
+          });
+        }
+      );
+    },
   },
 };
 </script>
@@ -39,13 +106,13 @@ export default {
   padding: 0;
   top: 150px;
   width: 250px;
-  left:250px;
+  left: 250px;
   background-color: rgb(243, 233, 219);
   position: fixed;
   height: 100%;
   overflow: auto;
 }
-.sidenav a{
+.sidenav a {
   text-decoration: none;
   font-size: 20px;
   display: block;
@@ -54,17 +121,17 @@ export default {
   padding: 16px;
 }
 .sidenav a:hover {
-  color:grey;
+  color: grey;
 }
-.sidenav a.current{
+.sidenav a.current {
   background-color: #eadece;
-  color:black;
+  color: black;
   text-decoration: none;
   font-size: 20px;
   display: block;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.content{
+.content {
   position: fixed;
   width: 1000px;
   left: 500px;
@@ -76,4 +143,30 @@ export default {
   overflow: auto;
 }
 
+.image-cropper {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+img.preview {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+  margin-left: -25%;
+}
+.profilepic {
+  border-bottom: 2px solid black;
+  height: 220px;
+  margin-right: 20px;
+}
+.profilepic div {
+  float: left;
+}
+.profilepic-input {
+  padding-right: 20px;
+}
 </style>

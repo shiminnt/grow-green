@@ -12,7 +12,14 @@
           <li><router-link to="/volunteermenu">VOLUNTEER</router-link></li>
           <li><router-link to="/newsmenu">NEWS</router-link></li>
           <li><router-link to="/quiz">QUIZ</router-link></li>
-          <img id="profileIcon" src="../assets/profileIcon.png" />
+          <div class="image-cropper">
+            <img
+              class="profileIcon"
+              v-if="photoUrl != null"
+              v-bind:src="photoUrl"
+            />
+            <img class="profileIcon" v-else src="../assets/profileIcon.png" />
+          </div>
           <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
           <div class="dropdown">
             {{ userData.displayName }}
@@ -61,6 +68,7 @@ export default {
       initialData: {},
       displayName: "",
       hover: false,
+      photoUrl: null,
     };
   },
   computed: {
@@ -70,6 +78,7 @@ export default {
     loadUserData: function () {
       const user = auth.currentUser;
       if (user) {
+        this.photoUrl = user.photoURL;
         const uid = user.uid;
         database
           .collection("users")
@@ -169,7 +178,7 @@ export default {
   overflow: hidden;
   padding: 10px;
   padding-left: 0px;
-  padding-top: 15px;
+  padding-top: 12px;
   margin: 10px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 25px;
@@ -198,10 +207,22 @@ export default {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-#profileIcon {
-  height: 40px;
-  padding-left: 20px;
-  padding-top: 20px;
+.profileIcon {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+  margin-left: -25%;
+}
+.image-cropper {
+  /* padding-left: 20px;
+  padding-top: 20px; */
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
 }
 #overviewButton {
   margin-top: 34vw;
