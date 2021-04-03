@@ -11,7 +11,7 @@
           <li><router-link to="/home">HOME</router-link></li>
           <li><router-link to="/volunteermenu">VOLUNTEER</router-link></li>
           <li><router-link to="/newsmenu">NEWS</router-link></li>
-          <li><router-link to="/quiz">QUIZ</router-link></li>
+          <li><router-link to="/quizquestion">QUIZ</router-link></li>
           <div class="image-cropper">
             <img
               class="profileIcon"
@@ -31,7 +31,7 @@
         </ul>
         <div>
           <p id="overviewButton" v-on:click="overview">Overview</p>
-          <p id="knowledgeButton" v-on:click="goToQuiz">Plant Tree</p>
+          <p id="knowledgeButton" v-on:click="goToKnowledgeBank">Plant Tree</p>
         </div>
       </div>
       <div id="overview">
@@ -120,8 +120,8 @@ export default {
     overview() {
       this.$router.push("dashboard");
     },
-    goToQuiz() {
-      this.$router.push("quiz");
+    goToKnowledgeBank() {
+      this.$router.push("knowledgebank");
     },
   },
   created() {

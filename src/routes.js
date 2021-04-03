@@ -1,7 +1,7 @@
 import HomePage from './components/HomePage.vue'
 import VolunteerMenuPage from './components/VolunteerMenuPage.vue'
 import NewsMenuPage from './components/NewsMenuPage.vue'
-import QuizPage from './components/QuizPage.vue'
+import KnowledgeBankPage from './components/KnowledgeBankPage.vue'
 import LoginPage from './components/LoginPage.vue'
 import RegisterPage from './components/RegisterPage.vue'
 import ForgotPassword from './components/ForgotPassword.vue'
@@ -19,7 +19,7 @@ export default [
     { path: '/home', name: "home", component: HomePage, meta: { requiresAuth: true } },
     { path: '/volunteermenu', name: "volunteermenu", component: VolunteerMenuPage, meta: { requiresAuth: true } },
     { path: '/newsmenu', name: "newsmenu", component: NewsMenuPage, meta: { requiresAuth: true } },
-    { path: '/quiz', name: "quiz", component: QuizPage, meta: { requiresAuth: true } },
+    { path: '/knowledgebank', name: "knowledgebank", component: KnowledgeBankPage, meta: { requiresAuth: true } },
     { path: '/register', name: "register", component: RegisterPage },
     { path: '/forgotpassword', name: "forgotpassword", component: ForgotPassword },
     { path: '/dashboard', name: "dashboard", component: DashboardPage, meta: { requiresAuth: true } },

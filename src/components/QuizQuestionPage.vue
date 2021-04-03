@@ -71,7 +71,7 @@ export default {
       this.b++;
     },
     kBank: function() {
-      this.$router.push({name: "quiz"})
+      this.$router.push({name: "knowledgebank"})
     }
   },
   created() {
