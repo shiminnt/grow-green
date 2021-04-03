@@ -11,12 +11,13 @@
         <p class="text">New Trees to be Planted: Y</p>
       </div>
       <br />
-      <p>Good job, {{ displayName }}! You have answered X questions correctly</p>
+      <p>
+        Good job, {{ displayName }}! You have answered X questions correctly
+      </p>
       <br />
-      <button v-on:click="plantTree">Plant a Tree</button>
+      <button v-on:click="goToPlantTrees">Plant a Tree</button>
       <br /><br />
       <button v-on:click="goToQuiz">Do Quiz</button>
-      
     </div>
     <Footer />
   </div>
@@ -32,7 +33,7 @@ export default {
   name: "Quiz",
   data: function () {
     return {
-      displayName: ''
+      displayName: "",
     };
   },
   methods: {
@@ -49,18 +50,21 @@ export default {
           );
       }
     },
-    plantTree: function() {
+    plantTree: function () {
       // number of qns -10
       // number of trees +1
       // update store
     },
-    goToQuiz: function() {
-      this.$router.push({name: "quizquestion"})
-    }
+    goToPlantTrees() {
+      this.$router.push("planttrees");
+    },
+    goToQuiz: function () {
+      this.$router.push({ name: "quizquestion" });
+    },
   },
   created() {
-    this.loadUserData()
-  }
+    this.loadUserData();
+  },
 };
 </script>
 
@@ -77,7 +81,7 @@ export default {
   border-radius: 12%;
   width: 500px;
   margin: auto;
-  padding: 20px
+  padding: 20px;
 }
 
 button {

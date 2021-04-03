@@ -66,7 +66,7 @@ export default {
       if (this.name == "") {
         this.error = "Invalid name.";
       } else if (this.passwordMatch) {
-        this.error = "Please check your passwords."
+        this.error = "Please check your passwords.";
       } else {
         auth
           .createUserWithEmailAndPassword(this.email, this.password)
@@ -100,7 +100,7 @@ export default {
       if (this.confirmPassword) {
         this.passwordMatch = this.password != this.confirmPassword;
       }
-    }
+    },
   },
 };
 </script>
