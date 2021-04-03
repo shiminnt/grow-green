@@ -31,7 +31,7 @@
         </ul>
         <div>
           <p id="overviewButton" v-on:click="overview">Overview</p>
-          <p id="knowledgeButton" v-on:click="goToQuiz">Knowledge Bank</p>
+          <p id="knowledgeButton" v-on:click="goToQuiz">Plant Tree</p>
         </div>
       </div>
       <div id="overview">
@@ -228,19 +228,19 @@ export default {
   margin-top: 34vw;
   margin-left: 65vw;
   font-family: Futura;
-  background-color: black;
+  background-color: rgb(6, 48, 6);
   color: whitesmoke;
   border-radius: 40px;
   padding: 15px;
   text-align: center;
-  width: 110px;
+  width: 160px;
   position: fixed;
 }
 #knowledgeButton {
   margin-top: 34vw;
   margin-left: 42vw;
   font-family: Futura;
-  background-color: black;
+  background-color: rgb(6, 48, 6);
   color: whitesmoke;
   border-radius: 40px;
   padding: 15px;
