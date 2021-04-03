@@ -1,23 +1,23 @@
 <template>
   <div>
     <div class="bg">
-      <img id="logoIcon" src="../assets/logo.png" />
-      <a id="ggName">GrowGreen</a>
+      <img id="logoIcon" src="../assets/logo.png" @click="goToHome" />
+      <a id="ggName" @click="goToHome">GrowGreen</a>
       <ul class="navbar">
         <li><router-link to="/home">HOME</router-link></li>
         <li><router-link to="/volunteermenu">VOLUNTEER</router-link></li>
         <li><router-link to="/newsmenu">NEWS</router-link></li>
         <li><router-link to="/quiz">QUIZ</router-link></li>
         <li><router-link to="/dashboard">OVERVIEW</router-link></li>
+        <img id="profileIcon" src="../assets/profileIcon.png" />
         <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
         <div class="dropdown">
-          <img id="profileIcon" src="../assets/profileIcon.png" />
+          {{ displayName }}
           <div class="dropdown-content">
             <p @click="goToAccount">ACCOUNT</p>
             <p @click="signOut">LOGOUT</p>
           </div>
         </div>
-        <li>{{ displayName }}</li>
       </ul>
     </div>
   </div>
@@ -46,9 +46,12 @@ export default {
       });
     },
     goToAccount() {
-      this.$router.push({name:"profile"})
+      this.$router.push({ name: "profile" });
     },
-    loadUserData: function() {
+    goToHome() {
+      this.$router.push({ name: "home" });
+    },
+    loadUserData: function () {
       const user = auth.currentUser;
       if (user) {
         const uid = user.uid;
@@ -56,9 +59,7 @@ export default {
           .collection("users")
           .doc(uid)
           .get()
-          .then(
-            (doc) => (this.displayName = doc.data().displayName.toUpperCase())
-          );
+          .then((doc) => (this.displayName = doc.data().displayName));
       }
     },
   },
@@ -113,12 +114,20 @@ export default {
 .dropdown {
   float: left;
   overflow: hidden;
+  padding: 10px;
+  padding-left: 0px;
+  padding-top: 15px;
+  margin: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #873600;
 }
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #F2EDDC;
-  min-width: 100px;
+  background-color: #f2eddc;
+  min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -127,16 +136,18 @@ export default {
   color: black;
   text-decoration: none;
   display: block;
-  text-align: center;
+  text-align: left;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 15px;
+  padding-left: 10px;
+  position: relative;
 }
 .dropdown:hover .dropdown-content {
   display: block;
 }
 #profileIcon {
-  height: 60px;
+  height: 40px;
   padding-left: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 </style>

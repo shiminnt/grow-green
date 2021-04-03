@@ -39,13 +39,13 @@ export default {
   padding: 0;
   top: 150px;
   width: 250px;
-  left:250px;
+  left: 250px;
   background-color: rgb(243, 233, 219);
   position: fixed;
   height: 100%;
   overflow: auto;
 }
-.sidenav a{
+.sidenav a {
   text-decoration: none;
   font-size: 20px;
   display: block;
@@ -54,17 +54,17 @@ export default {
   padding: 16px;
 }
 .sidenav a:hover {
-  color:grey;
+  color: grey;
 }
-.sidenav a.current{
+.sidenav a.current {
   background-color: #eadece;
-  color:black;
+  color: black;
   text-decoration: none;
   font-size: 20px;
   display: block;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.content{
+.content {
   position: fixed;
   width: 1000px;
   left: 500px;
@@ -75,5 +75,4 @@ export default {
   height: 100%;
   overflow: auto;
 }
-
 </style>

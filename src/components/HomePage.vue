@@ -12,17 +12,19 @@
           <li><router-link to="/volunteermenu">VOLUNTEER</router-link></li>
           <li><router-link to="/newsmenu">NEWS</router-link></li>
           <li><router-link to="/quiz">QUIZ</router-link></li>
-          <div class="dropdown">
           <img id="profileIcon" src="../assets/profileIcon.png" />
-          <div class="dropdown-content">
-            <p @click="goToAccount">ACCOUNT</p>
-            <p @click="signOut">LOGOUT</p>
+          <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
+          <div class="dropdown">
+            {{ userData.displayName }}
+            <div class="dropdown-content">
+              <p @click="goToAccount">ACCOUNT</p>
+              <p @click="signOut">LOGOUT</p>
+            </div>
           </div>
-        </div>
         </ul>
         <div>
           <p id="overviewButton" v-on:click="overview">Overview</p>
-          <p id="knowledgeButton" v-on:click="plantTrees">Plant Trees</p>
+          <p id="knowledgeButton" v-on:click="goToQuiz">Knowledge Bank</p>
         </div>
       </div>
       <div id="overview">
@@ -47,7 +49,7 @@
 <script>
 import { database, auth } from "../firebase.js";
 import Footer from "./Footer.vue";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   name: "Home",
@@ -62,9 +64,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([
-      'userData'
-    ])
+    ...mapGetters(["userData"]),
   },
   methods: {
     loadUserData: function () {
@@ -76,43 +76,43 @@ export default {
           .doc(uid)
           .get()
           .then((doc) => {
-            this.initialData = doc.data()
+            this.initialData = doc.data();
             if (this.userData) {
               if (this.initialData.displayName == this.userData.displayName) {
-                this.$store.dispatch('updateUserData', this.userData)
+                this.$store.dispatch("updateUserData", this.userData);
               } else {
-                this.$store.dispatch('updateUserData', this.initialData)
+                this.$store.dispatch("updateUserData", this.initialData);
               }
             } else {
-              this.$store.dispatch('updateUserData', this.initialData)
+              this.$store.dispatch("updateUserData", this.initialData);
             }
-            });
+          });
       }
     },
     signOut() {
       const user = auth.currentUser;
       const uid = user.uid;
       database
-          .collection("users")
-          .doc(uid)
-          .set(this.userData)
-          .then(() => {
-            console.log("Document successfully written!")
-            auth.signOut().then(() => {
-              this.$router.replace({
-                name: "login",
-              });
-            })
-          })
+        .collection("users")
+        .doc(uid)
+        .set(this.userData)
+        .then(() => {
+          console.log("Document successfully written!");
+          auth.signOut().then(() => {
+            this.$router.replace({
+              name: "login",
+            });
+          });
+        });
     },
     goToAccount() {
-      this.$router.push({name:"profile"})
+      this.$router.push({ name: "profile" });
     },
     overview() {
       this.$router.push("dashboard");
     },
-    plantTrees() {
-      this.$router.push("planttrees");
+    goToQuiz() {
+      this.$router.push("quiz");
     },
   },
   created() {
@@ -167,12 +167,20 @@ export default {
 .dropdown {
   float: left;
   overflow: hidden;
+  padding: 10px;
+  padding-left: 0px;
+  padding-top: 15px;
+  margin: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #873600;
 }
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #F2EDDC;
-  min-width: 100px;
+  background-color: #f2eddc;
+  min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -181,17 +189,19 @@ export default {
   color: black;
   text-decoration: none;
   display: block;
-  text-align: center;
+  text-align: left;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 15px;
+  padding-left: 10px;
+  position: relative;
 }
 .dropdown:hover .dropdown-content {
   display: block;
 }
 #profileIcon {
-  height: 60px;
+  height: 40px;
   padding-left: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 #overviewButton {
   margin-top: 34vw;
@@ -214,7 +224,7 @@ export default {
   border-radius: 40px;
   padding: 15px;
   text-align: center;
-  width: 130px;
+  width: 160px;
   position: fixed;
 }
 .header {
@@ -232,7 +242,7 @@ export default {
   margin-top: 20%;
   margin-left: 25%;
   padding-right: 5%;
-  background: #EADECE;
+  background: #eadece;
   border-radius: 12%;
 }
 
