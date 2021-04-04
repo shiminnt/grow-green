@@ -55,7 +55,7 @@ export default {
   methods: {
     previewImage(event) {
       this.uploadValue = 0;
-      this.picture = null;
+      this.picture = URL.createObjectURL(event.target.files[0]);
       this.imageData = event.target.files[0];
     },
 
@@ -82,8 +82,9 @@ export default {
               .updateProfile({
                 photoURL: url,
               })
-              .then(function () {
+              .then(() => {
                 alert("Your profile picture has been updated!");
+                this.$router.go();
               })
               .catch(function (error) {
                 alert(error);
