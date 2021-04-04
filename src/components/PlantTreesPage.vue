@@ -3,17 +3,16 @@
     <base-page></base-page>
     <div id="knowledgeBox">
       <div id="qCash">
-        <p class="text">Your Knowledge Bank: X</p>
+        <p class="text">Total number of tree(s) planted: {{ userData.numTrees }}</p>
       </div>
-      <br />
       <div id="newTrees">
-        <p class="text">You can plant Y more trees!</p>
+        <p class="text">You can plant {{ this.numTreesCanPlant() }} more tree(s)!</p>
       </div>
       <img id="profileIcon" src="../assets/treegrowing.gif" />
       <br />
       <p>A tree has been planted!</p>
       <br />
-      <button v-on:click="goToPlantTrees">Plant Another Tree</button>
+      <button v-show="this.numTreesCanPlant() > 0" v-on:click="plantTree">Plant Another Tree</button>
       <button v-on:click="goToQuiz">Do Quiz</button>
     </div>
     <Footer />
@@ -40,6 +39,23 @@ export default {
     goToPlantTrees() {
       this.$router.push("planttrees");
     },
+    plantTree: function () {
+      if (this.numTreesCanPlant() > 0) {
+        this.$store.dispatch('updateTreesPlanted');
+        this.$router.push("planttrees");
+      } else {
+        alert("Tree cannot be planted. Try more questions!")
+      }
+      // number of qns -10
+      // number of trees +1
+      // update store
+    },
+    numQuestionsNotCashed() {
+      return (this.userData.numArticles - (this.userData.numTrees * 10));
+    },
+    numTreesCanPlant() {
+      return Math.floor(this.numQuestionsNotCashed()/10);
+    }
   },
 };
 </script>
