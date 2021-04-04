@@ -8,6 +8,24 @@
     </div>
     <div class="content">
       <h1>Profile</h1>
+      <div v-if="photoUrl != null" class="image-cropper">
+        <img class="preview" v-bind:src="photoUrl" alt="Avatar" />
+        <br />
+      </div>
+      <table>
+        <tr>
+          <td class="details">Username</td>
+          <td class="userdata">{{ this.displayName }}</td>
+        </tr>
+        <tr>
+          <td class="details">Email</td>
+          <td class="userdata">{{ this.email }}</td>
+        </tr>
+        <tr>
+          <td class="details">Date Joined</td>
+          <td class="userdata">{{ this.joinDate }}</td>
+        </tr>
+      </table>
     </div>
     <Footer />
   </div>
@@ -17,14 +35,40 @@
 import BasePage from "./Header.vue";
 import Footer from "./Footer.vue";
 import { mapGetters } from "vuex";
+import { database, auth } from "../firebase.js";
 
 export default {
   components: { BasePage, Footer },
   data: function () {
-    return {};
+    return {
+      displayName: null,
+      email: null,
+      photoUrl: null,
+      joinDate: null,
+    };
   },
   computed: {
     ...mapGetters(["userData"]),
+  },
+  methods: {
+    loadUserData: function () {
+      const user = auth.currentUser;
+      if (user) {
+        this.email = user.email;
+        this.photoUrl = user.photoURL;
+        this.joinDate = user.metadata.creationTime;
+
+        const uid = user.uid;
+        database
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then((doc) => (this.displayName = doc.data().displayName));
+      }
+    },
+  },
+  created() {
+    this.loadUserData();
   },
 };
 </script>
@@ -72,7 +116,40 @@ export default {
   padding: 8px 0;
   background: #eadece;
   padding-left: 20px;
+  padding-right: 20px;
   height: 100%;
   overflow: auto;
+}
+.image-cropper {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+img.preview {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+  margin-left: -25%;
+}
+table {
+  margin-top: 30px;
+  width: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 18px;
+  border-collapse: collapse;
+}
+.details {
+  color: #873600;
+}
+tr {
+  border-bottom: 1px solid #838383;
+}
+td {
+  padding: 15px;
 }
 </style>
