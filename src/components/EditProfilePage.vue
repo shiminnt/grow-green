@@ -143,7 +143,6 @@ export default {
   height: 100%;
   overflow: auto;
 }
-
 .image-cropper {
   width: 200px;
   height: 200px;
@@ -151,13 +150,12 @@ export default {
   overflow: hidden;
   border-radius: 50%;
 }
-
 img.preview {
   display: inline;
   margin: 0 auto;
   height: 100%;
   width: auto;
-  margin-left: -50%;
+  margin-left: 0;
 }
 .profilepic {
   border-bottom: 2px solid black;

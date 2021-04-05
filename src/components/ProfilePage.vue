@@ -12,6 +12,10 @@
         <img class="preview" v-bind:src="photoUrl" alt="Avatar" />
         <br />
       </div>
+        <div v-if="photoUrl == null" class="image-cropper">
+        <img class="preview" src="../assets/profileIcon.png" alt="Avatar" />
+        <br />
+      </div>
       <table>
         <tr>
           <td class="details">Username</td>
@@ -134,7 +138,12 @@ img.preview {
   margin: 0 auto;
   height: 100%;
   width: auto;
-  margin-left: -50%;
+}
+#default{
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
 }
 table {
   margin-top: 30px;

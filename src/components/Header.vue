@@ -169,7 +169,6 @@ export default {
   margin: 0 auto;
   height: 100%;
   width: auto;
-  margin-left: -50%;
 }
 .image-cropper {
   /* padding-left: 20px;
