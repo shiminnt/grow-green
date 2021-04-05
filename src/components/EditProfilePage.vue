@@ -157,7 +157,7 @@ img.preview {
   margin: 0 auto;
   height: 100%;
   width: auto;
-  margin-left: -25%;
+  margin-left: -50%;
 }
 .profilepic {
   border-bottom: 2px solid black;
