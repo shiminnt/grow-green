@@ -51,7 +51,7 @@ export default {
       // update store
     },
     numQuestionsNotCashed() {
-      return (this.userData.numArticles - (this.userData.numTrees * 10));
+      return (this.userData.numQuiz - (this.userData.numTrees * 10));
     },
     numTreesCanPlant() {
       return Math.floor(this.numQuestionsNotCashed()/10);

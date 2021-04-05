@@ -47,11 +47,20 @@ export default {
       this.hover = !this.hover;
     },
     signOut() {
-      auth.signOut().then(() => {
-        this.$router.replace({
-          name: "login",
+      const user = auth.currentUser;
+      const uid = user.uid;
+      database
+        .collection("users")
+        .doc(uid)
+        .set(this.userData)
+        .then(() => {
+          console.log("Document successfully written!");
+          auth.signOut().then(() => {
+            this.$router.replace({
+              name: "login",
+            });
+          });
         });
-      });
     },
     goToAccount() {
       this.$router.push({ name: "profile" });
