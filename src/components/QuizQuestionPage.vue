@@ -33,6 +33,7 @@ export default {
   data: function () {
     return {
       quiz: [],
+      completedQuestions: [],
       questionText: "sampleText",
       option1: "o1",
       option2: "o2",
@@ -45,38 +46,55 @@ export default {
   },
   methods: {
     fetchItems: function () {
+      console.log("bug here")
+      console.log(this.userData.questionsDone)
+      for (var i=0; i < this.userData.questionsDone.length; i++) {
+        this.completedQuestions.push(this.userData.questionsDone[i].qNo);
+      }
       database
         .collection("questions")
         .get()
         .then((snapshot) => {
           snapshot.docs.forEach((doc) => {
             //console.log(doc.data());
-            this.quiz.push(doc.data());
+            if (!(doc.question in this.completedQuestions)) {
+              this.quiz.push(doc.data());
+            }
           });
         });
     },
+
     selectedAnswer: function(event, qn) {
       console.log(event.target.getAttribute("id"))
       var chosen = event.target.getAttribute("id")
       console.log(qn.options[chosen])
       if (qn.options[chosen]) {
         alert("correct")
+        var done = {
+          'qNo': qn.question,
+          'planted': 0
+        };
+        this.$store.dispatch('updateQuestionsDone', done)
       } else {
         alert("wrong")
       }
-      
     },
+
     nextQuestion: function() {
       this.a++;
       this.b++;
     },
+
     kBank: function() {
       this.$router.push({name: "knowledgebank"})
     }
+
   },
+
   created() {
     this.fetchItems();
   },
+
   computed: {
     ...mapGetters(["userData"]),
   },
