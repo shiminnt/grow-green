@@ -2,18 +2,29 @@
 <template>
   <div class="bg">
     <Header></Header>
-    <div v-for="qn in quiz.slice(a,b)" :key="qn.question">
+    <div v-for="qn in quiz.slice(a, b)" :key="qn.question">
       <div id="questionBox">
         <p id="question">{{ qn.question }}</p>
         <br /><br />
         <div v-for="option in Object.keys(qn.options)" :key="option.id">
-          <div class="obutton" v-bind:id="option" v-on:click="selectedAnswer($event, qn)">{{ option }}</div><br /><br />
+          <div
+            class="obutton" :style="{backgroundColor: color}"
+            v-bind:id="option"
+            v-on:click="selectedAnswer($event, qn)"
+          >
+            {{ option }}
+          </div>
+          <br /><br />
         </div>
       </div>
       <br /><br />
       <div class="buttons">
-        <button class="nbutton" id="kBank" v-on:click="kBank">Go To Knowledge Bank</button><br />
-        <button class="nbutton" id="nQn" v-on:click="nextQuestion">Next Question</button><br />
+        <button class="nbutton" id="kBank" v-on:click="kBank">
+          Go To Knowledge Bank</button
+        ><br />
+        <button class="nbutton" id="nQn" v-on:click="nextQuestion">
+          Next Question</button
+        ><br />
       </div>
       <div id="funfactBox">{{ qn.addInfo }}</div>
       <Footer />
@@ -40,15 +51,16 @@ export default {
       option3: "o3",
       option4: "o4",
       funFact: "sampleFact",
+      color: '#84735e',
       a: 0,
       b: 1,
     };
   },
   methods: {
     fetchItems: function () {
-      console.log("bug here")
-      console.log(this.userData.questionsDone)
-      for (var i=0; i < this.userData.questionsDone.length; i++) {
+      console.log("bug here");
+      console.log(this.userData.questionsDone);
+      for (var i = 0; i < this.userData.questionsDone.length; i++) {
         this.completedQuestions.push(this.userData.questionsDone[i].qNo);
       }
       database
@@ -56,39 +68,40 @@ export default {
         .get()
         .then((snapshot) => {
           snapshot.docs.forEach((doc) => {
-            //console.log(doc.data());
-            if (!(doc.question in this.completedQuestions)) {
+            if (!this.completedQuestions.includes(doc.data().question)) {
               this.quiz.push(doc.data());
             }
           });
         });
     },
 
-    selectedAnswer: function(event, qn) {
-      console.log(event.target.getAttribute("id"))
-      var chosen = event.target.getAttribute("id")
-      console.log(qn.options[chosen])
+    selectedAnswer: function (event, qn) {
+      console.log(event.target.getAttribute("id"));
+      var chosen = event.target.getAttribute("id");
+      console.log(qn.options[chosen]);
       if (qn.options[chosen]) {
-        alert("correct")
-        var done = {
-          'qNo': qn.question,
-          'planted': 0
-        };
-        this.$store.dispatch('updateQuestionsDone', done)
+        document.getElementById(event.target.getAttribute("id")).style.backgroundColor = '#2B8B35'
+        if (!this.completedQuestions.includes(qn.question)) {
+          var done = {
+            qNo: qn.question,
+            planted: 0,
+          };
+          this.$store.dispatch("updateQuestionsDone", done);
+          this.completedQuestions.push(done.qNo);
+        }
       } else {
-        alert("wrong")
+        document.getElementById(event.target.getAttribute("id")).style.backgroundColor = '#C52A2A'
       }
     },
 
-    nextQuestion: function() {
+    nextQuestion: function () {
       this.a++;
       this.b++;
     },
 
-    kBank: function() {
-      this.$router.push({name: "knowledgebank"})
-    }
-
+    kBank: function () {
+      this.$router.push({ name: "knowledgebank" });
+    },
   },
 
   created() {
@@ -134,8 +147,7 @@ export default {
   border: none;
 }
 .obutton {
-  background-color: rgba(132, 115, 94, 1);
-  margin:auto;
+  margin: auto;
   border: none;
   height: 50px;
   width: 450px;
