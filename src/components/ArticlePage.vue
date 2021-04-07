@@ -5,7 +5,7 @@
     <div class="article">
       <h1>{{ articleSet[0].title }}</h1>
       <img class="photo" v-bind:src="articleSet[0].urlToImage" />
-      <p>{{ articleSet[0].content }}</p>
+      <p id="content">{{ articleSet[0].content.slice(0,150) }} ...</p>
       <br>
       <p class="external" v-on:click="goToExternalArticle"> Interested? Read more here</p>
     </div>
@@ -76,11 +76,12 @@ export default {
 }
 
 .article {
-  margin: 30px;
+  text-align:center;
 }
 
 .photo {
-  height: 100px;
+  width: 30vw;
+  justify-content: center;
 }
 
 .external {

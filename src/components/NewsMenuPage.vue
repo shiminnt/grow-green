@@ -1,13 +1,17 @@
 <template>
   <div class="bg">
     <Header></Header>
-    <ul id="newsList">
-      <li v-for="article in info.slice(a, b)" :key="article.title">
+    <div id="aritcleOverviewBox">
+      <p class="tt">articles read:</p>
+      <p class="number">{{ userData.numArticles }}</p>
+    </div>
+    <div id="newsList">
+      <div v-for="article in info.slice(a, b)" :key="article.title">
         <div class="newsBox">
           <img class="image" v-bind:src="article.urlToImage" />
           <div class="words">
             <h4 class="title">{{ article.title }}</h4>
-            <p class="text">{{ article.description }}</p>
+            <p class="text">{{ article.description.slice(0, 100) }} ... </p>
           </div>
           <div>
             <p
@@ -15,12 +19,12 @@
               v-bind:id="article.title"
               v-on:click="readArticle($event)"
             >
-              Read more
+              Read <br> more
             </p>
           </div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
     <div class="pageChange">
       <p id="t" v-on:click="previous">&#8592; Previous Page</p>
       <p id="t">{{ pageNo }}</p>
@@ -105,25 +109,28 @@ export default {
   overflow: scroll;
 }
 #newsList {
-  list-style-type: none;
+  justify-content: center;
 }
 .newsBox {
-  width: 90vw;
+  width: 60vw;
+  height: 13vh;
   background: rgba(245, 222, 179, 0.8);
   display: flex;
   overflow: hidden;
-  margin: 2%;
+  margin: auto;
+  margin-top: 40px;
   border-radius: 20px;
 }
 .image {
   height: 75px;
   width: 75px;
-  margin-left: 2%;
-  margin-top: 1%;
+  margin-left: 1%;
   border-radius: 100%;
+  margin-top: 0.7%;
 }
 .words {
   margin-left: 2%;
+  width: 45vw;
 }
 .title {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -140,11 +147,9 @@ export default {
 }
 .readMoreLink {
   text-decoration: underline;
-  font-size: 10px;
-  bottom: 20px;
-  right: 10px;
-  display: inline-block;
-  white-space: nowrap;
+  font-size: 15px;
+  float: right;
+  margin-left:50px;
 }
 
 .pageChange {
@@ -158,5 +163,31 @@ export default {
 #t {
   margin: 10px;
   padding: 10px;
+}
+
+#aritcleOverviewBox {
+  position: absolute;
+  opacity: 82%;
+  background: #eadece;
+  border-radius: 12%;
+  width: 10vw;
+  height: 10vh;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+.number {
+  font-size: 40px;
+  text-align:center;
+  margin-top: 0px;
+  margin-bottom: 5px;
+
+}
+
+.tt {
+  font-size: 20px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  text-align:center;
 }
 </style>
