@@ -2,6 +2,10 @@
 <template>
   <div class="bg">
     <Header></Header>
+    <div id="questionsDoneBox">
+      <p class="tt">questions done: </p>
+      <p class="number">{{ userData.numQuiz }}</p>
+    </div>
     <div v-for="qn in quiz.slice(a, b)" :key="qn.question">
       <div id="questionBox">
         <p id="question">{{ qn.question }}</p>
@@ -157,5 +161,31 @@ export default {
 #funfactBox {
   margin: auto;
   text-align: center;
+}
+
+#questionsDoneBox {
+  position: absolute;
+  opacity: 82%;
+  background: #eadece;
+  border-radius: 12%;
+  width: 10vw;
+  height: 10vh;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+.number {
+  font-size: 40px;
+  text-align:center;
+  margin-top: 0px;
+  margin-bottom: 5px;
+
+}
+
+.tt {
+  font-size: 20px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  text-align:center;
 }
 </style>
