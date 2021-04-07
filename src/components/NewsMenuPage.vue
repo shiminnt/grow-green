@@ -62,7 +62,7 @@ export default {
     mounted() {
       axios
         .get(
-          `https://newsapi.org/v2/everything?q=Environment&from=2021-03-15&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
+          `https://newsapi.org/v2/everything?q=Climate&from=2021-03-15&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
         )
         .then((response) => {
           this.info = response.data.articles;
