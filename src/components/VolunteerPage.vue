@@ -12,30 +12,32 @@
                     class="icons"
                     src="https://static.thenounproject.com/png/404-200.png"
                 />
-                <a>&nbsp;{{ details.date }}</a
-                ><br />
+                <a>&nbsp;{{ details.date }}</a>
+                <br />
                 <img
                     class="icons"
                     src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/10-512.png"
                 />
-                <a>&nbsp;{{ details.time[0] }} - {{ details.time[1] }}</a
-                ><br />
+                <a>&nbsp;{{ details.time[0] }} - {{ details.time[1] }}</a>
+                <br />
                 <img
                     class="icons"
                     src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/94-512.png"
                 />
-                <a>&nbsp;{{ details.location }}</a
-                ><br />
+                <a>&nbsp;{{ details.location }}</a>
+                <br />
             </div>
             <h3>Organised by</h3>
             <a>{{ details.organisation }}</a
             ><br />
-            <div>
+            <div class="eventmap">
                 <h3>Locate Event</h3>
+                <a>For directions to {{details.location}}, refer to the Google Maps below</a>
+                <br><br>
                 <span v-html="details.embed"></span>
             </div>
         </div>
-        <Footer />
+        <Footer></Footer>
     </div>
 </template>
 
@@ -77,7 +79,7 @@ export default {
 <style scoped>
 .bg {
     background-color: ivory;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .detailsBG {
     background-color: ivory;
@@ -98,5 +100,11 @@ export default {
 }
 .eventdetails {
     display: block;
+}
+.eventmap {
+    clear: left;
+    padding-left: 25%;
+    padding-top: 25px;
+    padding-bottom: 10%;
 }
 </style>

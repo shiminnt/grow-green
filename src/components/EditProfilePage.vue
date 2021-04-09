@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <Footer />
+        <Footer></Footer>
     </div>
 </template>
 
@@ -161,7 +161,7 @@ export default {
 <style scoped>
 .bg {
     background-color: ivory;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .sidenav {
     margin: 0;

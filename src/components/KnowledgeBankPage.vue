@@ -17,7 +17,7 @@
       <br /><br />
       <button v-on:click="goToQuiz">Do Quiz</button>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
@@ -85,7 +85,7 @@ export default {
 <style scoped>
 .bg {
   background-color: ivory;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #knowledgeBox {
