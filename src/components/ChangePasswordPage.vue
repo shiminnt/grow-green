@@ -19,7 +19,7 @@
         <button id="setpassword" type="submit">Set New Password</button><br />
       </form>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 

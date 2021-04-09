@@ -30,7 +30,7 @@
       <p id="t">{{ pageNo }}</p>
       <p id="t" v-on:click="next">Next Page &#8594;</p> 
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 

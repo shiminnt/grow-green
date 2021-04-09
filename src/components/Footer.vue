@@ -1,13 +1,14 @@
 <template>
   <div id="footer">
-    <div id="general">
-      <p class="content">About Us</p>
+    <ul id="general">
+      <li class="content"><router-link to="/aboutus">About Us</router-link></li>
       <br />
-      <p class="content">Contact</p>
+      <li class="content"><router-link to="/contactus">Contact Us</router-link></li>
       <br />
-      <p class="content">Follow Us</p>
+      <li class="content">Follow Us</li>
+      <img class="igIcon" src="https://cdn1.iconfinder.com/data/icons/social-media-outline-6/128/SocialMedia_Instagram-Outline-512.png">
       <br />
-    </div>
+    </ul>
     <a id="copyright">&#169; 2021 BY GROWGREEN</a>
   </div>
 </template>
@@ -27,10 +28,10 @@ export default {
   background-color: rgb(245, 222, 179);
   justify-content: space-between;
   text-align: right;
-  position: absolute;
+  position: relative;
   bottom: 0pt;
   width: 100%;
-  height: 3%;
+  height: 55px;
 }
 #copyright {
   font-family: cormorantgaramond;
@@ -45,9 +46,11 @@ export default {
   display: flex;
   margin-top: 2px;
   padding-right: 1vw;
+  list-style-type: none;
 }
 
 .content {
+  text-decoration: none;
   color: black;
   font-weight: normal;
   text-align: right;
@@ -56,5 +59,19 @@ export default {
   letter-spacing: 0.03cm;
   font-size: 15px;
   margin-top: 0px;
+}
+
+.content > a {
+  text-decoration: none;
+  color: black;
+}
+
+.content > a:hover {
+  color: grey;
+}
+
+.igIcon{
+  width: 50px;
+  height: 50px;
 }
 </style>

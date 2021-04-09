@@ -31,7 +31,7 @@
         </tr>
       </table>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 

@@ -17,7 +17,7 @@
       <br /><br />
       <button v-on:click="goToQuiz">Do Quiz</button>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 

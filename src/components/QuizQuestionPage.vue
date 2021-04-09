@@ -31,7 +31,7 @@
         ><br />
       </div>
       <div id="funfactBox">{{ qn.addInfo }}</div>
-      <Footer />
+      <Footer></Footer>
     </div>
   </div>
 </template>

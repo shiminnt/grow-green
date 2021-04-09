@@ -10,7 +10,7 @@
       <p class="external" v-on:click="goToExternalArticle"> Interested? Read more here</p>
     </div>
 
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
