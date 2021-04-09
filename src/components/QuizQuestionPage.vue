@@ -121,7 +121,7 @@ export default {
 <style scoped>
 .bg {
   background-color: ivory;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #questionBox {

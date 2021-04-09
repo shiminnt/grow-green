@@ -3,13 +3,34 @@
         <Header></Header>
         <h1 id="title">Contact Us</h1>
         <form class="form">
-            <input class="textinput" type="text" placeholder="Name" v-model="name">
+            <input 
+                class="textinput" 
+                type="text" 
+                placeholder="Name" 
+                v-model="name"
+            />
+            <!-- <p>{{this.name}}</p> -->
             <br><br>
-            <input class="textinput" type="email" placeholder="Email" v-model="email">
+            <input 
+                class="textinput" 
+                type="email" 
+                placeholder="Email" 
+                v-model="email"
+            />
             <br><br>
-            <textarea class="textinput" placeholder="Your Message" rows="10" cols="30" v-model="message"></textarea>
+            <textarea 
+                class="textinput" 
+                placeholder="Your Message" 
+                rows="10" 
+                cols="30" 
+                v-model="message">
+            </textarea>
             <br><br>
-            <input class="submitButton" type="submit" value="Submit" v-on:click="submitForm">
+            <input 
+                class="submitButton" 
+                type="submit" 
+                value="Submit" 
+                v-on:click="submitForm">
         </form>
         <Footer></Footer>
     </div>
@@ -28,26 +49,32 @@ export default {
             name: "",
             email: "",
             message: "",
-            error: null,
         }
     },
     methods: {
         submitForm: function() {
             if (this.name == "") {
-                this.error = "Invalid Name"
+                alert("Invalid Name. Please try again")
             } else if (this.email == "") {
-                this.error = "Invalid Email"
+                alert("Invalid Email. Please try again")
             } else if (this.message == "") {
-                this.error = "Your message is empty!"
+                alert("Your message is empty! Please add a message")
             } else {
-                database.collection('enquiries').get()
+                database.collection("enquiries")
                 .add({
                     name: this.name,
                     email: this.email,
                     message: this.message
-                }).then(() => {
-                    alert("Your message has been submitted!")})
+                }).then(alert("Your message has been submitted!"))
+                /* console.log("bug here"); */
             }
+            
+            /* database.collection("enquiries")
+                .add({
+                    name: this.name,
+                    email: this.email,
+                    message: this.message
+                }).then(alert("Submitted")) */
         }
     }
 }
@@ -56,13 +83,14 @@ export default {
 <style scoped>
 .bg {
     background-color: ivory;
+    overflow-y: scroll;
 }
 #title {
     text-align: center;
 }
 .form {
     text-align: center;
-    padding-bottom: 45px;
+    margin-bottom: 85px;
 }
 .textinput {
     background-color: none;

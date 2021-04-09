@@ -6,7 +6,9 @@
       <li class="content"><router-link to="/contactus">Contact Us</router-link></li>
       <br />
       <li class="content">Follow Us</li>
+      <a href="https://www.instagram.com/growgreen.3103/">
       <img class="igIcon" src="https://cdn1.iconfinder.com/data/icons/social-media-outline-6/128/SocialMedia_Instagram-Outline-512.png">
+      </a>
       <br />
     </ul>
     <a id="copyright">&#169; 2021 BY GROWGREEN</a>
@@ -59,6 +61,7 @@ export default {
   letter-spacing: 0.03cm;
   font-size: 15px;
   margin-top: 0px;
+  padding-top:15px;
 }
 
 .content > a {
@@ -71,7 +74,9 @@ export default {
 }
 
 .igIcon{
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
+  padding-left: 10px;
+  padding-top: 8px;
 }
 </style>
