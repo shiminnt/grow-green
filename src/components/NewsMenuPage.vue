@@ -46,7 +46,7 @@ export default {
     return {
       info: null,
       a: 0,
-      b: 3,
+      b: 4,
       pageNo: 1,
       maxPage: 0,
     };
@@ -66,7 +66,7 @@ export default {
         )
         .then((response) => {
           this.info = response.data.articles;
-          this.maxPage = Math.floor(this.info.length/3) + 1
+          this.maxPage = Math.floor(this.info.length/4) + 1
         });
     },
     readArticle(event) {
@@ -78,8 +78,8 @@ export default {
 
     next() {
       if (this.pageNo != this.maxPage) {
-        this.a += 3;
-        this.b += 3;
+        this.a += 4;
+        this.b += 4;
         this.pageNo++;
       } else {
         alert("This is the last page")
@@ -89,8 +89,8 @@ export default {
 
     previous() {
       if (this.pageNo != 1) {
-        this.a -= 3;
-        this.b -= 3;
+        this.a -= 4;
+        this.b -= 4;
         this.pageNo--;
       } else {
         alert("This is the first page")
