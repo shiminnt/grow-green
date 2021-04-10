@@ -1,32 +1,36 @@
 <template>
   <div class="bg">
     <base-page></base-page>
-    <div class="sidenav">
-      <router-link to="/account/profile">Profile</router-link>
-      <router-link class="current" to="/account/edit">Edit Profile</router-link>
-      <router-link to="/account/changepassword">Change Password</router-link>
-    </div>
-    <div class="content">
-      <h1>Edit Profile</h1>
-      <div class="profilepic">
-        <div class="profilepic-input">
-          <p>Change your profile picture</p>
-          <input type="file" @change="previewImage" accept="image/*" /><br />
-          <br />
-          <button @click="onUpload">Upload</button>
-          <p>
-            Progress:
-            <progress
-              id="progress"
-              v-bind:value="uploadValue"
-              max="100"
-            ></progress>
-            {{ uploadValue.toFixed() + "%" }}
-          </p>
-        </div>
-        <div v-if="imageData != null" class="image-cropper">
-          <img class="preview" v-bind:src="picture" alt="Avatar" />
-          <br />
+    <div class="container">
+      <div class="sidenav">
+        <router-link to="/account/profile">Profile</router-link>
+        <router-link class="current" to="/account/edit"
+          >Edit Profile</router-link
+        >
+        <router-link to="/account/changepassword">Change Password</router-link>
+      </div>
+      <div class="content">
+        <h1>Edit Profile</h1>
+        <div class="profilepic">
+          <div class="profilepic-input">
+            <p>Change your profile picture</p>
+            <input type="file" @change="previewImage" accept="image/*" /><br />
+            <br />
+            <button @click="onUpload">Upload</button>
+            <p>
+              Progress:
+              <progress
+                id="progress"
+                v-bind:value="uploadValue"
+                max="100"
+              ></progress>
+              {{ uploadValue.toFixed() + "%" }}
+            </p>
+          </div>
+          <div v-if="imageData != null" class="image-cropper">
+            <img class="preview" v-bind:src="picture" alt="Avatar" />
+            <br />
+          </div>
         </div>
       </div>
     </div>
@@ -98,18 +102,20 @@ export default {
 <style scoped>
 .bg {
   background-color: ivory;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  justify-content: center;
 }
 .sidenav {
-  margin: 0;
-  padding: 0;
-  top: 150px;
-  width: 250px;
-  left: 250px;
+  width: 15%;
   background-color: rgb(243, 233, 219);
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+  float: left;
 }
 .sidenav a {
   text-decoration: none;
@@ -131,15 +137,12 @@ export default {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .content {
-  position: fixed;
-  width: 1000px;
-  left: 500px;
-  top: 150px;
-  padding: 8px 0;
+  text-align: left;
+  width: 60%;
+  padding: 8px 0px 8px 20px;
   background: #eadece;
-  padding-left: 20px;
-  height: 100%;
-  overflow: auto;
+  height: 1000px;
+  float: left;
 }
 .image-cropper {
   width: 200px;

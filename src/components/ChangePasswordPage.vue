@@ -1,23 +1,27 @@
 <template>
   <div class="bg">
     <base-page></base-page>
-    <div class="sidenav">
-      <router-link to="/account/profile">Profile</router-link>
-      <router-link to="/account/edit">Edit Profile</router-link>
-      <router-link class="current" to="/account/changepassword"
-        >Change Password</router-link
-      >
-    </div>
-    <div class="content">
-      <h1>Change Password</h1>
-      <form class="changepassword" @submit.prevent="submit">
-        <label for="newpassword">New Password</label><br />
-        <input id="newpassword" type="password" v-model="password" /><br />
-        <label for="confirm">Confirm Password</label><br />
-        <input id="confirm" type="password" v-model="confirmPassword" /><br />
-        <div v-show="passwordMatch" class="alert">{{ passwordMatchAlert }}</div>
-        <button id="setpassword" type="submit">Set New Password</button><br />
-      </form>
+    <div class="container">
+      <div class="sidenav">
+        <router-link to="/account/profile">Profile</router-link>
+        <router-link to="/account/edit">Edit Profile</router-link>
+        <router-link class="current" to="/account/changepassword"
+          >Change Password</router-link
+        >
+      </div>
+      <div class="content">
+        <h1>Change Password</h1>
+        <form class="changepassword" @submit.prevent="submit">
+          <label for="newpassword">New Password</label><br />
+          <input id="newpassword" type="password" v-model="password" /><br />
+          <label for="confirm">Confirm Password</label><br />
+          <input id="confirm" type="password" v-model="confirmPassword" /><br />
+          <div v-show="passwordMatch" class="alert">
+            {{ passwordMatchAlert }}
+          </div>
+          <button id="setpassword" type="submit">Set New Password</button><br />
+        </form>
+      </div>
     </div>
     <Footer></Footer>
   </div>
@@ -76,16 +80,18 @@ export default {
   background-color: ivory;
   overflow-y: scroll;
 }
-.sidenav {
-  margin: 0;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
   padding: 0;
-  top: 150px;
-  width: 250px;
-  left: 250px;
+  width: 100%;
+  justify-content: center;
+}
+.sidenav {
+  width: 15%;
   background-color: rgb(243, 233, 219);
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+  float: left;
 }
 .sidenav a {
   text-decoration: none;
@@ -107,15 +113,12 @@ export default {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .content {
-  position: fixed;
-  width: 1000px;
-  left: 500px;
-  top: 150px;
-  padding: 8px 20px;
+  text-align: left;
+  width: 60%;
+  padding: 8px 0px 8px 20px;
   background: #eadece;
-  padding-left: 20px;
-  height: 100%;
-  overflow: auto;
+  height: 1000px;
+  float: left;
 }
 input[type="password"],
 select {
