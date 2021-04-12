@@ -1,37 +1,39 @@
 <template>
   <div class="bg">
     <base-page></base-page>
-    <div class="sidenav">
-      <router-link class="current" to="/account/profile">Profile</router-link>
-      <router-link to="/account/edit">Edit Profile</router-link>
-      <router-link to="/account/changepassword">Change Password</router-link>
-    </div>
-    <div class="content">
-      <h1>Profile</h1>
-      <div v-if="photoUrl != null" class="image-cropper">
-        <img class="preview" v-bind:src="photoUrl" alt="Avatar" />
-        <br />
+    <div class="container">
+      <div class="sidenav">
+        <router-link class="current" to="/account/profile">Profile</router-link>
+        <router-link to="/account/edit">Edit Profile</router-link>
+        <router-link to="/account/changepassword">Change Password</router-link>
       </div>
+      <div class="content">
+        <h1>Profile</h1>
+        <div v-if="photoUrl != null" class="image-cropper">
+          <img class="preview" v-bind:src="photoUrl" alt="Avatar" />
+          <br />
+        </div>
         <div v-if="photoUrl == null" class="image-cropper">
-        <img class="preview" src="../assets/profileIcon.png" alt="Avatar" />
-        <br />
+          <img class="preview" src="../assets/profileIcon.png" alt="Avatar" />
+          <br />
+        </div>
+        <table>
+          <tr>
+            <td class="details">Username</td>
+            <td class="userdata">{{ this.displayName }}</td>
+          </tr>
+          <tr>
+            <td class="details">Email</td>
+            <td class="userdata">{{ this.email }}</td>
+          </tr>
+          <tr>
+            <td class="details">Date Joined</td>
+            <td class="userdata">{{ this.joinDate }}</td>
+          </tr>
+        </table>
       </div>
-      <table>
-        <tr>
-          <td class="details">Username</td>
-          <td class="userdata">{{ this.displayName }}</td>
-        </tr>
-        <tr>
-          <td class="details">Email</td>
-          <td class="userdata">{{ this.email }}</td>
-        </tr>
-        <tr>
-          <td class="details">Date Joined</td>
-          <td class="userdata">{{ this.joinDate }}</td>
-        </tr>
-      </table>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
@@ -80,18 +82,20 @@ export default {
 <style scoped>
 .bg {
   background-color: ivory;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  justify-content: center;
 }
 .sidenav {
-  margin: 0;
-  padding: 0;
-  top: 150px;
-  width: 250px;
-  left: 250px;
+  width: 15%;
   background-color: rgb(243, 233, 219);
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+  float: left;
 }
 .sidenav a {
   text-decoration: none;
@@ -113,16 +117,12 @@ export default {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .content {
-  position: fixed;
-  width: 1000px;
-  left: 500px;
-  top: 150px;
-  padding: 8px 0;
+  text-align: left;
+  width: 60%;
+  padding: 8px 0px 8px 20px;
   background: #eadece;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 100%;
-  overflow: auto;
+  height: 1000px;
+  float: left;
 }
 .image-cropper {
   width: 300px;
@@ -139,7 +139,7 @@ img.preview {
   height: 100%;
   width: auto;
 }
-#default{
+#default {
   display: inline;
   margin: 0 auto;
   height: 100%;

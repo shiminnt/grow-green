@@ -16,7 +16,7 @@
           <button class="learnmoreButton" v-bind:id="e.doc_id" v-on:click="getDetails($event)">Learn More</button>
         </li>
       </ul>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
 <style scoped>
 .bg {
   background-color: ivory;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .events {
   display: flex;
@@ -93,7 +93,7 @@ export default {
   width: 250px;
   height: 300px;
 }
-.learnmoreButton{
+.learnmoreButton {
   align-content: center;
   background-color: rgb(30, 44, 6);
   color:ivory;
@@ -102,5 +102,8 @@ export default {
   border-radius: 5px;
   width: 100px;
   font-family:Futura;
+}
+.learnmoreButton:hover {
+  color:rgb(131, 141, 114); 
 }
 </style>

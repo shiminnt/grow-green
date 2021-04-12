@@ -2,7 +2,7 @@
 <template>
   <div class="bg">
     <Header></Header>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 

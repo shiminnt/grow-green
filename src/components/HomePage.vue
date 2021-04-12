@@ -108,6 +108,7 @@ export default {
         .then(() => {
           console.log("Document successfully written!");
           auth.signOut().then(() => {
+            sessionStorage.clear()
             this.$router.replace({
               name: "login",
             });

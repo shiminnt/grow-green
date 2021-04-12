@@ -15,7 +15,7 @@
       <button v-show="this.numTreesCanPlant() > 0" v-on:click="plantTree">Plant Another Tree</button>
       <button v-on:click="goToQuiz">Do Quiz</button>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 

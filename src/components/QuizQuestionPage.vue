@@ -31,7 +31,7 @@
         ><br />
       </div>
       <div id="funfactBox">{{ qn.addInfo }}</div>
-      <Footer />
+      <Footer></Footer>
     </div>
   </div>
 </template>
@@ -121,7 +121,7 @@ export default {
 <style scoped>
 .bg {
   background-color: ivory;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #questionBox {

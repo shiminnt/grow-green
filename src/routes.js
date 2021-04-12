@@ -13,6 +13,9 @@ import VolunteerPage from "./components/VolunteerPage.vue";
 import ProfilePage from "./components/ProfilePage.vue";
 import EditProfilePage from "./components/EditProfilePage.vue";
 import ChangePasswordPage from "./components/ChangePasswordPage.vue";
+import AboutUs from "./components/AboutUs.vue";
+import ContactUs from "./components/ContactUs.vue";
+
 
 export default [
     { path: "/", name: "login", component: LoginPage },
@@ -94,4 +97,16 @@ export default [
         component: ChangePasswordPage,
         meta: { requiresAuth: true },
     },
+    {
+        path: "/aboutus",
+        name: "aboutus",
+        component: AboutUs,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/contactus",
+        name: "contactus",
+        component: ContactUs,
+        meta: {requiresAuth: true },
+    }
 ];

@@ -30,7 +30,7 @@
       <p id="t">{{ pageNo }}</p>
       <p id="t" v-on:click="next">Next Page &#8594;</p> 
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
     return {
       info: null,
       a: 0,
-      b: 3,
+      b: 4,
       pageNo: 1,
       maxPage: 0,
     };
@@ -62,11 +62,11 @@ export default {
     mounted() {
       axios
         .get(
-          `https://newsapi.org/v2/everything?q=Environment&from=2021-03-15&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
+          `https://newsapi.org/v2/everything?q=Climate&from=2021-03-15&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
         )
         .then((response) => {
           this.info = response.data.articles;
-          this.maxPage = Math.floor(this.info.length/3) + 1
+          this.maxPage = Math.floor(this.info.length/4) + 1
         });
     },
     readArticle(event) {
@@ -78,8 +78,8 @@ export default {
 
     next() {
       if (this.pageNo != this.maxPage) {
-        this.a += 3;
-        this.b += 3;
+        this.a += 4;
+        this.b += 4;
         this.pageNo++;
       } else {
         alert("This is the last page")
@@ -89,8 +89,8 @@ export default {
 
     previous() {
       if (this.pageNo != 1) {
-        this.a -= 3;
-        this.b -= 3;
+        this.a -= 4;
+        this.b -= 4;
         this.pageNo--;
       } else {
         alert("This is the first page")
@@ -106,7 +106,7 @@ export default {
 <style scoped>
 .bg {
   background-color: ivory;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 #newsList {
   justify-content: center;
