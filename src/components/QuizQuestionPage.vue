@@ -30,7 +30,7 @@
           Next Question</button
         ><br />
       </div>
-      <div id="funfactBox">{{ qn.addInfo }}</div>
+      <div id="funfactBox" v-show="correct">{{ qn.addInfo }}</div>
       <Footer></Footer>
     </div>
   </div>
@@ -58,6 +58,8 @@ export default {
       color: '#84735e',
       a: 0,
       b: 1,
+      correct: false,
+      firstTry: true,
     };
   },
   methods: {
@@ -85,22 +87,27 @@ export default {
       console.log(qn.options[chosen]);
       if (qn.options[chosen]) {
         document.getElementById(event.target.getAttribute("id")).style.backgroundColor = '#2B8B35'
+        this.correct = true;
         if (!this.completedQuestions.includes(qn.question)) {
           var done = {
             qNo: qn.question,
             planted: 0,
+            rightOnFirstTry: this.firstTry,
           };
           this.$store.dispatch("updateQuestionsDone", done);
           this.completedQuestions.push(done.qNo);
         }
       } else {
         document.getElementById(event.target.getAttribute("id")).style.backgroundColor = '#C52A2A'
+        this.firstTry = false;
       }
     },
 
     nextQuestion: function () {
       this.a++;
       this.b++;
+      this.correct = false;
+      this.firstTry = true;
     },
 
     kBank: function () {

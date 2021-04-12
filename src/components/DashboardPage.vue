@@ -2,6 +2,7 @@
 <template>
   <div class="bg">
     <Header></Header>
+    <DonutChart />
     <Footer></Footer>
   </div>
 </template>
@@ -10,9 +11,10 @@
 import Header from './Header.vue';
 import Footer from './Footer.vue'
 import {mapGetters} from 'vuex'
+import DonutChart from './pieDashboard.vue'
 
 export default {
-  components: { Header, Footer },
+  components: { Header, Footer, DonutChart},
   name: "Dashboard",
   data: function () {
     return {
