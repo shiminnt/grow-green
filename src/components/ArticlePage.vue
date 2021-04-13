@@ -61,8 +61,8 @@ export default {
         var article = {
           name: title,
           date: {
-            month: currentDate.getMonth(),
-            day: currentDate.getDay(),
+            month: currentDate.toLocaleString('default', { month: 'long' }),
+            day: currentDate.getDate(),
           },
         };
         this.$store.dispatch("updateArticlesRead", article);
@@ -85,6 +85,7 @@ export default {
 }
 
 .photo {
+  padding: 42px;
   width: 30vw;
   justify-content: center;
 }

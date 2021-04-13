@@ -96,8 +96,8 @@ export default {
             planted: 0,
             rightOnFirstTry: this.firstTry,
             date: {
-              month: currentDate.getMonth(),
-              day: currentDate.getDay()
+              month: currentDate.toLocaleString('default', { month: 'long' }),
+              day: currentDate.getDate()
             }
           };
           this.$store.dispatch("updateQuestionsDone", done);
