@@ -37,7 +37,7 @@ export default {
     background-color: rgb(245, 222, 179);
     justify-content: space-between;
     text-align: right;
-    position: relative;
+    position: sticky;
     bottom: 0pt;
     width: 100%;
     height: 55px;
