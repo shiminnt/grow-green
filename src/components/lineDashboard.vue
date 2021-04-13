@@ -1,6 +1,5 @@
 <template>
   <div class="chart">
-    <h1>Mixed Chart</h1>
     <chart></chart>
   </div>
 </template>

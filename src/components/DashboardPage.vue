@@ -2,8 +2,11 @@
 <template>
   <div class="bg">
     <Header></Header>
-    <DonutChart />
-    <line-chart></line-chart>
+    <h1 class="heading"> Dashboard </h1>
+    <div id="charts">
+      <donut-chart class="charts"></donut-chart>
+      <line-chart class="charts"></line-chart>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -36,4 +39,10 @@ export default {
   background-color: ivory;
   overflow: scroll;
 }
+
+.heading {
+  font-family: Futura, Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
 </style>
