@@ -1,3 +1,4 @@
+
 import { Doughnut } from "vue-chartjs";
 
 export default {

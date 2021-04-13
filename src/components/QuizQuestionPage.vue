@@ -85,6 +85,8 @@ export default {
       console.log(event.target.getAttribute("id"));
       var chosen = event.target.getAttribute("id");
       console.log(qn.options[chosen]);
+      var currentDate = new Date()
+      console.log(currentDate.getDate)
       if (qn.options[chosen]) {
         document.getElementById(event.target.getAttribute("id")).style.backgroundColor = '#2B8B35'
         this.correct = true;
@@ -93,6 +95,10 @@ export default {
             qNo: qn.question,
             planted: 0,
             rightOnFirstTry: this.firstTry,
+            date: {
+              month: currentDate.getMonth(),
+              day: currentDate.getDay()
+            }
           };
           this.$store.dispatch("updateQuestionsDone", done);
           this.completedQuestions.push(done.qNo);

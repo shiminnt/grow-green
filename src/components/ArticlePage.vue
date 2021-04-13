@@ -5,9 +5,11 @@
     <div class="article">
       <h1>{{ articleSet[0].title }}</h1>
       <img class="photo" v-bind:src="articleSet[0].urlToImage" />
-      <p id="content">{{ articleSet[0].content.slice(0,150) }} ...</p>
-      <br>
-      <p class="external" v-on:click="goToExternalArticle"> Interested? Read more here</p>
+      <p id="content">{{ articleSet[0].content.slice(0, 150) }} ...</p>
+      <br />
+      <p class="external" v-on:click="goToExternalArticle">
+        Interested? Read more here
+      </p>
     </div>
 
     <Footer></Footer>
@@ -18,7 +20,7 @@
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import axios from "axios";
-import {mapGetters} from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   name: "Article",
@@ -28,9 +30,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([
-      'userData'
-    ])
+    ...mapGetters(["userData"]),
   },
   components: {
     Header,
@@ -43,24 +43,31 @@ export default {
           `https://newsapi.org/v2/everything?q=Climate&from=2021-03-15&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
         )
         .then((response) => {
-          response.data.articles.forEach(article => {
-
-            if(article.title == this.$route.params.id) {
-              this.articleSet.push(article)
+          response.data.articles.forEach((article) => {
+            if (article.title == this.$route.params.id) {
+              this.articleSet.push(article);
             }
-          })
-        })
+          });
+        });
     },
     goToExternalArticle() {
-      var title = this.$route.params.id
-      window.open(this.articleSet[0].url, "_blank")
-      console.log("Checking")
-      console.log(title)
-      if (!(this.userData.articlesRead.includes(title))) {
-        console.log("Not Included!")
-        this.$store.dispatch('updateArticlesRead', title)
+      var title = this.$route.params.id;
+      window.open(this.articleSet[0].url, "_blank");
+      var currentDate = new Date();
+      console.log("Checking");
+      console.log(title);
+      if (!this.userData.articlesRead.includes(title)) {
+        console.log("Not Included!");
+        var article = {
+          name: title,
+          date: {
+            month: currentDate.getMonth(),
+            day: currentDate.getDay(),
+          },
+        };
+        this.$store.dispatch("updateArticlesRead", article);
       }
-    }
+    },
   },
   created() {
     this.mounted();
@@ -74,7 +81,7 @@ export default {
 }
 
 .article {
-  text-align:center;
+  text-align: center;
 }
 
 .photo {
