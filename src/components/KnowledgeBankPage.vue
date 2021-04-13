@@ -54,7 +54,12 @@ export default {
     },
     plantTree: function () {
       if (this.numTreesCanPlant() > 0) {
-        this.$store.dispatch('updateTreesPlanted');
+        var currentDate = new Date()
+        var date = {
+            month: currentDate.getMonth(),
+            day: currentDate.getDay(),
+        }
+        this.$store.dispatch('updateTreesPlanted', date);
         this.$router.push("planttrees");
       } else {
         alert("Tree cannot be planted. Try more questions!")

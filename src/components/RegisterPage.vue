@@ -81,6 +81,7 @@ export default {
                 numTrees: 0,
                 articlesRead: [],
                 questionsDone: [],
+                treeDates: [],
               })
               .then(() => {});
             this.$router.replace({ name: "home" });
