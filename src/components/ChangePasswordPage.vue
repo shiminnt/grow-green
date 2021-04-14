@@ -11,6 +11,7 @@
       </div>
       <div class="content">
         <h1>Change Password</h1>
+        <div id=passwordform>
         <form class="changepassword" @submit.prevent="submit">
           <label for="newpassword">New Password</label><br />
           <input id="newpassword" type="password" v-model="password" /><br />
@@ -21,6 +22,7 @@
           </div>
           <button id="setpassword" type="submit">Set New Password</button><br />
         </form>
+        </div>
       </div>
     </div>
     <Footer></Footer>
@@ -120,9 +122,12 @@ export default {
   height: 1000px;
   float: left;
 }
+#passwordform {
+  width:60%
+}
 input[type="password"],
 select {
-  width: 60%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -131,14 +136,17 @@ select {
   box-sizing: border-box;
 }
 #setpassword {
-  width: 60%;
+  width: 160px;
   background-color: white;
   color: black;
   padding: 14px 20px;
   margin: 8px 0;
   border: 2px solid #873600;
-  border-radius: 4px;
   cursor: pointer;
+  float: right;
+  border-radius: 40px;
+  padding: 15px;
+  text-align: center;
 }
 #setpassword:hover {
   background-color: #873600;

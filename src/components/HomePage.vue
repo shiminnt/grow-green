@@ -29,10 +29,6 @@
             </div>
           </div>
         </ul>
-        <div>
-          <p id="overviewButton" v-on:click="overview">Overview</p>
-          <p id="knowledgeButton" v-on:click="goToKnowledgeBank">Plant Tree</p>
-        </div>
       </div>
       <div id="overview">
         <div class="overviewBoxes" id="treesPlanted">
@@ -48,6 +44,10 @@
           <p class="text">questions<br />done</p>
         </div>
       </div>
+              <div class=buttons>
+          <p id="overviewButton" v-on:click="overview">Overview</p>
+          <p id="knowledgeButton" v-on:click="goToKnowledgeBank">Plant Tree</p>
+        </div>
     </div>
     <Footer></Footer>
   </div>
@@ -225,8 +225,10 @@ export default {
   border-radius: 50%;
 }
 #overviewButton {
-  margin-top: 34vw;
-  margin-left: 65vw;
+  /* margin-top: 34vw;
+  margin-left: 65vw; */
+    /* margin-top: 20%;
+  margin-left: 55%; */
   font-family: Futura;
   background-color: rgb(6, 48, 6);
   color: whitesmoke;
@@ -234,11 +236,13 @@ export default {
   padding: 15px;
   text-align: center;
   width: 160px;
-  position: sticky;
+  float:left;
 }
 #knowledgeButton {
-  margin-top: 34vw;
-  margin-left: 42vw;
+  /* margin-top: 34vw;
+  margin-left: 42vw; */
+  /* margin-top: 20%;
+  margin-left: 35%; */
   font-family: Futura;
   background-color: rgb(6, 48, 6);
   color: whitesmoke;
@@ -246,7 +250,8 @@ export default {
   padding: 15px;
   text-align: center;
   width: 160px;
-  position: sticky;
+  float:left;
+  margin-left: 25%;
 }
 .header {
   height: 100px;
@@ -262,9 +267,12 @@ export default {
   opacity: 82%;
   margin-top: 20%;
   margin-left: 25%;
-  padding-right: 5%;
+  padding-right: 3%;
+  padding-left: 3%;
   background: #eadece;
   border-radius: 12%;
+  justify-content: center; 
+  align-items: center;
 }
 
 .number {
@@ -274,5 +282,9 @@ export default {
 
 .text {
   font-size: 30px;
+}
+.buttons{
+  margin-top: 5%;
+  margin-left: 40%;
 }
 </style>

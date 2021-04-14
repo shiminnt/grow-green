@@ -1,8 +1,15 @@
 <template>
   <div class="bg">
     <Header></Header>
+	<div class="filter">
+    Time: 
+		<label><input type="radio" v-model="time" value="All" /> All</label>
+		<label><input type="radio" v-model="time" value="Morning" /> Morning</label>
+		<label><input type="radio" v-model="time" value="Afternoon" /> Afternoon</label>
+		<label><input type="radio" v-model="time" value="Evening" /> Evening</label>
+	</div>
       <ul class="events">
-        <li v-for="e in events" v-bind:key="e.id">
+        <li v-for="e in filteredTime" v-bind:key="e.id">
             <img class="coverImg" :src=e.imgURL>
             <h3>{{e.title}}</h3>
             <div class="details">
@@ -31,7 +38,8 @@ export default {
   name: "VolunteerMenu",
   data: function () {
     return {
-        events: []
+        events: [],
+        time: "All"
     };
   },
   methods: {
@@ -54,7 +62,24 @@ export default {
   computed: {
     ...mapGetters([
       'userData'
-    ])
+    ]),
+    filteredTime: function() {
+			if(this.time === "All") {
+				return this.events;
+			} else if (this.time === "Morning") {
+				return this.events.filter(function(event) {
+					return event.time[0] < 1200;
+				});
+			} else if (this.time === "Afternoon") {
+				return this.events.filter(function(event) {
+					return event.time[0] < 1800 && event.time[0] >= 1200;
+				});
+			} else{
+				return this.events.filter(function(event) {
+					return event.time[0] >= 1800;
+				});
+			}
+		}
   }
 };
 </script>
@@ -105,5 +130,10 @@ export default {
 }
 .learnmoreButton:hover {
   color:rgb(131, 141, 114); 
+}
+.filter {
+margin-left: 25px;
+margin-top: 10px;
+font-family:Trebuchet MS;
 }
 </style>
