@@ -140,7 +140,7 @@ export default {
   position: relative;
 }
 #ggName {
-  position: fixed;
+  position: sticky;
   top: 35px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 30px;
@@ -234,7 +234,7 @@ export default {
   padding: 15px;
   text-align: center;
   width: 160px;
-  position: fixed;
+  position: sticky;
 }
 #knowledgeButton {
   margin-top: 34vw;
@@ -246,7 +246,7 @@ export default {
   padding: 15px;
   text-align: center;
   width: 160px;
-  position: fixed;
+  position: sticky;
 }
 .header {
   height: 100px;
