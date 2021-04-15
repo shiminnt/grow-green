@@ -66,15 +66,7 @@ export default {
                     email: this.email,
                     message: this.message
                 }).then(alert("Your message has been submitted!"))
-                /* console.log("bug here"); */
             }
-            
-            /* database.collection("enquiries")
-                .add({
-                    name: this.name,
-                    email: this.email,
-                    message: this.message
-                }).then(alert("Submitted")) */
         }
     }
 }
