@@ -20,7 +20,7 @@
           <div v-show="passwordMatch" class="alert">
             {{ passwordMatchAlert }}
           </div>
-          <button id="setpassword" type="submit">Set New Password</button><br />
+          <button id="setpassword" type="submit">Confirm New Password</button><br />
         </form>
         </div>
       </div>
@@ -136,20 +136,31 @@ select {
   box-sizing: border-box;
 }
 #setpassword {
-  width: 160px;
-  background-color: white;
-  color: black;
-  padding: 14px 20px;
+  width: 200px;
+  background-color: black;
+  color: white;
+  font-family: Futura;
+  padding: 14px 10px;
   margin: 8px 0;
-  border: 2px solid #873600;
+  border: 0px;
   cursor: pointer;
   float: right;
   border-radius: 40px;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
 }
 #setpassword:hover {
   background-color: #873600;
   color: white;
+}
+#newpassword {
+  background: none;
+  border: 0px solid;
+  background: linear-gradient(#000, #000) center bottom 1px /calc(100% - 10px) 1px no-repeat;
+}
+#confirm {
+  background: none;
+  border: 0px solid;
+  background: linear-gradient(#000, #000) center bottom 1px /calc(100% - 10px) 1px no-repeat;
 }
 </style>
