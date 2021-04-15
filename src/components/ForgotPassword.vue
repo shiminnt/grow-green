@@ -58,6 +58,7 @@ export default {
   padding: 15px 0px;
   margin-bottom: 10px;
   outline: none;
+  width:300px;
 }
 #resetbutton {
   background-color: black;

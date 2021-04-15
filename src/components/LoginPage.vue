@@ -107,6 +107,7 @@ p {
   padding: 15px 0px;
   margin-bottom: 10px;
   outline: none;
+  width:200px;
 }
 #loginbutton {
   background-color: black;

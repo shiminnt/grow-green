@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
 import Routes from "./routes.js";
-import { auth } from "./firebase.js";
+import { auth, database } from "./firebase.js";
 import { store } from "./store.js";
 
 Vue.config.productionTip = false;
@@ -33,6 +33,22 @@ auth.onAuthStateChanged(() => {
             store: store,
             router: myRouter,
             render: (h) => h(App),
+            created() {
+                window.addEventListener('beforeunload', this.onClose)
+            },
+            methods: {
+                onClose: function onClose() {
+                    const user = auth.currentUser;
+                    const uid = user.uid;
+                          database
+                              .collection("users")
+                              .doc(uid)
+                              .set(this.userData)
+                              .then(() => {
+                                console.log("saved");
+                              });
+                  }
+                }
         }).$mount("#app");
     }
 });

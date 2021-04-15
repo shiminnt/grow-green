@@ -33,14 +33,15 @@ export default {
 
 <style scope>
 #footer {
-    display: flex;
     background-color: rgb(245, 222, 179);
+    display:flex;
     justify-content: space-between;
     text-align: right;
-    position: sticky;
-    bottom: 0pt;
+    position: absolute;
     width: 100%;
-    height: 55px;
+    bottom: 0;
+    height: 60px;
+    line-height: 20px;
 }
 #copyright {
     font-family: cormorantgaramond;
