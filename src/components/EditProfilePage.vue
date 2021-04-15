@@ -14,9 +14,13 @@
         <div class="profilepic">
           <div class="profilepic-input">
             <p>Change your profile picture</p>
-            <input type="file" @change="previewImage" accept="image/*" /><br />
+            <label for="file-upload" class="fileupload">
+              Choose File
+              </label>
+              <span v-if="this.noImage">No File Chosen</span>
+            <input id="file-upload" type="file" @change="previewImage" accept="image/*" style="display:none"/><br />
             <br />
-            <button @click="onUpload">Upload</button>
+            <button class="uploadButton" @click="onUpload">Upload</button>
             <p>
               Progress:
               <progress
@@ -50,6 +54,7 @@ export default {
       imageData: null,
       picture: null,
       uploadValue: 0,
+      noImage: true,
     };
   },
   computed: {
@@ -60,6 +65,7 @@ export default {
       this.uploadValue = 0;
       this.picture = URL.createObjectURL(event.target.files[0]);
       this.imageData = event.target.files[0];
+      this.noImage = !this.noImage;
     },
     onUpload() {
       this.picture = null;
@@ -168,5 +174,30 @@ img.preview {
 }
 .profilepic-input {
   padding-right: 20px;
+}
+.uploadButton {
+  background-color: black;
+  border: none;
+  color: white;
+  font-family: unset;
+  font-size: 15px;
+  padding: 5px 25px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+.fileupload {
+  background-color: black;
+  border: none;
+  color: white;
+  font-family: unset;
+  font-size: 15px;
+  padding: 5px 25px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 0px;
 }
 </style>
