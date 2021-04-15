@@ -56,7 +56,11 @@ export default {
       var currentDate = new Date();
       console.log("Checking");
       console.log(title);
-      if (!this.userData.articlesRead.includes(title)) {
+      var articleTitle = [];
+      for (var i = 0; i < this.userData.articlesRead.length; i++) {
+        articleTitle.push(this.userData.articlesRead[i].name);
+      }
+      if (!articleTitle.includes(title)) {
         console.log("Not Included!");
         var article = {
           name: title,
