@@ -11,7 +11,8 @@ export default {
                 type: "line",
                 borderColor: "#062F4F",
                 data: [0,0,0,0,0,0,0],
-                fill: false
+                fill: false,
+
               }, {
                 label: "Articles Read",
                 type: "line",

@@ -3,10 +3,10 @@
   <div class="bg">
     <Header></Header>
     <h1 class="heading"> Dashboard </h1>
-    <leaderboard id="leaderboard"></leaderboard>
     <div id="charts">
       <donut-chart class="charts" id="donutchart"></donut-chart>
       <line-chart class="charts" id="linechart"></line-chart>
+      <leaderboard id="leaderboard"></leaderboard>
     </div>
     <Footer></Footer>
   </div>
@@ -25,13 +25,16 @@ export default {
   name: "Dashboard",
   data: function () {
     return {
-        Header
+        Header,
+        LineChart
     };
   },
   computed: {
     ...mapGetters([
       'userData'
     ])
+  },
+  methods: {
   }
 };
 </script>
@@ -59,7 +62,6 @@ export default {
 
 #leaderboard {
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 </style>

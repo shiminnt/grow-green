@@ -55,7 +55,6 @@ export default {
       window.open(this.articleSet[0].url, "_blank");
       var currentDate = new Date();
       console.log("Checking");
-      console.log(title);
       if (!this.userData.articlesRead.includes(title)) {
         console.log("Not Included!");
         var article = {
