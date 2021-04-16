@@ -44,9 +44,9 @@ export default {
   name: "NewsMenu",
   data: function () {
     return {
-      info: null,
+      info: [],
       a: 0,
-      b: 4,
+      b: 3,
       pageNo: 1,
       maxPage: 0,
     };
@@ -66,7 +66,9 @@ export default {
         )
         .then((response) => {
           this.info = response.data.articles;
-          this.maxPage = Math.floor(this.info.length/4) + 1
+          console.log(response.data.articles[0].title);
+          console.log(this.info[0].title);
+          this.maxPage = Math.floor(this.info.length/3) + 1
         });
     },
     readArticle(event) {
@@ -89,8 +91,8 @@ export default {
 
     previous() {
       if (this.pageNo != 1) {
-        this.a -= 4;
-        this.b -= 4;
+        this.a -= 3;
+        this.b -= 3;
         this.pageNo--;
       } else {
         alert("This is the first page")
