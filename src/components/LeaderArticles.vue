@@ -15,7 +15,7 @@
                     )"
                     :key="i"
                 >
-                    <th scope="row">{{ ++i }}</th>
+                    <td scope="row">{{ ++i }}</td>
                     <td>{{ user.user }}</td>
                     <td>{{ user.value }}</td>
                 </tr>
@@ -25,8 +25,9 @@
 </template>
 
 <script>
-import { database } from "../firebase.js";
+import { database} from "../firebase.js";
 import { mapGetters } from "vuex";
+
 
 export default {
     data: function() {
@@ -69,4 +70,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+table {
+    width: 100%;
+    margin-left: 20px;
+    height: 100%
+}
+
+th {
+    background-color: rgba(129, 55, 114, 0.2);
+    border-bottom: 1px solid #813772;
+}
+
+td {
+    border-bottom: 1px solid #813772;
+}
+
+</style>
