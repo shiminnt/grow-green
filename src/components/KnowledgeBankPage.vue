@@ -57,8 +57,8 @@ export default {
         this.$router.push({name: "planttrees"});
         var currentDate = new Date()
         var date = {
-            month: currentDate.getMonth(),
-            day: currentDate.getDay(),
+            month: currentDate.toLocaleString('default', { month: 'long' }),
+            day: currentDate.getDate(),
         }
         this.$store.dispatch('updateTreesPlanted', date);
         

@@ -111,13 +111,19 @@ export default {
 
 .button {
   display: inline-block;
-  background-color: black;
   border: none;
-  color: white;
+  color: black;
   font-family: unset;
   margin: 5px;
   border-radius: 30px;
   font-weight: 600;
+  background-color: none;
+}
+
+.button:focus {
+  background-color: #063006;
+  color: ivory;
+  outline: none;
 }
 
 #comp {

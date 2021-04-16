@@ -114,7 +114,7 @@ export default {
       var d = new Date();
       d.setDate(d.getDate() - 7);
       for (var i = 0; i < 7; i++) {
-        this.labels.push(d.getDate() + "/" + d.getMonth());
+        this.labels.push((d.getDate()+1) + " " + d.toLocaleString('default', { month: 'long' }));
         d.setDate(d.getDate() + 1);
         for (
           var y = 0;
@@ -123,7 +123,7 @@ export default {
         ) {
           if (
             this.$store.state.userData.questionsDone[y].date.month ==
-              d.getMonth() &&
+              d.toLocaleString('default', { month: 'long' }) &&
             this.$store.state.userData.questionsDone[y].date.day == d.getDate()
           ) {
             datasets.questionsDone.data[i]++;
@@ -137,15 +137,17 @@ export default {
         ) {
           if (
             this.$store.state.userData.articlesRead[x].date.month ==
-              d.getMonth() &&
+              d.toLocaleString('default', { month: 'long' }) &&
             this.$store.state.userData.articlesRead[x].date.day == d.getDate()
           ) {
             datasets.articlesRead.data[i]++;
           }
         }
         for (var z = 0; z < this.$store.state.userData.treeDates.length; z++) {
+          console.log(z)
+          console.log("trees date: " + this.$store.state.userData.treeDates[z].month + " " + this.$store.state.userData.treeDates[z].day)
           if (
-            this.$store.state.userData.treeDates[z].month == d.getMonth() &&
+            this.$store.state.userData.treeDates[z].month == d.toLocaleString('default', { month: 'long' }) &&
             this.$store.state.userData.treeDates[z].day == d.getDate()
           ) {
             datasets.treesPlanted.data[i]++;
