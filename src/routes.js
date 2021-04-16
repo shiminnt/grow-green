@@ -15,6 +15,9 @@ import EditProfilePage from "./components/EditProfilePage.vue";
 import ChangePasswordPage from "./components/ChangePasswordPage.vue";
 import AboutUs from "./components/AboutUs.vue";
 import ContactUs from "./components/ContactUs.vue";
+import ContributeQuiz from "./components/ContributeQuizPage.vue";
+import PubliciseEvent from "./components/PubliciseEventPage.vue";
+import UserQuizQuestionsPage from './components/UserQuizQuestionsPage.vue';
 
 
 export default [
@@ -74,6 +77,12 @@ export default [
         meta: { requiresAuth: true },
     },
     {
+        path: "/userquizquestions",
+        name: "userquizquestions",
+        component: UserQuizQuestionsPage,
+        meta: { requiresAuth: true },
+    },
+    {
         path: "/volunteer",
         name: "volunteer",
         component: VolunteerPage,
@@ -108,5 +117,16 @@ export default [
         name: "contactus",
         component: ContactUs,
         meta: {requiresAuth: true },
+    },
+    {
+        path: "/contributequiz",
+        name: "ContributeQuiz",
+        component: ContributeQuiz,
+        meta: {requiresAuth: true },
+    },
+    {
+        path: "/publiciseevent",
+        name: "PubliciseEvent",
+        component: PubliciseEvent,
     }
 ];
