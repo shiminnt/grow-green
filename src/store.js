@@ -25,7 +25,7 @@ export const store = new Vuex.Store({
         updateArticlesRead: (state, title) => {
             state.userData.articlesRead.push(title);
             state.userData.numArticles += 1;
-        },
+        }, 
         updateQuestionsDone: (state, qNumber) => {
             state.userData.questionsDone.push(qNumber);
             state.userData.numQuiz += 1;

@@ -3,21 +3,21 @@
         <table id="percentRight">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Score</th>
+                    <th class="head3" scope="col">#</th>
+                    <th class="head3" scope="col">Name</th>
+                    <th class="head3" scope="col">Score</th>
                 </tr>
             </thead>
             <tbody>
                 <tr
                     v-for="(user, i) in users.sort((a, b) =>
                         a.value > b.value ? -1 : 1
-                    )"
+                    ).slice(0,10)"
                     :key="i"
                 >
-                    <th scope="row">{{ ++i }}</th>
-                    <td>{{ user.user }}</td>
-                    <td>{{ user.value }}</td>
+                    <td class="row3" scope="row">{{ ++i }}</td>
+                    <td class="row3">{{ user.user }}</td>
+                    <td class="row3">{{ user.value }}</td>
                 </tr>
             </tbody>
         </table>
@@ -68,4 +68,22 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+table {
+    width: 90%;
+    margin-left: 20px;
+    height: 40vh;
+    margin-top: 30px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.head3 {
+    background-color:rgba(184, 38, 1, 0.2);
+    border-bottom: 1px solid #B82601;
+}
+
+.row3 {
+    border-bottom: 1px solid #B82601;
+}
+</style>
