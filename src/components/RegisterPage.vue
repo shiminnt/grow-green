@@ -59,6 +59,7 @@ export default {
       passwordMatchAlert: "Passwords do not match.",
       passwordMatch: false,
       error: null,
+      takenNames:[],
     };
   },
   methods: {
@@ -67,6 +68,8 @@ export default {
         this.error = "Invalid name.";
       } else if (this.passwordMatch) {
         this.error = "Please check your passwords.";
+      } else if (this.takenNames.includes(this.name)) {
+        this.error = "This username has been taken.";
       } else {
         auth
           .createUserWithEmailAndPassword(this.email, this.password)
@@ -92,6 +95,16 @@ export default {
     gotoLogin() {
       this.$router.push("/");
     },
+    fetchUserData() {
+      database
+        .collection("users")
+        .get()
+        .then((snapshot) => {
+          snapshot.docs.forEach((doc) => {
+              this.takenNames.push(doc.data().displayName);
+          });
+        });
+    }
   },
   watch: {
     confirmPassword: function () {
@@ -103,6 +116,9 @@ export default {
       }
     },
   },
+  created() {
+    this.fetchUserData();
+  }
 };
 </script>
 
