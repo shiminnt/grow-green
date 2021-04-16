@@ -147,6 +147,7 @@ export default {
   padding: 15px 50px;
   margin-bottom: 10px;
   outline: none;
+  width:200px;
 }
 #signupbutton {
   background-color: black;

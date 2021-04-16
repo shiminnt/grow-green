@@ -93,7 +93,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
-  padding: 0;
+  padding-bottom: 50px;
 }
 .details {
   text-align: left;

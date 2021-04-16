@@ -151,6 +151,7 @@ export default {
   margin: auto;
   display: flex;
   justify-content: center;
+  padding-bottom:50px;
 }
 
 .nbutton {
@@ -174,6 +175,7 @@ export default {
 #funfactBox {
   margin: auto;
   text-align: center;
+  padding-bottom:100px;
 }
 
 #questionsDoneBox {
@@ -182,7 +184,7 @@ export default {
   background: #eadece;
   border-radius: 12%;
   width: 10vw;
-  height: 10vh;
+  height: 90px;
   margin-left: 10px;
   justify-content: center;
 }

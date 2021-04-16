@@ -26,12 +26,15 @@
             <a class="iconTitle"> News </a>
             <a class="iconTitle"> Quiz </a>
         </div>
+        <div class="textinfo">
         <h2 class="heading2">Our Vision</h2>
-        <center class="textinfo">We envision a world where everyone is socially responsible and well-informed,
+        <center>We envision a world where everyone is socially responsible and well-informed,
             making decisions based on what is the best for the environment.
         </center>
         <h2 class="heading2">Our Mission</h2>
-        <center class="textinfo">To inform, educate and inspire the vision of a greener world.</center>
+        <center>To inform, educate and inspire the vision of a greener world.</center>
+        <br><br><br><br>
+        </div>
         <Footer></Footer>
     </div>
 </template>

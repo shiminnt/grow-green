@@ -40,7 +40,7 @@ export default {
     mounted() {
       axios
         .get(
-          `https://newsapi.org/v2/everything?q=Climate&from=2021-03-15&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
+          `https://newsapi.org/v2/everything?q=Climate&from=2021-03-16&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
         )
         .then((response) => {
           response.data.articles.forEach((article) => {
@@ -55,7 +55,12 @@ export default {
       window.open(this.articleSet[0].url, "_blank");
       var currentDate = new Date();
       console.log("Checking");
-      if (!this.userData.articlesRead.includes(title)) {
+      console.log(title);
+      var articleTitle = [];
+      for (var i = 0; i < this.userData.articlesRead.length; i++) {
+        articleTitle.push(this.userData.articlesRead[i].name);
+      }
+      if (!articleTitle.includes(title)) {
         console.log("Not Included!");
         var article = {
           name: title,
