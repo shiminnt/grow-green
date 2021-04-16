@@ -3,12 +3,23 @@
         <Header></Header>
         <h1 class="heading">Dashboard</h1>
         <div id="charts">
-            <donut-chart class="charts" id="donutchart"></donut-chart>
-            <line-chart class="charts" id="linechart"></line-chart>
-            <div id="leaderboard">
-                <leader-percentage />
-                <leader-trees />
-                <leader-articles />
+            <div id="graph">
+                <donut-chart class="inner" id="donutchart"></donut-chart>
+                <line-chart class="inner" id="linechart"></line-chart>
+            </div>
+            <div id="leader">
+                <div id="outer">
+                    <button class="button" v-on:click="question">
+                        Question Correct (Percentage)
+                    </button>
+                    <button class="button" v-on:click="articles">
+                        Most Articles Read
+                    </button>
+                    <button class="button" v-on:click="trees">
+                        Most Trees Planted
+                    </button>
+                </div>
+                <component v-bind:is="component" />
             </div>
         </div>
         <Footer></Footer>
@@ -38,8 +49,20 @@ export default {
     name: "Dashboard",
     data: function() {
         return {
+            component: "",
             Header,
         };
+    },
+    methods: {
+        question() {
+            this.component = LeaderPercentage;
+        },
+        trees() {
+            this.component = LeaderTrees;
+        },
+        articles() {
+            this.component = LeaderArticles;
+        },
     },
     computed: {
         ...mapGetters(["userData"]),
@@ -53,6 +76,20 @@ export default {
     overflow-y: scroll;
 }
 
+#outer {
+    width: 100%;
+    text-align: center;
+}
+
+.inner {
+    display: inline-block;
+}
+
+.sidenav {
+    width: 45%;
+    float: left;
+}
+
 .heading {
     font-family: Futura, Helvetica, Arial, sans-serif;
     text-align: center;
@@ -63,12 +100,27 @@ export default {
     justify-content: center;
 }
 
+#leader {
+    width: 40%;
+}
+
+#graph {
+    text-align: justify;
+    margin: auto;
+}
+
 .charts {
     margin: 5%;
 }
 
-#leaderboard {
-    text-align: center;
-    margin: auto;
+.button {
+    display: inline-block;
+    background-color: black;
+    border: none;
+    color: white;
+    font-family: unset;
+    margin: 5px;
+    border-radius: 30px;
+    font-weight: 600;
 }
 </style>
