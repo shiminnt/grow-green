@@ -11,13 +11,13 @@
             <tbody>
                 <tr
                     v-for="(user, i) in users.sort((a, b) =>
-                        a.percentage > b.percentage ? -1 : 1
+                        a.value > b.value ? -1 : 1
                     )"
                     :key="i"
                 >
                     <th scope="row">{{ ++i }}</th>
                     <td>{{ user.user }}</td>
-                    <td>{{ user.percentage }}</td>
+                    <td>{{ user.value }}</td>
                 </tr>
             </tbody>
         </table>
@@ -29,7 +29,6 @@ import { database } from "../firebase.js";
 import { mapGetters } from "vuex";
 
 export default {
-    name: "leaderboard",
     data: function() {
         return {
             users: [],
@@ -54,26 +53,12 @@ export default {
                         } else {
                             tempData = doc.data();
                         }
-                        var total = tempData.questionsDone.length;
-                        var percentage = 0;
-                        if (total == 0) {
-                            this.users.push({
-                                user: tempData.displayName,
-                                percentage: 0,
-                            });
-                        } else {
-                            var firstTry = 0;
-                            tempData.questionsDone.forEach((qn) => {
-                                if (qn.rightOnFirstTry) {
-                                    firstTry++;
-                                }
-                            });
-                            percentage = Math.floor((firstTry / total) * 100);
-                            this.users.push({
-                                user: tempData.displayName,
-                                percentage: percentage,
-                            });
-                        }
+                        var value = tempData.numArticles;
+                        console.log(value);
+                        this.users.push({
+                            user: tempData.displayName,
+                            value: value,
+                        });
                     });
                 });
         },
