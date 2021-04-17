@@ -10,10 +10,6 @@
       </li>
       <br />
       <li class="content">
-        <router-link to="/contributequiz">Contribute a question!</router-link>
-      </li>
-      <br />
-      <li class="content">
         <router-link to="/publiciseevent">Publicise your event!</router-link>
       </li>
       <br />
@@ -41,7 +37,7 @@ export default {
 
 <style scope>
 #footer {
-  background-color: rgb(245, 222, 179);
+  background-color: antiquewhite;
   display: flex;
   justify-content: space-between;
   text-align: right;

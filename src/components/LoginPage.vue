@@ -29,14 +29,18 @@
         <span class="registertext">No account? Register</span>
         <button class="registerbutton" v-on:click="register">here</button>
       </form>
+      <Footer></Footer>
     </div>
   </div>
 </template>
 
 <script>
 import { auth } from "../firebase.js";
+import Footer from './VisitorFooter.vue';
+
 export default {
   name: "App",
+  components: { Footer },
   data: function () {
     return {
       email: "",

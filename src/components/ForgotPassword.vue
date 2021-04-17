@@ -6,13 +6,16 @@
         <input class="textinput" type="email" v-model="email" placeholder="Email"> <br>
         <button id="resetbutton" type="submit">Send Password Reset Link</button><br />
         </form>
+        <Footer></Footer>
     </div>
 </div>
 </template>
 
 <script>
 import { auth } from "../firebase.js";
+import Footer from './VisitorFooter.vue';
 export default {
+  components: { Footer },
     data: function() {
         return {
             email: "",
