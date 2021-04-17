@@ -14,11 +14,15 @@
         <div class="profilepic">
           <div class="profilepic-input">
             <p>Change your profile picture</p>
-            <label for="file-upload" class="fileupload">
-              Choose File
-              </label>
-              <span v-if="this.noImage">No File Chosen</span>
-            <input id="file-upload" type="file" @change="previewImage" accept="image/*" style="display:none"/><br />
+            <label for="file-upload" class="fileupload"> Choose File </label>
+            <span v-if="this.noImage">No File Chosen</span>
+            <input
+              id="file-upload"
+              type="file"
+              @change="previewImage"
+              accept="image/*"
+              style="display: none"
+            /><br />
             <br />
             <button class="uploadButton" @click="onUpload">Upload</button>
             <p>
@@ -46,7 +50,7 @@
 import BasePage from "./Header.vue";
 import Footer from "./Footer.vue";
 import { mapGetters } from "vuex";
-import { auth, storage } from "../firebase.js";
+import { database, auth, storage } from "../firebase.js";
 export default {
   components: { BasePage, Footer },
   data: function () {
@@ -86,6 +90,15 @@ export default {
           this.uploadValue = 100;
           storageRef.snapshot.ref.getDownloadURL().then((url) => {
             this.picture = url;
+            this.$store.dispatch("updatePhotoURL", this.picture);
+            const uid = user.uid;
+            database
+              .collection("users")
+              .doc(uid)
+              .set(this.userData)
+              .then(() => {
+                console.log("Document successfully written!");
+              });
             user
               .updateProfile({
                 photoURL: url,

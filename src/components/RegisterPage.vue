@@ -90,6 +90,7 @@ export default {
                 articlesRead: [],
                 questionsDone: [],
                 treeDates: [],
+                photoURL: "https://firebasestorage.googleapis.com/v0/b/growgreen-db239.appspot.com/o/profileIcon.png?alt=media&token=d3035e75-cf1e-482d-8c32-b05feb49a062"
               })
               .then(() => {});
             this.$router.replace({ name: "home" });
