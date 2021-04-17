@@ -3,7 +3,7 @@
         <div class="bg">
             <img id="logoIcon" src="../assets/logo.png" @click="goToHome" />
             <a id="ggName" @click="goToHome">GrowGreen</a>
-            <ul class="navbar">
+            <ul v-show="loggedIn" class="navbar">
                 <li><router-link to="/home">HOME</router-link></li>
                 <li>
                     <router-link to="/volunteermenu">VOLUNTEER</router-link>
@@ -47,6 +47,7 @@ export default {
             displayName: "",
             hover: false,
             photoUrl: null,
+            loggedIn: false
         };
     },
     computed: {
@@ -82,6 +83,7 @@ export default {
         loadUserData: function() {
             const user = auth.currentUser;
             if (user) {
+                this.loggedIn = true;
                 this.photoUrl = user.photoURL;
 
                 const uid = user.uid;

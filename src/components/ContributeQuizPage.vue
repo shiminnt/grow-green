@@ -99,6 +99,7 @@ export default {
         if (this.option4 != null) {
           answers[this.option4] = false;
         }
+        this.$store.dispatch('updateContributed');
         database
           .collection("contributedQuestions")
           .add({

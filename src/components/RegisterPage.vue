@@ -43,13 +43,17 @@
         <span class="registertext">Have an account? Login</span>
         <button class="registerbutton" v-on:click="gotoLogin">here</button>
       </form>
+      <Footer></Footer>
     </div>
   </div>
 </template>
 
 <script>
 import { database, auth } from "../firebase.js";
+import Footer from './VisitorFooter.vue';
+
 export default {
+  components: { Footer },
   data() {
     return {
       name: "",
@@ -79,6 +83,7 @@ export default {
                 numArticles: 0,
                 numQuiz: 0,
                 numTrees: 0,
+                numContribute: 0,
                 articlesRead: [],
                 questionsDone: [],
                 treeDates: [],

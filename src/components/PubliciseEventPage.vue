@@ -1,7 +1,8 @@
 <template>
   <div class="bg">
     <Header></Header>
-    <h1 id="title">Publicise your event!</h1>
+    <h1 id="title">Publicise your event</h1>
+    <p>Fill in the relevant details for your event. We will let you know if your event has been approved.</p>
     <form class="form" @submit.prevent="submitForm">
       <input
         class="textinput"
@@ -130,6 +131,11 @@ export default {
 }
 #title {
   text-align: center;
+}
+p {
+  text-align: center;
+  font-size: medium;
+  color: rgb(68, 67, 67);
 }
 .form {
   text-align: center;

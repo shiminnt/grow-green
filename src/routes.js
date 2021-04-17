@@ -109,14 +109,12 @@ export default [
     {
         path: "/aboutus",
         name: "aboutus",
-        component: AboutUs,
-        meta: { requiresAuth: true },
+        component: AboutUs
     },
     {
         path: "/contactus",
         name: "contactus",
         component: ContactUs,
-        meta: {requiresAuth: true },
     },
     {
         path: "/contributequiz",

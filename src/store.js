@@ -34,6 +34,9 @@ export const store = new Vuex.Store({
             state.userData.numTrees += 1;
             state.userData.treeDates.push(date);
         },
+        updateContributed: (state) => {
+            state.userData.numContribute += 1;
+        },
     },
     actions: {
         updateUserData: (context, userData) => {
@@ -47,6 +50,9 @@ export const store = new Vuex.Store({
         },
         updateTreesPlanted: (context, date) => {
             context.commit('updateTreesPlanted', date)
+        },
+        updateContributed: (context) => {
+            context.commit('updateContributed')
         },
     }
 })
