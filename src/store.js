@@ -37,6 +37,9 @@ export const store = new Vuex.Store({
         updateContributed: (state) => {
             state.userData.numContribute += 1;
         },
+        updatePhotoURL: (state, photoURL) => {
+            state.userData.photoURL = photoURL;
+        }
     },
     actions: {
         updateUserData: (context, userData) => {
@@ -53,6 +56,9 @@ export const store = new Vuex.Store({
         },
         updateContributed: (context) => {
             context.commit('updateContributed')
+        },
+        updatePhotoURL: (context, photoURL) => {
+            context.commit('updatePhotoURL', photoURL)
         },
     }
 })
