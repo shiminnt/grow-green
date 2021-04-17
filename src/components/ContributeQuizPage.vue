@@ -1,12 +1,13 @@
 <template>
   <div class="bg">
     <Header></Header>
+    <div class="container">
     <h1 id="title">Have an interesting question?</h1>
     <p>
       Step 1: Design an envrionment related question <br />
       Step 2: Include a minimum of 2 options <br />
       Step 3: Look out for your question
-      <router-link to="/userquizquestions">here</router-link>!
+      <router-link to="/quizquestion">here</router-link>!
     </p>
     <form class="form" @submit.prevent="submitForm">
       <textarea
@@ -58,6 +59,10 @@
       <br /><br />
       <input class="submitButton" type="submit" value="Submit" />
     </form>
+    </div>
+          <div class="buttons"> 
+        <button class="xbutton" v-on:click="goToQuiz"> Quiz </button>
+      </div>
     <Footer></Footer>
   </div>
 </template>
@@ -78,9 +83,13 @@ export default {
       option3: null,
       option4: null,
       addInfo: null,
+      numQn: null,
     };
   },
   methods: {
+            goToQuiz: function () {
+this.$router.push({ name: "quizquestion" });
+    },
     submitForm: function () {
       if (this.question == null) {
         alert("Invalid question. Please try again");
@@ -101,8 +110,8 @@ export default {
         }
         this.$store.dispatch('updateContributed');
         database
-          .collection("contributedQuestions")
-          .add({
+          .collection("questions").doc(this.numQn)
+          .set({
             question: this.question,
             options: answers,
             addInfo: this.addInfo,
@@ -114,6 +123,9 @@ export default {
       }
     },
   },
+  created() {
+          database.collection("questions").get().then(snapshot => {this.numQn = "q" + (snapshot.size + 1);});
+  }
 };
 </script>
 
@@ -128,11 +140,19 @@ export default {
 p {
   text-align: center;
   font-size: medium;
-  color: rgb(68, 67, 67);
+  color: rgb(44, 43, 43);
 }
 .form {
   text-align: center;
-  margin-bottom: 85px;
+
+}
+.container {
+  margin: auto;
+  border-radius: 12px;
+  opacity: 82%;
+  background: #eadece;
+  width: 900px;
+  padding: 15px;
 }
 .textinput {
   background-color: none;
@@ -145,5 +165,22 @@ p {
   color: whitesmoke;
   font-family: Futura;
   width: 100px;
+}
+.buttons {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding-bottom:50px;
+}
+.xbutton {
+  background-color: #873600;
+  border: none;
+  color: white;
+  font-family: Futura;
+  padding: 5px 25px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 30px;
+  font-weight: 600;
 }
 </style>
