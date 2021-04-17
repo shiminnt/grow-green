@@ -30,6 +30,9 @@
           Next Question</button
         ><br />
       </div>
+      <div class="buttons"> 
+          <button class="xbutton" v-on:click="goToContributeQuestion"> Contribute a question! </button>
+      </div>
       <div id="funfactBox" v-show="correct">{{ qn.addInfo }}</div>
       <Footer></Footer>
     </div>
@@ -119,6 +122,9 @@ export default {
     kBank: function () {
       this.$router.push({ name: "knowledgebank" });
     },
+    goToContributeQuestion: function () {
+      this.$router.push({ name: "ContributeQuiz" });
+    }
   },
 
   created() {
@@ -170,8 +176,21 @@ export default {
   height: 50px;
   width: 450px;
   color: white;
+    justify-content: center;
+    align-content: center;
 }
 
+.xbutton {
+  background-color: #873600;
+  border: none;
+  color: white;
+  font-family: Futura;
+  padding: 5px 25px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 30px;
+  font-weight: 600;
+}
 #funfactBox {
   margin: auto;
   text-align: center;

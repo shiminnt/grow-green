@@ -10,10 +10,6 @@
       </li>
       <br />
       <li class="content">
-        <router-link to="/contributequiz">Contribute a question!</router-link>
-      </li>
-      <br />
-      <li class="content">
         <router-link to="/publiciseevent">Publicise your event!</router-link>
       </li>
       <br />

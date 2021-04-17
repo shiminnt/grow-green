@@ -147,10 +147,11 @@ img.preview {
 }
 table {
   margin-top: 30px;
-  width: 100%;
+  width: 60%;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 18px;
   border-collapse: collapse;
+  margin: 0 auto;
 }
 .details {
   color: #873600;
@@ -159,6 +160,6 @@ tr {
   border-bottom: 1px solid #838383;
 }
 td {
-  padding: 15px;
+  padding: 0px;
 }
 </style>

@@ -17,7 +17,6 @@ import AboutUs from "./components/AboutUs.vue";
 import ContactUs from "./components/ContactUs.vue";
 import ContributeQuiz from "./components/ContributeQuizPage.vue";
 import PubliciseEvent from "./components/PubliciseEventPage.vue";
-import UserQuizQuestionsPage from './components/UserQuizQuestionsPage.vue';
 
 
 export default [
@@ -74,12 +73,6 @@ export default [
         path: "/quizquestion",
         name: "quizquestion",
         component: QuizQuestionPage,
-        meta: { requiresAuth: true },
-    },
-    {
-        path: "/userquizquestions",
-        name: "userquizquestions",
-        component: UserQuizQuestionsPage,
         meta: { requiresAuth: true },
     },
     {
