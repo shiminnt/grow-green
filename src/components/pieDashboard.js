@@ -1,5 +1,5 @@
-
 import { Doughnut } from "vue-chartjs";
+import { database, auth } from "../firebase.js";
 
 export default {
     extends: Doughnut,
@@ -23,20 +23,33 @@ export default {
                 responsive: true,
                 maintainAspectRatio: false,
             },
+            userData: {},
         };
     },
     methods: {
         fetchData() {
-            var qns = this.$store.state.userData.questionsDone;
-            this.datacollection.datasets[0].data.push(
-                qns.filter(function(item) {
-                    return item.rightOnFirstTry;
-                }).length
-            );
-            this.datacollection.datasets[0].data.push(
-                qns.length - this.datacollection.datasets[0].data[0]
-            );
-            this.renderChart(this.datacollection, this.options);
+            const user = auth.currentUser;
+            if (user) {
+                this.photoUrl = user.photoURL;
+                const uid = user.uid;
+                database
+                    .collection("users")
+                    .doc(uid)
+                    .get()
+                    .then((doc) => {
+                        this.userData = doc.data();
+                        var qns = this.userData.questionsDone;
+                        this.datacollection.datasets[0].data.push(
+                            qns.filter(function(item) {
+                                return item.rightOnFirstTry;
+                            }).length
+                        );
+                        this.datacollection.datasets[0].data.push(
+                            qns.length - this.datacollection.datasets[0].data[0]
+                        );
+                        this.renderChart(this.datacollection, this.options);
+                    });
+            }
         },
     },
     mounted() {

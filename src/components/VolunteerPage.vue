@@ -26,15 +26,24 @@
                 />
                 <a>&nbsp;{{ details.location }}</a>
                 <br /><br />
-                <button class="applyButton" v-bind:id="details.doc_id" v-on:click="apply($event)"> Apply here </button>
+                <button
+                    class="applyButton"
+                    v-bind:id="details.doc_id"
+                    v-on:click="apply($event)"
+                >
+                    Apply here
+                </button>
             </div>
             <h3>Organised by</h3>
             <a>{{ details.organisation }}</a
             ><br />
             <div class="eventmap">
                 <h3>Locate Event</h3>
-                <a>For directions to {{details.location}}, refer to the Google Maps below</a>
-                <br><br>
+                <a
+                    >For directions to {{ details.location }}, refer to the
+                    Google Maps below</a
+                >
+                <br /><br />
                 <span v-html="details.embed"></span>
             </div>
         </div>
@@ -45,7 +54,6 @@
 <script>
 import Footer from "./Footer.vue";
 import Header from "./Header.vue";
-import { mapGetters } from "vuex";
 import { database } from "../firebase.js";
 
 export default {
@@ -69,15 +77,14 @@ export default {
         apply: function(event) {
             let doc_id = event.target.getAttribute("id");
             //console.log(this.details.doc_id);
-            this.$router.push({ name:'VolunteerApply', params:{ doc_id: doc_id }});
-            
-        }
+            this.$router.push({
+                name: "VolunteerApply",
+                params: { doc_id: doc_id },
+            });
+        },
     },
     created() {
         this.fetchItems();
-    },
-    computed: {
-        ...mapGetters(["userData"]),
     },
 };
 </script>
@@ -114,7 +121,7 @@ export default {
     padding-bottom: 10%;
 }
 .applyButton {
-    background-color:rgb(46, 65, 13);
+    background-color: rgb(46, 65, 13);
     color: white;
     border: none;
     border-radius: 15px;
