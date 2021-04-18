@@ -1,17 +1,17 @@
 <template>
-    <div class ="bg">
+    <div class="bg">
         <Header></Header>
-        <h1 class="title">Application For: {{details.title}}</h1>
+        <h1 class="title">Application For: {{ details.title }}</h1>
         <form class="form" @submit.prevent="submitForm">
-            <label class="labels" for="name">Name</label><br/>
-            <input class="inputs" type="text" id="name" v-model="displayName">
-            <br/><br/>
-            <label class="labels" for="email">Email</label><br/>
-            <input class="inputs" type="text" id="email" v-model="email">
-            <br/><br/>
-            <label class="labels" for="number">Contact Number </label><br/>
-            <input class="inputs" type="number" id=number v-model="number">
-            <br/><br/>
+            <label class="labels" for="name">Name</label><br />
+            <input class="inputs" type="text" id="name" v-model="displayName" />
+            <br /><br />
+            <label class="labels" for="email">Email</label><br />
+            <input class="inputs" type="text" id="email" v-model="email" />
+            <br /><br />
+            <label class="labels" for="number">Contact Number </label><br />
+            <input class="inputs" type="number" id="number" v-model="number" />
+            <br /><br />
             <input
                 class="submitButton"
                 type="submit"
@@ -33,10 +33,10 @@
             <a>&nbsp;{{ details.time[0] }} - {{ details.time[1] }}</a>
             <br />
             <img
-                    class="icons"
-                    src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/94-512.png"
-                />
-                <a>&nbsp;{{ details.location }}</a>
+                class="icons"
+                src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/94-512.png"
+            />
+            <a>&nbsp;{{ details.location }}</a>
         </div>
         <Footer></Footer>
     </div>
@@ -45,34 +45,33 @@
 <script>
 import Footer from "./Footer.vue";
 import Header from "./Header.vue";
-import {mapGetters} from 'vuex';
-import {auth, database} from "../firebase.js";
+import { auth, database } from "../firebase.js";
 
 export default {
-  components: { Header, Footer },
-  name: "VolunteerApply",
-  data: function () {
-    return {
-        details: [],
-        displayName: "",
-        email: "",
-        name: "",
-        updatedEmail: "",
-        number: "",
-    };
-  },
-  methods: {
-      fetchItems() {
-        console.log(this.$route.params.doc_id);
-        database
-        .collection("volunteer")
-        .doc(this.$route.params.doc_id)
-        .get()
-        .then((doc) => {
-            this.details = doc.data();
-            });
+    components: { Header, Footer },
+    name: "VolunteerApply",
+    data: function() {
+        return {
+            details: [],
+            displayName: "",
+            email: "",
+            name: "",
+            updatedEmail: "",
+            number: "",
+        };
+    },
+    methods: {
+        fetchItems() {
+            console.log(this.$route.params.doc_id);
+            database
+                .collection("volunteer")
+                .doc(this.$route.params.doc_id)
+                .get()
+                .then((doc) => {
+                    this.details = doc.data();
+                });
         },
-        loadUserData() {
+        loadUser() {
             const user = auth.currentUser;
             this.email = user.email;
             if (user) {
@@ -92,29 +91,28 @@ export default {
             } else if (this.number == "") {
                 alert("Please add in your contact number");
             } else {
-                database.collection('appliedEvents')
-                .add({
-                    name: this.displayName,
-                    email: this.email,
-                    number: this.number,
-                    eventName: this.details.title,
-                    eventDocID: this.details.doc_id,
-                })
-                .then(() => {
-                    alert("Your application is being reviewed. Thank you for volunteering!");
-                })
+                database
+                    .collection("appliedEvents")
+                    .add({
+                        name: this.displayName,
+                        email: this.email,
+                        number: this.number,
+                        eventName: this.details.title,
+                        eventDocID: this.details.doc_id,
+                    })
+                    .then(() => {
+                        alert(
+                            "Your application is being reviewed. Thank you for volunteering!"
+                        );
+                    });
             }
         },
-  },
-  created() {
-        this.fetchItems();
-        this.loadUserData();
     },
-  computed: {
-        ...mapGetters(["userData"]),
-  },
-}
-
+    created() {
+        this.fetchItems();
+        this.loadUser();
+    },
+};
 </script>
 
 <style scoped>
@@ -142,13 +140,13 @@ export default {
     font-weight: bold;
 }
 .submitButton {
-  border-radius: 30px;
-  border: none;
-  padding: 10px;
-  background-color: black;
-  color: whitesmoke;
-  font-family: Futura;
-  width: 150px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+    background-color: black;
+    color: whitesmoke;
+    font-family: Futura;
+    width: 150px;
 }
 .icons {
     width: 20px;

@@ -74,9 +74,11 @@ export default {
                     .collection("users")
                     .doc(uid)
                     .get()
-                    .then((doc) => (this.displayName = doc.data().displayName));
+                    .then((doc) => {
+                        this.displayName = doc.data().displayName;
+                        this.userData = doc.data();
+                    });
             }
-            this.loadUserData();
         },
     },
     created() {
