@@ -7,13 +7,13 @@
       <sample-line-dash></sample-line-dash>
       <div id="leader">
         <div id="outer">
-          <button class="button" v-on:click="question">
+          <button class="button" id="trivia" autofocus v-on:click="question">
             Trivia Master!
           </button>
-          <button class="button" v-on:click="articles">
+          <button class="button" id="know" v-on:click="articles">
             Most Knowledgeable!
           </button>
-          <button class="button" v-on:click="trees">Greenest Fingers!</button>
+          <button class="button" id="green" v-on:click="trees">Greenest Fingers!</button>
         </div>
         <component id="comp" v-bind:is="component" />
       </div>
@@ -45,7 +45,7 @@ export default {
   name: "Dashboard",
   data: function () {
     return {
-      component: "",
+      component: LeaderPercentage,
       Header,
     };
   },
@@ -98,6 +98,7 @@ export default {
 
 #leader {
   width: 40%;
+  overflow-y: scroll;
 }
 
 #graph {

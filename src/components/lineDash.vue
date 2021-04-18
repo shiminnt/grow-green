@@ -144,8 +144,6 @@ export default {
           }
         }
         for (var z = 0; z < this.$store.state.userData.treeDates.length; z++) {
-          console.log(z)
-          console.log("trees date: " + this.$store.state.userData.treeDates[z].month + " " + this.$store.state.userData.treeDates[z].day)
           if (
             this.$store.state.userData.treeDates[z].month == d.toLocaleString('default', { month: 'long' }) &&
             this.$store.state.userData.treeDates[z].day == d.getDate()
