@@ -38,7 +38,6 @@
 
 <script>
 import { database, auth } from "../firebase.js";
-import { mapGetters } from "vuex";
 
 export default {
     name: "Header",
@@ -47,11 +46,9 @@ export default {
             displayName: "",
             hover: false,
             photoUrl: null,
-            loggedIn: false
+            loggedIn: false,
+            userData: {},
         };
-    },
-    computed: {
-        ...mapGetters(["userData"]),
     },
     methods: {
         mouseOver() {
@@ -80,7 +77,7 @@ export default {
         goToHome() {
             this.$router.push({ name: "home" });
         },
-        loadUserData: function() {
+        loadUserHome: function() {
             const user = auth.currentUser;
             if (user) {
                 this.loggedIn = true;
@@ -91,12 +88,15 @@ export default {
                     .collection("users")
                     .doc(uid)
                     .get()
-                    .then((doc) => (this.displayName = doc.data().displayName));
+                    .then((doc) => {
+                        this.userData = doc.data();
+                        this.displayName = doc.data().displayName;
+                    });
             }
         },
     },
     created() {
-        this.loadUserData();
+        this.loadUserHome();
     },
 };
 </script>
