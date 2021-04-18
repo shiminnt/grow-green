@@ -14,7 +14,8 @@
           :key="i"
         >
           <td class="row2" scope="row">{{ ++i }}</td>
-          <td class="row2">{{ user.user }}</td>
+          <!-- <td><img :src="user.photoURL"></td> -->
+          <td class="row2"> {{ user.user }}</td>
           <td class="row2">{{ user.value }}</td>
         </tr>
       </tbody>

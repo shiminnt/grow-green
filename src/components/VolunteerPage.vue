@@ -25,7 +25,8 @@
                     src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/94-512.png"
                 />
                 <a>&nbsp;{{ details.location }}</a>
-                <br />
+                <br /><br />
+                <button class="applyButton" v-bind:id="details.doc_id" v-on:click="apply($event)"> Apply here </button>
             </div>
             <h3>Organised by</h3>
             <a>{{ details.organisation }}</a
@@ -53,7 +54,6 @@ export default {
     data: function() {
         return {
             details: [],
-            //center: {lat: this.details.lat, lng: this.details.long}
         };
     },
     methods: {
@@ -66,6 +66,12 @@ export default {
                     this.details = doc.data();
                 });
         },
+        apply: function(event) {
+            let doc_id = event.target.getAttribute("id");
+            //console.log(this.details.doc_id);
+            this.$router.push({ name:'VolunteerApply', params:{ doc_id: doc_id }});
+            
+        }
     },
     created() {
         this.fetchItems();
@@ -106,5 +112,13 @@ export default {
     padding-left: 25%;
     padding-top: 25px;
     padding-bottom: 10%;
+}
+.applyButton {
+    background-color:rgb(46, 65, 13);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: Futura;
 }
 </style>
