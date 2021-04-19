@@ -4,7 +4,7 @@
         <h1 class="heading">Dashboard</h1>
         <div id="charts">
             <donut-chart class="inner" id="donutchart"></donut-chart>
-            <sample-line-dash></sample-line-dash>
+            <line-dash></line-dash>
             <div id="leader">
                 <div id="outer">
                     <button
@@ -36,7 +36,7 @@ import DonutChart from "./pieDashboard.vue";
 import LeaderPercentage from "./LeaderPercentScore.vue";
 import LeaderTrees from "./LeaderTree.vue";
 import LeaderArticles from "./LeaderArticles.vue";
-import SampleLineDash from "./lineDash.vue";
+import LineDash from './lineDash.vue';
 
 export default {
     components: {
@@ -46,9 +46,8 @@ export default {
         LeaderPercentage,
         LeaderTrees,
         LeaderArticles,
-        SampleLineDash,
+        LineDash,
     },
-    name: "Dashboard",
     data: function() {
         return {
             userData: {},
