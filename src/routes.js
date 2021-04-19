@@ -21,7 +21,7 @@ import VolunteerApply from "./components/VolunteerApply.vue";
 
 
 export default [
-    { path: "/", name: "login", component: LoginPage },
+    { path: "/", name: "login", component: LoginPage, meta: { requiresVisitor: true } },
     {
         path: "/home",
         name: "home",
@@ -46,11 +46,12 @@ export default [
         component: KnowledgeBankPage,
         meta: { requiresAuth: true },
     },
-    { path: "/register", name: "register", component: RegisterPage },
+    { path: "/register", name: "register", component: RegisterPage, meta: { requiresVisitor: true } },
     {
         path: "/forgotpassword",
         name: "forgotpassword",
         component: ForgotPassword,
+        meta: { requiresVisitor: true }
     },
     {
         path: "/dashboard",
@@ -114,7 +115,7 @@ export default [
         path: "/contributequiz",
         name: "ContributeQuiz",
         component: ContributeQuiz,
-        meta: {requiresAuth: true },
+        meta: { requiresAuth: true },
     },
     {
         path: "/publiciseevent",
@@ -125,6 +126,6 @@ export default [
         path: "/volunteerapply",
         name: "VolunteerApply",
         component: VolunteerApply,
-        meta: {requiresAtuh: true},
+        meta: { requiresAtuh: true },
     }
 ];
