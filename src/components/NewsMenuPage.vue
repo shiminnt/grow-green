@@ -66,8 +66,6 @@ export default {
                 )
                 .then((response) => {
                     this.info = response.data.articles;
-                    console.log(response.data.articles[0].title);
-                    console.log(this.info[0].title);
                     this.maxPage = Math.floor(this.info.length / 3) + 1;
                 });
             this.loadUserData();

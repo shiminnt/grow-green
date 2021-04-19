@@ -10,7 +10,6 @@
         placeholder="Organisation Name"
         v-model="organisationName"
       />
-      <!-- <p>{{this.name}}</p> -->
       <br /><br />
       <input
         class="textinput"
@@ -25,7 +24,6 @@
         placeholder="Event Name"
         v-model="eventName"
       />
-      <!-- <p>{{this.name}}</p> -->
       <br /><br />
       <input
         class="textinput"
@@ -33,7 +31,6 @@
         placeholder="Event Location"
         v-model="location"
       />
-      <!-- <p>{{this.name}}</p> -->
       <br /><br />
       <label for="eventdate">Date of Event: </label>
       <input type="date" id="eventdate" name="eventdate" v-model="date" />

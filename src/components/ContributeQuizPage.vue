@@ -18,7 +18,6 @@
                     v-model="question"
                 >
                 </textarea>
-                <!-- <p>{{this.name}}</p> -->
                 <br /><br />
                 <input
                     class="textinput"

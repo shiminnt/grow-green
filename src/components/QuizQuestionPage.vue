@@ -107,11 +107,8 @@ export default {
         },
 
         selectedAnswer: function(event, qn) {
-            console.log(event.target.getAttribute("id"));
             var chosen = event.target.getAttribute("id");
-            console.log(qn.options[chosen]);
             var currentDate = new Date();
-            console.log(currentDate.getDate);
             if (qn.options[chosen]) {
                 document.getElementById(
                     event.target.getAttribute("id")

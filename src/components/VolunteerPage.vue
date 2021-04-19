@@ -76,7 +76,6 @@ export default {
         },
         apply: function(event) {
             let doc_id = event.target.getAttribute("id");
-            //console.log(this.details.doc_id);
             this.$router.push({
                 name: "VolunteerApply",
                 params: { doc_id: doc_id },

@@ -86,7 +86,6 @@ export default {
                 .doc(uid)
                 .set(this.userData)
                 .then(() => {
-                    console.log("Document successfully written!");
                     auth.signOut().then(() => {
                         sessionStorage.clear();
                         this.$router.replace({

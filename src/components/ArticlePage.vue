@@ -51,14 +51,11 @@ export default {
             var title = this.$route.params.id;
             window.open(this.articleSet[0].url, "_blank");
             var currentDate = new Date();
-            console.log("Checking");
-            console.log(title);
             var articleTitle = [];
             for (var i = 0; i < this.userData.articlesRead.length; i++) {
                 articleTitle.push(this.userData.articlesRead[i].name);
             }
             if (!articleTitle.includes(title)) {
-                console.log("Not Included!");
                 var article = {
                     name: title,
                     date: {

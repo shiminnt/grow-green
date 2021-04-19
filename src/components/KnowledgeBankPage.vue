@@ -74,9 +74,6 @@ export default {
                 alert("Tree cannot be planted. Try more questions!");
             }
         },
-        goToPlantTrees() {
-            this.$router.push("planttrees");
-        },
         goToQuiz: function() {
             this.$router.push({ name: "quizquestion" });
         },
