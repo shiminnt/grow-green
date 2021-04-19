@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <th class="head" scope="col">#</th>
-                    <th class="head" scope="col">Name</th>
+                    <th class="head" colspan="2" scope="col">Name</th>
                     <th class="head" scope="col">Score</th>
                 </tr>
             </thead>
@@ -15,12 +15,13 @@
                     v-bind:id="user"
                 >
                     <td class="row" scope="row">{{ ++i }}</td>
+                    <td class="row"><img class="dp" :src="user.photoURL"></td>
                     <td class="row">{{ user.user }}</td>
                     <td class="row">{{ user.value }}</td>
                 </tr>
             </tbody>
         </table>
-        <button v-on:click="findMe">Find Me!</button>
+        <button class="findMeButton" v-on:click="findMe">Find Me!</button>
         <p v-if="clicked">
             You are currently #{{ this.userPosition }} in the world
         </p>
@@ -87,6 +88,7 @@ export default {
                                         this.users.push({
                                             user: tempData.displayName,
                                             value: value,
+                                            photoURL: tempData.photoURL,
                                         });
                                     }
                                 });
@@ -132,5 +134,17 @@ table {
 
 .row {
     border-bottom: 1px solid #062f4f;
+}
+
+.dp {
+  width: 40px;
+  height: 40px;
+}
+.findMeButton {
+  background-color: rgba(6, 47, 79, 0.2);
+  border: none;
+  padding: 15px;
+  border-radius: 20px;
+  font-weight: 800;
 }
 </style>

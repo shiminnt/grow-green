@@ -28,7 +28,10 @@
                             style="display: none"
                         /><br />
                         <br />
-                        <button class="uploadButton" @click="onUpload">
+                        <button v-if="this.noImage" class="uploadButton">
+                            Upload
+                        </button>
+                        <button v-if="!this.noImage" class="uploadSuccess" @click="onUpload">
                             Upload
                         </button>
                         <p>
@@ -198,6 +201,18 @@ img.preview {
     padding-right: 20px;
 }
 .uploadButton {
+    background-color: grey;
+    border: none;
+    color: white;
+    font-family: unset;
+    font-size: 15px;
+    padding: 5px 25px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+.uploadSuccess {
     background-color: black;
     border: none;
     color: white;
