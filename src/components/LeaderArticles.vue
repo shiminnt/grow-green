@@ -4,20 +4,20 @@
             <thead>
                 <tr>
                     <th class="head2" scope="col">#</th>
-                    <th class="head2" scope="col">Name</th>
+                    <th class="head2" colspan="2" scope="col">Name</th>
                     <th class="head2" scope="col">Score</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(user, i) in sorted(this.users)" :key="i">
                     <td class="row2" scope="row">{{ ++i }}</td>
-                    <!-- <td><img :src="user.photoURL"></td> -->
+                    <td class="row2"><img class="dp" :src="user.photoURL"></td>
                     <td class="row2">{{ user.user }}</td>
                     <td class="row2">{{ user.value }}</td>
                 </tr>
             </tbody>
         </table>
-        <button v-on:click="findMe">Find Me!</button>
+        <button class="findMebutton2" v-on:click="findMe">Find Me!</button>
         <p v-if="clicked">
             You are currently #{{ this.userPosition }} in the world
         </p>
@@ -67,6 +67,7 @@ export default {
                                     this.users.push({
                                         user: tempData.displayName,
                                         value: value,
+                                        photoURL: tempData.photoURL,
                                     });
                                 });
                             });
@@ -102,6 +103,7 @@ table {
     margin-top: 30px;
     border-left: 0px;
     border-right: 0px;
+    padding-bottom: 30px;
 }
 
 .head2 {
@@ -111,5 +113,16 @@ table {
 
 .row2 {
     border-bottom: 1px solid #813772;
+}
+.dp {
+  width: 40px;
+  height: 40px;
+}
+.findMebutton2 {
+  background-color: rgba(129, 55, 114, 0.2);
+  border: none;
+  padding: 15px;
+  border-radius: 20px;
+  font-weight: 800;
 }
 </style>

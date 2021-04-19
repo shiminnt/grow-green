@@ -4,19 +4,20 @@
             <thead>
                 <tr>
                     <th class="head3" scope="col">#</th>
-                    <th class="head3" scope="col">Name</th>
+                    <th class="head3" colspan="2" scope="col">Name</th>
                     <th class="head3" scope="col">Score</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(user, i) in sorted(this.users)" :key="i">
                     <td class="row3" scope="row">{{ ++i }}</td>
+                    <td class="row3"><img class="dp" :src="user.photoURL"></td>
                     <td class="row3">{{ user.user }}</td>
                     <td class="row3">{{ user.value }}</td>
                 </tr>
             </tbody>
         </table>
-        <button v-on:click="findMe">Find Me!</button>
+        <button class="findMeButton3" v-on:click="findMe">Find Me!</button>
         <p v-if="clicked">
             You are currently #{{ this.userPosition }} in the world
         </p>
@@ -66,6 +67,7 @@ export default {
                                     this.users.push({
                                         user: tempData.displayName,
                                         value: value,
+                                        photoURL: tempData.photoURL,
                                     });
                                 });
                             });
@@ -110,5 +112,16 @@ table {
 
 .row3 {
     border-bottom: 1px solid #b82601;
+}
+.dp {
+  width: 40px;
+  height: 40px;
+}
+.findMeButton3 {
+  background-color: rgba(184, 38, 1, 0.2);
+  border: none;
+  padding: 15px;
+  border-radius: 20px;
+  font-weight: 800;
 }
 </style>

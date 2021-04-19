@@ -126,6 +126,6 @@ export default [
         path: "/volunteerapply",
         name: "VolunteerApply",
         component: VolunteerApply,
-        meta: { requiresAtuh: true },
+        meta: { requiresAuth: true },
     }
 ];
