@@ -61,6 +61,8 @@ myRouter.beforeEach((to, from, next) => {
         } else {
         next();
         }
+    } else {
+        next();
     }
 });
 
