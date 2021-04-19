@@ -59,7 +59,6 @@ export default {
     });
   },
   beforeDestroy() {
-    // Don't forget to destroy the Chart.js instance.
     if (this.chart) {
       this.chart.destroy();
     }
