@@ -46,12 +46,21 @@ Vue.mixin({
 
 myRouter.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+    const requiresVisitor = to.matched.some(record => record.meta.requiresVisitor);
     const isAuthenticated = auth.currentUser;
     console.log("isauthenticated", isAuthenticated);
-    if (requiresAuth && !isAuthenticated) {
-        next("/");
-    } else {
+    if (requiresAuth) {
+        if (!isAuthenticated) {
+            next("/");
+        } else {
         next();
+        }
+    } else if (requiresVisitor) {
+        if (isAuthenticated) {
+            next("/home");
+        } else {
+        next();
+        }
     }
 });
 
