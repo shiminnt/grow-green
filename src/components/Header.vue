@@ -23,7 +23,6 @@
                         src="../assets/profileIcon.png"
                     />
                 </div>
-                <!-- <input type="submit" id="profileIcon" src="../assets/profileIcon.png"/> -->
                 <div class="dropdown">
                     {{ displayName }}
                     <div class="dropdown-content">
@@ -62,7 +61,6 @@ export default {
                 .doc(uid)
                 .set(this.userData)
                 .then(() => {
-                    console.log("Document successfully written!");
                     auth.signOut().then(() => {
                         sessionStorage.clear();
                         this.$router.replace({

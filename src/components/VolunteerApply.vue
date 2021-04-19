@@ -62,7 +62,6 @@ export default {
     },
     methods: {
         fetchItems() {
-            console.log(this.$route.params.doc_id);
             database
                 .collection("volunteer")
                 .doc(this.$route.params.doc_id)

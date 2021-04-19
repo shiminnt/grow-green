@@ -40,19 +40,21 @@ export default {
         goToQuiz: function() {
             this.$router.push({ name: "quizquestion" });
         },
-        goToPlantTrees() {
-            this.$router.push("planttrees");
-        },
         plantTree: function() {
             if (this.numTreesCanPlant() > 0) {
-                this.$store.dispatch("updateTreesPlanted");
-                this.$router.push("planttrees");
+                var currentDate = new Date();
+                var date = {
+                    month: currentDate.toLocaleString("default", {
+                        month: "long",
+                    }),
+                    day: currentDate.getDate(),
+                };
+                this.userData.numTrees += 1;
+                this.userData.treeDates.push(date);
+                this.updateDb();
             } else {
                 alert("Tree cannot be planted. Try more questions!");
             }
-            // number of qns -10
-            // number of trees +1
-            // update store
         },
         numQuestionsNotCashed() {
             return this.userData.numQuiz - this.userData.numTrees * 10;
@@ -60,6 +62,9 @@ export default {
         numTreesCanPlant() {
             return Math.floor(this.numQuestionsNotCashed() / 10);
         },
+    },
+    created() {
+        this.loadUserData();
     },
 };
 </script>
