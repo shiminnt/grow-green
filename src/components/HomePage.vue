@@ -52,7 +52,7 @@
             <div class="buttons">
                 <p id="overviewButton" v-on:click="overview">Overview</p>
                 <p id="knowledgeButton" v-on:click="goToKnowledgeBank">
-                    Plant Tree
+                    Knowledge Bank
                 </p>
             </div>
         </div>
