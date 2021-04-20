@@ -1,6 +1,7 @@
 <template>
     <div class="chart">
-        <table id="percentRight">
+        <p>Total number of articles read!</P>
+        <table id="articlesRead">
             <thead>
                 <tr>
                     <th class="head2" scope="col">#</th>
@@ -9,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(user, i) in sorted(this.users)" :key="i">
+                <tr v-for="(user, i) in sorted(this.users).slice(0,5)" :key="i">
                     <td class="row2" scope="row">{{ ++i }}</td>
                     <td class="row2"><img class="dp" :src="user.photoURL"></td>
                     <td class="row2">{{ user.user }}</td>
