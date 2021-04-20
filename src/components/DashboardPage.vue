@@ -104,7 +104,6 @@ export default {
 
 #leader {
     width: 40%;
-    overflow-y: scroll;
 }
 
 #graph {

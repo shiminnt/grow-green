@@ -1,5 +1,6 @@
 <template>
     <div class="chart">
+        <p>Total number of trees planted!</P>
         <table id="percentRight">
             <thead>
                 <tr>
@@ -9,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(user, i) in sorted(this.users)" :key="i">
+                <tr v-for="(user, i) in sorted(this.users).slice(0,5)" :key="i">
                     <td class="row3" scope="row">{{ ++i }}</td>
                     <td class="row3"><img class="dp" :src="user.photoURL"></td>
                     <td class="row3">{{ user.user }}</td>

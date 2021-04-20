@@ -1,5 +1,6 @@
 <template>
     <div class="chart">
+        <p>Total percentage of questions that are correct on the first try!</P>
         <table id="percentRight">
             <thead>
                 <tr>
@@ -10,14 +11,14 @@
             </thead>
             <tbody>
                 <tr
-                    v-for="(user, i) in this.sorted(this.users)"
+                    v-for="(user, i) in this.sorted(this.users).slice(0,5)"
                     :key="i"
                     v-bind:id="user"
                 >
                     <td class="row" scope="row">{{ ++i }}</td>
                     <td class="row"><img class="dp" :src="user.photoURL"></td>
                     <td class="row">{{ user.user }}</td>
-                    <td class="row">{{ user.value }}</td>
+                    <td class="row">{{ user.value }}%</td>
                 </tr>
             </tbody>
         </table>
