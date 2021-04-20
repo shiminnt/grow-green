@@ -31,7 +31,7 @@
         <div class="pageChange">
             <p id="t" v-on:click="previous">&#8592; Previous Page</p>
             <p id="t">{{ pageNo }}</p>
-            <p id="t" v-on:click="next">Next Page &#8594;</p>
+            <p id="t" v-on:click="next">Next -- Page &#8594;</p>
         </div>
         <Footer></Footer>
     </div>
@@ -62,7 +62,7 @@ export default {
         mounted() {
             axios
                 .get(
-                    `https://newsapi.org/v2/everything?q=Climate&from=2021-04-10&sortBy=popularity&apiKey=b7525553c4fb4da7940a200b23d2ca9a`
+                    `http://www.json-generator.com/api/json/get/cjBisMhbnm?indent=2`
                 )
                 .then((response) => {
                     this.info = response.data.articles;
