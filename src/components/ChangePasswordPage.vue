@@ -15,7 +15,7 @@
           <form class="changepassword" @submit.prevent="submit">
             <label for="newpassword">Old Password</label><br />
             <input
-              id="newpassword"
+              id="oldpassword"
               type="password"
               v-model="oldPassword"
             /><br />
@@ -178,7 +178,7 @@ select {
   background-color: #873600;
   color: white;
 }
-#newpassword {
+#newpassword, #oldpassword {
   background: none;
   border: 0px solid;
   background: linear-gradient(#000, #000) center bottom 1px / calc(100% - 10px)
