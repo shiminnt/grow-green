@@ -3,7 +3,6 @@ import App from "./App.vue";
 import VueRouter from "vue-router";
 import Routes from "./routes.js";
 import { database, auth } from "./firebase.js";
-import { store } from "./store.js";
 
 Vue.config.productionTip = false;
 
@@ -46,20 +45,22 @@ Vue.mixin({
 
 myRouter.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-    const requiresVisitor = to.matched.some(record => record.meta.requiresVisitor);
+    const requiresVisitor = to.matched.some(
+        (record) => record.meta.requiresVisitor
+    );
     const isAuthenticated = auth.currentUser;
     console.log("isauthenticated", isAuthenticated);
     if (requiresAuth) {
         if (!isAuthenticated) {
             next("/");
         } else {
-        next();
+            next();
         }
     } else if (requiresVisitor) {
         if (isAuthenticated) {
             next("/home");
         } else {
-        next();
+            next();
         }
     } else {
         next();
@@ -71,7 +72,6 @@ let app;
 auth.onAuthStateChanged(() => {
     if (!app) {
         app = new Vue({
-            store: store,
             router: myRouter,
             render: (h) => h(App),
         }).$mount("#app");
