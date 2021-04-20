@@ -144,6 +144,7 @@ table {
 .dp {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 }
 .findMeButton {
   background-color: rgba(6, 47, 79, 0.2);

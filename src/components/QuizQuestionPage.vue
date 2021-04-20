@@ -101,7 +101,6 @@ export default {
               .collection("questions")
               .get()
               .then((snapshot) => {
-                console.log("total qns " + snapshot.size.toString())
                 this.totalQuestionsAvail = snapshot.size.toString()
                 snapshot.docs.forEach((doc) => {
                   if (!this.completedQuestions.includes(doc.data().question)) {
@@ -152,9 +151,6 @@ export default {
       this.b++;
       this.correct = false;
       this.firstTry = true;
-      console.log("next qn")
-      console.log(this.completedQuestions.length)
-      console.log(this.totalQuestionsAvail)
       if (this.completedQuestions.length == this.totalQuestionsAvail) {
         this.noMoreQuestions = true;
       }

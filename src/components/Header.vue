@@ -182,8 +182,6 @@ export default {
     width: auto;
 }
 .image-cropper {
-    /* padding-left: 20px;
-  padding-top: 20px; */
     margin-top: 20px;
     width: 30px;
     height: 30px;

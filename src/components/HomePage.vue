@@ -194,8 +194,6 @@ export default {
     width: auto;
 }
 .image-cropper {
-    /* padding-left: 20px;
-  padding-top: 20px; */
     margin-top: 20px;
     width: 30px;
     height: 30px;
@@ -204,10 +202,6 @@ export default {
     border-radius: 50%;
 }
 #overviewButton {
-    /* margin-top: 34vw;
-  margin-left: 65vw; */
-    /* margin-top: 20%;
-  margin-left: 55%; */
     font-family: Futura;
     background-color: rgb(6, 48, 6);
     color: whitesmoke;
@@ -218,10 +212,6 @@ export default {
     float: left;
 }
 #knowledgeButton {
-    /* margin-top: 34vw;
-  margin-left: 42vw; */
-    /* margin-top: 20%;
-  margin-left: 35%; */
     font-family: Futura;
     background-color: rgb(6, 48, 6);
     color: whitesmoke;

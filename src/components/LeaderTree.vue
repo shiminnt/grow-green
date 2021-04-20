@@ -120,6 +120,7 @@ table {
 .dp {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 }
 .findMeButton3 {
   background-color: rgba(184, 38, 1, 0.2);
