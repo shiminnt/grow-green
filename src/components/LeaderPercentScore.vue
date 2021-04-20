@@ -1,6 +1,6 @@
 <template>
     <div class="chart">
-        <p>Total percentage of questions that are correct on the first try!</P>
+        <p>Total number of questions that are correct on the first try!</P>
         <table id="percentRight">
             <thead>
                 <tr>
@@ -18,7 +18,7 @@
                     <td class="row" scope="row">{{ ++i }}</td>
                     <td class="row"><img class="dp" :src="user.photoURL"></td>
                     <td class="row">{{ user.user }}</td>
-                    <td class="row">{{ user.value }}%</td>
+                    <td class="row">{{ user.value }}</td>
                 </tr>
             </tbody>
         </table>
@@ -70,7 +70,6 @@ export default {
                                         tempData = doc.data();
                                     }
                                     var total = tempData.questionsDone.length;
-                                    var value = 0;
                                     if (total == 0) {
                                         this.users.push({
                                             user: tempData.displayName,
@@ -84,12 +83,9 @@ export default {
                                                 firstTry++;
                                             }
                                         });
-                                        value = Math.floor(
-                                            (firstTry / total) * 100
-                                        );
                                         this.users.push({
                                             user: tempData.displayName,
-                                            value: value,
+                                            value: firstTry,
                                             photoURL: tempData.photoURL,
                                         });
                                     }

@@ -156,7 +156,6 @@ p {
 .container {
   margin: auto;
   border-radius: 12px;
-  opacity: 82%;
   background: #eadece;
   width: 900px;
   padding: 15px;

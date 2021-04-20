@@ -1,4 +1,4 @@
-<template>
+<template> 
     <div>
         <div class="bg">
             <div class="header">
@@ -170,7 +170,7 @@ export default {
     position: absolute;
     background-color: #f2eddc;
     min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0);
     z-index: 1;
 }
 .dropdown-content > p {
@@ -243,12 +243,11 @@ export default {
 .overviewBoxes {
     display: flex;
     text-align: center;
-    opacity: 82%;
     margin-top: 20%;
     margin-left: 25%;
     padding-right: 3%;
     padding-left: 3%;
-    background: #eadece;
+    background-color: rgb(243, 233, 219);
     border-radius: 12%;
     justify-content: center;
     align-items: center;

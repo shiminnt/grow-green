@@ -102,8 +102,7 @@ export default {
 
 #knowledgeBox {
   text-align: center;
-  opacity: 82%;
-  background: #eadece;
+  background-color: rgb(243, 233, 219);
   border-radius: 12%;
   width: 500px;
   margin: auto;
