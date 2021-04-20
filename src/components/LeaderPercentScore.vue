@@ -74,6 +74,7 @@ export default {
                                         this.users.push({
                                             user: tempData.displayName,
                                             value: 0,
+                                            photoURL: tempData.photoURL,
                                         });
                                     } else {
                                         var firstTry = 0;
