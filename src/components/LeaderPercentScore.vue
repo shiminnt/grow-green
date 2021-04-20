@@ -75,6 +75,7 @@ export default {
                                         this.users.push({
                                             user: tempData.displayName,
                                             value: 0,
+                                            photoURL: tempData.photoURL,
                                         });
                                     } else {
                                         var firstTry = 0;
@@ -119,6 +120,9 @@ export default {
 </script>
 
 <style>
+.chart {
+    padding-bottom: 100px;
+}
 table {
     width: 90%;
     margin-left: 20px;
