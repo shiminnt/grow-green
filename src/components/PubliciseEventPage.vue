@@ -2,7 +2,10 @@
   <div class="bg">
     <Header></Header>
     <h1 id="title">Publicise your event</h1>
-    <p>Fill in the relevant details for your event. We will let you know if your event has been approved.</p>
+    <p>
+      Fill in the relevant details for your event. We will let you know if your
+      event has been approved.
+    </p>
     <form class="form" @submit.prevent="submitForm">
       <input
         class="textinput"
@@ -50,11 +53,7 @@
       >
       </textarea>
       <br /><br />
-      <input
-        class="submitButton"
-        type="submit"
-        value="Submit"
-      />
+      <input class="submitButton" type="submit" value="Submit" />
     </form>
     <Footer></Footer>
   </div>
@@ -70,51 +69,51 @@ export default {
   name: "contactus",
   data: function () {
     return {
-      organisationName: null,
-      email: null,
-      eventName: null,
-      location: null,
-      date: null,
-      starttime: null,
-      endtime: null,
-      description: null,
+      organisationName: "",
+      email: "",
+      eventName: "",
+      location: "",
+      date: "",
+      starttime: "",
+      endtime: "",
+      description: "",
     };
   },
   methods: {
     submitForm: function () {
-      if (this.organisationName == null) {
+      if (this.organisationName == "") {
         alert("Invalid organisation name. Please try again");
-      } else if (this.email == null) {
+      } else if (this.email == "") {
         alert("Invalid email. Please try again");
-      } else if (this.eventName == null) {
+      } else if (this.eventName == "") {
         alert("Invalid event name. Please try again");
-      } else if (this.location == null) {
+      } else if (this.location == "") {
         alert("Invalid location. Please try again");
-      } else if (this.date == null) {
+      } else if (this.date == "") {
         alert("Invalid date. Please try again");
-      } else if (this.starttime == null) {
+      } else if (this.starttime == "") {
         alert("Invalid start time. Please try again");
-      } else if (this.endtime == null) {
+      } else if (this.endtime == "") {
         alert("Invalid end time. Please try again");
-      } else if (this.description == null) {
+      } else if (this.description == "") {
         alert("Your description is empty! Please add a description");
       } else {
         database
           .collection("publiciseEvent")
           .add({
             organisationName: this.organisationName,
-        email: this.email,
-      eventName: this.eventName,
-      location: this.location,
-      date: this.date,
-      starttime: this.starttime,
-      endtime: this.endtime,
-      description: this.description,
+            email: this.email,
+            eventName: this.eventName,
+            location: this.location,
+            date: this.date,
+            starttime: this.starttime,
+            endtime: this.endtime,
+            description: this.description,
           })
           .then(() => {
-              alert("Your event has been submitted for approval.");
-              this.$router.go();
-              });
+            alert("Your event has been submitted for approval.");
+            this.$router.go();
+          });
       }
     },
   },
