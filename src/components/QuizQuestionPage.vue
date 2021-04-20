@@ -1,5 +1,5 @@
 <template>
-  <div class="bg">
+  <div class="bg"> 
     <Header></Header>
     <div id="questionsDoneBox">
       <p class="tt">questions done:</p>
@@ -44,7 +44,6 @@
       some questions of your own!
       </p>
     </div>
-    <br><br>
     <div class="buttons">
       <button class="xbutton" v-on:click="goToContributeQuestion">
         Contribute a question!
@@ -102,6 +101,9 @@ export default {
               .get()
               .then((snapshot) => {
                 this.totalQuestionsAvail = snapshot.size.toString()
+                if(this.totalQuestionsAvail == this.completedQuestions.length) {
+                  this.noMoreQuestions = true;
+                }
                 snapshot.docs.forEach((doc) => {
                   if (!this.completedQuestions.includes(doc.data().question)) {
                     this.quiz.push(doc.data());
@@ -180,8 +182,7 @@ export default {
   margin: auto;
   border-radius: 12px;
   text-align: center;
-  opacity: 82%;
-  background: #eadece;
+  background-color: rgb(243, 233, 219);
   width: 900px;
   padding: 15px;
 }
@@ -218,11 +219,12 @@ export default {
   border: none;
   color: white;
   font-family: Futura;
-  padding: 5px 25px;
+  padding: 5px 5px;
   text-align: center;
-  margin: 10px;
+  margin: 5px;
   border-radius: 30px;
   font-weight: 600;
+  margin-bottom: 30px;
 }
 #funfactBox {
   margin: auto;
@@ -231,8 +233,7 @@ export default {
 
 #questionsDoneBox {
   position: absolute;
-  opacity: 82%;
-  background: #eadece;
+  background-color: rgb(243, 233, 219);
   border-radius: 12%;
   width: 10vw;
   height: 90px;
@@ -244,23 +245,22 @@ export default {
   position: relative;
   font-family: Futura;
   margin-top: 30vh;
+  margin-bottom: 10px;
 }
 
 #noQntxt {
     padding: 5px;
-    background: #eadece;
-    opacity: 82%;
+    background-color: rgb(243, 233, 219);
     text-align: center;
     justify-content: center;
 }
 
 #funfactBox{
   position:absolute;
-  opacity: 82%;
-  background: #eadece;
+  background-color: rgb(243, 233, 219);
   border-radius: 10%;
   width: 12vw;
-  margin-left: 80%;
+  margin-left: 85%;
   margin-top: 20px;
   justify-content: center;
   padding: 2px;

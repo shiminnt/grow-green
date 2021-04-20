@@ -1,4 +1,4 @@
-<template>
+<template> 
     <div class="bg">
         <Header></Header>
         <div id="aritcleOverviewBox">
@@ -14,7 +14,7 @@
                         <p class="text">
                             {{ article.description.slice(0, 100) }} ...
                         </p>
-                    </div>
+                    </div> 
                     <div>
                         <p
                             class="readMoreLink"
@@ -31,7 +31,7 @@
         <div class="pageChange">
             <p id="t" v-on:click="previous">&#8592; Previous Page</p>
             <p id="t">{{ pageNo }}</p>
-            <p id="t" v-on:click="next">Next -- Page &#8594;</p>
+            <p id="t" v-on:click="next">Next Page &#8594;</p>
         </div>
         <Footer></Footer>
     </div>
@@ -62,7 +62,7 @@ export default {
         mounted() {
             axios
                 .get(
-                    `http://www.json-generator.com/api/json/get/cjBisMhbnm?indent=2`
+                    `https://www.json-generator.com/api/json/get/cjBisMhbnm?indent=2`
                 )
                 .then((response) => {
                     this.info = response.data.articles;
@@ -114,7 +114,7 @@ export default {
 .newsBox {
     width: 60vw;
     height: 13vh;
-    background: rgba(245, 222, 179, 0.8);
+    background-color: rgb(243, 233, 219);
     display: flex;
     overflow: hidden;
     margin: auto;
@@ -167,8 +167,7 @@ export default {
 
 #aritcleOverviewBox {
     position: absolute;
-    opacity: 82%;
-    background: #eadece;
+    background-color: rgb(243, 233, 219);
     border-radius: 12%;
     width: 10vw;
     height: 10vh;
